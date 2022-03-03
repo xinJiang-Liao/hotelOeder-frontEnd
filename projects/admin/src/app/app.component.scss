@@ -1,0 +1,41 @@
+.body1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bt {
+  height: 100px;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #bdd5ea;
+}
+
+.floor01-body {
+  height: 880px;
+  width: calc(100% - 100px);
+  min-width: 1275px;
+  max-width: 1820px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.floor02-body {
+  width: calc(100% - 250px);
+  /*min-width: calc(100% - 250px);*/
+  max-width: 1540px;
+  height: 880px;
+  margin-left: 30px;
+  display: flex;
+  border-radius: 15px;
+
+  /*这里为什么要写上下排列呢？*/
+  /*因为这个div里有个索引，然后就是索引的组件，如果左右排列的话组件就获取不到这个div的宽度了*/
+  flex-direction: column;
+}
