@@ -1,0 +1,39 @@
+<div class="note-body">
+  <div class="note-body-left">
+    <div class="note-body-left-top">
+      <img src="#" class="note-body-left-top_img" />
+      <div class="note-body-left-top2">
+        <!--        这里面获取到菜型、id、name-->
+        <span>{{ this.date.lx }}</span
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>{{ this.date.id }}</span>
+        <br />
+        <span>{{ this.date.name }}</span>
+      </div>
+      <div class="note-body-left-top3">
+        <button style="border-radius: 20px" (click)="onCounter1()">+</button>
+        <input style="width: 20px" [(ngModel)]="counter" />
+        <button style="border-radius: 20px" (click)="onCounter2()">-</button>
+      </div>
+    </div>
+
+    <div class="note-body-left-bottom">
+      <!--      这里是键盘区域-->
+      <mat-grid-list cols="4" rowHeight="77px">
+        <mat-grid-tile
+          *ngFor="let tile of tiles"
+          [colspan]="tile.cols"
+          [rowspan]="tile.rows"
+          [style.background]="tile.color"
+          (click)="clickNumber(tile.text)"
+        >
+          {{ tile.text }}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+
+  <div class="note-body-right">
+    <app-button-toggle [date]="this.date"></app-button-toggle>
+  </div>
+</div>

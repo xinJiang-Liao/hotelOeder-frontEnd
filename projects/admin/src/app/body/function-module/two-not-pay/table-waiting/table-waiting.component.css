@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+  line-height: 40px;
+  background-color: #e5e5f3;
+}
+
+/*:host ::ng-deep .mat-table {*/
+/*  background: #fff;*/
+/*  max-height: 680px;*/
+/*  overflow: hidden;*/
+/*}*/

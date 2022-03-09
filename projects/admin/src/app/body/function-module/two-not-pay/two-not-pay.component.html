@@ -1,0 +1,32 @@
+<div class="floor03-form">
+  <!--  这里是挂单管理界面的代码-->
+  <div class="floor03-form2">
+    <div class="floor03-head">
+      <p>挂单记录:</p>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <span>订单号:</span>
+        <input style="border-radius: 5px; border: 1px solid darkgray" />
+        <button style="font-size: 24px">查询</button>
+      </div>
+    </div>
+
+    <div class="floor03-center">
+      <!--    这里是挂单详情的表格-->
+      <app-table-waiting></app-table-waiting>
+    </div>
+  </div>
+
+  <div class="floor03-foot">
+    <button style="height: 60px; width: 150px; font-size: 24px">结账</button>
+    <button style="height: 60px; width: 150px; margin: 0 30px; font-size: 24px">
+      消单
+    </button>
+  </div>
+</div>

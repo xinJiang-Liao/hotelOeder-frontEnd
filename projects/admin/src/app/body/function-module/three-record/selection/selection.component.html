@@ -1,0 +1,9 @@
+<mat-form-field appearance="fill">
+  <mat-label>选择日期范围</mat-label>
+  <mat-date-range-input [rangePicker]="picker">
+    <input matStartDate placeholder="开始日期" />
+    <input matEndDate placeholder="截止日期" />
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field>

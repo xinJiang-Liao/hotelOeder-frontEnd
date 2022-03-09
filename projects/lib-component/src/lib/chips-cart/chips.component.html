@@ -1,0 +1,61 @@
+<ul>
+  <li>
+    <span>份量</span>
+    <mat-chip-list
+      class="example-chip"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+    >
+      <!--  (cdkDropList)="drop($event)"   这个放在括号里面，不知其意-->
+
+      <mat-chip class="example-box" cdkDrag *ngFor="let item of FL">
+        {{ item.name }}
+      </mat-chip>
+    </mat-chip-list>
+  </li>
+
+  <li>
+    <span>熟度（温度）</span>
+    <mat-chip-list
+      class="example-chip"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+    >
+      <!--  (cdkDropList)="drop($event)"   这个放在括号里面，不知其意-->
+
+      <mat-chip class="example-box" cdkDrag *ngFor="let item of SD">
+        {{ item.name }}
+      </mat-chip>
+    </mat-chip-list>
+  </li>
+
+  <li>
+    <span>口味（甜度、辣度）</span>
+    <mat-chip-list
+      class="example-chip"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+    >
+      <!--  (cdkDropList)="drop($event)"   这个放在括号里面，不知其意-->
+
+      <mat-chip class="example-box" cdkDrag *ngFor="let item of KW">
+        {{ item.name }}
+      </mat-chip>
+    </mat-chip-list>
+  </li>
+
+  <li>
+    <span>其他（加料）</span>
+    <mat-chip-list
+      class="example-chip"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+    >
+      <!--  (cdkDropList)="drop($event)"   这个放在括号里面，不知其意-->
+
+      <mat-chip class="example-box" cdkDrag *ngFor="let item of QT">
+        {{ item.name }}
+      </mat-chip>
+    </mat-chip-list>
+  </li>
+</ul>

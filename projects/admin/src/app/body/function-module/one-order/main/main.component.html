@@ -1,0 +1,69 @@
+<div class="main_01">
+  <div class="main_title">
+    <div class="title_01">
+      <div>这个是订单号</div>
+      <div style="display: flex; flex-direction: column">
+        <span>前台点餐</span>
+        <span>这里是描述</span>
+      </div>
+    </div>
+    <div><img src="#" />这里放点阵</div>
+  </div>
+</div>
+
+<div class="main_02">
+  <div class="main_body">
+    <mat-tab-group class="c1">
+      <mat-tab label="西餐">
+        <div class="main_nav">
+          <div *ngFor="let item of cd" style="overflow: hidden">
+            <app-dishes
+              [item]="item"
+              *ngIf="item.lx == '西餐'"
+              (click)="openDialog(item)"
+            ></app-dishes>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="中餐">
+        <div class="main_nav">
+          <div *ngFor="let item of cd" style="overflow: hidden">
+            <div *ngIf="item.lx == '中餐'">
+              <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="小吃">
+        <div class="main_nav">
+          <div *ngFor="let item of xc" style="overflow: hidden">
+            <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="奶茶">
+        <div class="main_nav"></div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="main_footer">这里是搜索框</div>
+</div>
+
+<!--<ol>-->
+<!--  <li>-->
+<!--&lt;!&ndash;    <mat-form-field>&ndash;&gt;-->
+<!--      <mat-label>What's your name?</mat-label>-->
+<!--      <input  [(ngModel)]="name">-->
+<!--&lt;!&ndash;    </mat-form-field>&ndash;&gt;-->
+<!--  </li>-->
+<!--  <li>-->
+<!--    <button  (click)="openDialog()">Pick one</button>-->
+<!--  </li>-->
+<!--  <li *ngIf="animal">-->
+<!--    You chose: <i>{{animal}}</i>-->
+<!--  </li>-->
+<!--</ol>-->
