@@ -13,6 +13,10 @@
       "lib-component": [
         "dist/lib-component/lib-component",
         "dist/lib-component"
+      ],
+      "lib-services": [
+        "dist/lib-services/lib-services",
+        "dist/lib-services"
       ]
     },
     "noFallthroughCasesInSwitch": true,

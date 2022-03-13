@@ -160,6 +160,46 @@
           }
         }
       }
+    },
+    "lib-services": {
+      "projectType": "library",
+      "root": "projects/lib-services",
+      "sourceRoot": "projects/lib-services/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/lib-services/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-services/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/lib-services/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-services/src/test.ts",
+            "tsConfig": "projects/lib-services/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-services/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/lib-services/**/*.ts",
+              "projects/lib-services/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "admin"

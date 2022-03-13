@@ -32,6 +32,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ChipsComponent } from '../../../../lib-component/src/lib/chips-cart/chips.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatChipsModule,
     MatNativeDateModule,
+    HttpClientModule,
   ],
 })
 export class BodyModule {}
