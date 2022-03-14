@@ -1,0 +1,16 @@
+<!--<div *ngIf="render" [ngClass]="'p-overlaypanel p-component'" [ngStyle]="style" [class]="styleClass"-->
+<!--[ngClass]="'p-overlaypanel'"-->
+<div class="overlay " *ngIf="render" (click)="onContainerClick()"
+     [@animation]="{value: (visible ? 'open': 'close'),
+                    params: {showTransitionParams: showTransitionOptions, hideTransitionParams: hideTransitionOptions}}"
+     (@animation.start)="onAnimationStart($event)" (@animation.done)="onAnimationEnd($event)">
+  <!--  <div class="p-overlaypanel-content">-->
+  <ng-content></ng-content>
+  <!--    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>-->
+  <!--  </div>-->
+  <!--  <button *ngIf="showCloseIcon" type="button" class="p-overlaypanel-close p-link" (click)="onCloseClick($event)"-->
+  <!--  <button *ngIf="showCloseIcon" type="button" class="p-overlaypanel-close" (click)="onCloseClick($event)"-->
+  <!--          (keydown.enter)="hide()" [attr.aria-label]="ariaCloseLabel" pRipple>-->
+  <!--    <span class="p-overlaypanel-close-icon pi pi-times"></span>-->
+  <!--  </button>-->
+</div>

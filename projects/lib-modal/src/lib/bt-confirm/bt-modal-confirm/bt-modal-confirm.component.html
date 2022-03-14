@@ -1,0 +1,12 @@
+<ng-template #tplModal let-context>
+  <div class="section-bt flex-column">
+    <h3 class="mb-rem-2">{{ context?.title }}</h3>
+
+    <span class="mb-rem-1" [innerHTML]="context?.text"></span>
+
+    <div class="buttons flex-row-space mt-rem-15 mb-rem-15">
+      <button class="btn-default w3" (click)="onclose(false)">取消</button>
+      <button class="btn-success w6" (click)="onclose(true)">确定</button>
+    </div>
+  </div>
+</ng-template>

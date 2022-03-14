@@ -10,8 +10,9 @@ export class ConfigService {
     // console.log(this.config);
   }
 
-  public get(key: string): any {
-    return this.config[key];
+  public get(key?: string): any {
+    // return this.config[key];
+    return 'http://localhost:3000';
   }
 
   public set(key: string, value: any): void {

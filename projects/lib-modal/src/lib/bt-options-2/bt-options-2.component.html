@@ -1,0 +1,29 @@
+<ng-template #tplModal let-context>
+  <div class="section">
+    <h2>请选择</h2>
+
+    <div
+      class="flex-column mt-rem-15 mb-rem-15"
+      *ngFor="let option of context?.options; index as i"
+    >
+      <p class="mb-rem-1">{{ option.text }}</p>
+      <div class="selects flex-row" *ngIf="option.values && option.values.length > 0">
+        <button
+          class="btn btn-default btn-option mb-rem-05"
+          *ngFor="let value of option.values"
+          [ngClass]="{ active: checkActive(option, value) }"
+          (click)="onselect(option, value)"
+        >
+          {{ value }}
+        </button>
+      </div>
+    </div>
+
+    <button
+      class="submit btn-success mt-rem-15 fw-500 fs-rem-125"
+      (click)="onclick(context?.options)"
+    >
+      确定
+    </button>
+  </div>
+</ng-template>

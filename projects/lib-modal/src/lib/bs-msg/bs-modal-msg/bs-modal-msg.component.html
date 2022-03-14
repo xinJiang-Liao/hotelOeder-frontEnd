@@ -1,0 +1,7 @@
+<ng-template #tplMsg let-context>
+  <div class="head" [innerHTML]="context?.head"></div>
+
+  <div class="body" style="word-wrap: break-word;" [innerHTML]="context?.body"></div>
+
+<!--  <div class="foot" *ngIf="context?.foot">{{context?.foot}}</div>-->
+</ng-template>

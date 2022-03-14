@@ -1,0 +1,7 @@
+<ng-template #tplMsg let-context>
+  <div class="container flex-column flex-align-center">
+    <qrcode [qrdata]="context.data" [width]="context.width" [errorCorrectionLevel]="'M'"></qrcode>
+    <span>{{ context.text }}</span>
+    <!--    ({{context.hotelId}}) 此二维码用于向客人提供充值页面链接-->
+  </div>
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="backdrop fullscreen" [@openHide]="show ? 'open' : 'closed'"></div>
+
+<div
+  class="container fullscreen"
+  id="contrainer"
+  (click)="onbackdrop($event)"
+  [ngStyle]="{ 'align-items': options?.position === 'center' ? 'center' : 'flex-start' }"
+>
+  <div
+    class="bs-modal"
+    [@openClose]="show ? 'open' : 'closed'"
+    *ngIf="tplRef"
+    [ngStyle]="{ width: (options?.width || 458) + 'px' }"
+  >
+    <!--    [style.height]="options.height"-->
+    <!--    [ngStyle]="{'width': options?.width ? (options?.width + 'px') : '458px'}">-->
+
+    <fa-icon [icon]="faTimes" (click)="hide()" *ngIf="options?.showClose"></fa-icon>
+    <ng-container *ngTemplateOutlet="tplRef; context: context"></ng-container>
+  </div>
+</div>

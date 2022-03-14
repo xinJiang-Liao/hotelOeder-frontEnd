@@ -1,0 +1,12 @@
+<ng-template #tplModal let-context>
+  <div class="head" [innerHTML]="context?.head">
+    <!--    {{context?.head}}-->
+  </div>
+  <div class="body" style="word-wrap: break-word" [innerHTML]="context?.body">
+    <!--    {{context?.body}}-->
+  </div>
+  <div class="foot">
+    <button type="button" class="btn btn-success ml-rem-05" (click)="onclose(true)">确认</button>
+    <button type="button" class="btn btn-gray" (click)="onclose(false)">取消</button>
+  </div>
+</ng-template>

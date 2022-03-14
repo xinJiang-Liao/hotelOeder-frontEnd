@@ -17,7 +17,7 @@ export class OneOrderComponent implements OnInit {
         console.log('1111111111', x);
       },
       (error) => {
-        console.log(error);
+        console.log("错误提示:",error);
       }
     );
   }

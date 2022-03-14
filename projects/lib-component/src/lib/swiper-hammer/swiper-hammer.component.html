@@ -1,0 +1,55 @@
+<div class="slider-wrapper" #sliderWrapper>
+  <div
+    class="slider"
+    (pan)="onpan($event)"
+    [style.transform]="sliderTransformStyle"
+    [style.width]="slideCount + '00%'"
+    [ngClass]="{ 'is-animating': isAnimating }"
+  >
+    <!--    <div class="slider-panel" *ngFor="let slide of slides" [style.background-image]="'url(' + slide + ')'"></div>-->
+    <!--    <div class="slider-panel" style="background-color: gray">div1</div>-->
+    <!--    <div class="slider-panel" style="background-color: gray">div2</div>-->
+    <!--    <div class="slider-panel" style="background-color: gray">div3</div>-->
+
+    <ng-content select=".slider-panel"></ng-content>
+  </div>
+
+  <!--  <div class="slider-top">-->
+  <!--    <div class="slider-button" (click)="close()">-->
+  <!--      <fa-icon [icon]="faTimes" size="2x"></fa-icon>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  <div class="slider-button left" *ngIf="!isTouchDevice" (click)="previousSlide()">
+    <mat-icon svgIcon="fa:chevron-left"></mat-icon>
+  </div>
+  <div class="slider-button right" *ngIf="!isTouchDevice" (click)="nextSlide()">
+    <mat-icon svgIcon="fa:chevron-right"></mat-icon>
+  </div>
+
+  <ng-container *ngIf="slideCount > 1">
+    <div class="pagination" *ngIf="pagination.type === 'hammer'">
+      <!--    <div *ngFor="let p of slides; index as i" (click)="goToSlide(i)">-->
+      <span
+        class="bullet hammer"
+        *ngFor="let p of slides; index as i"
+        [ngStyle]="{
+          'box-shadow': '0 0 0 2px ' + pagination?.color,
+          'background-color': isActive(i) ? pagination?.color : ''
+        }"
+        (click)="goToSlide(i)"
+      ></span>
+      <!--    </div>-->
+    </div>
+
+    <div class="pagination" *ngIf="pagination.type === 'swiper'">
+      <span
+        class="bullet swiper"
+        *ngFor="let p of slides; index as i"
+        [ngClass]="{ active: isActive(i) }"
+        [ngStyle]="{ 'background-color': pagination?.color }"
+        (click)="goToSlide(i)"
+      ></span>
+    </div>
+  </ng-container>
+</div>

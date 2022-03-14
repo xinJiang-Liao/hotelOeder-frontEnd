@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ManuService {
-  private apiHost = 'http://localhost:3000';
+  public apiHost = '';
   //
   constructor(private http: HttpClient, private config: ConfigService) {
-  //   // this.apiHost = this.config.get('apiHost');
-  //   // if (!this.apiHost) {
-  //   //   this.apiHost = '';
-  //   // }
+    this.apiHost = this.config.get();
+    if (!this.apiHost) {
+      this.apiHost = '';
+    }
   }
 
   // public menu2(order?: any): Observable<any> {

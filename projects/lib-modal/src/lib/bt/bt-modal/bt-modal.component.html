@@ -1,0 +1,29 @@
+<div
+  class="backdrop"
+  [style.z-index]="options.zindex"
+  [@openHide]="show ? 'open' : 'closed'"
+  (click)="hide()"
+></div>
+
+<div
+  class="bt-modal scroll-v-hidden"
+  [style.height]="options.height"
+  [style.z-index]="options.zindex"
+  [ngClass]="{ 'v-top': options?.position === 'top', 'v-center': options?.position === 'center' }"
+  [@openClose]="show ? 'open' : 'closed'"
+  *ngIf="tplRef"
+>
+  <ng-container *ngTemplateOutlet="tplRef; context: context"></ng-container>
+
+  <fa-icon
+    class="h1"
+    [icon]="faChevronDown"
+    size="1x"
+    (click)="hide()"
+    *ngIf="!options?.hideClose"
+  ></fa-icon>
+
+  <a role="button" class="h2 btn-icon btn-left-top" (click)="hide()" *ngIf="options?.showHide2">
+    <fa-icon [icon]="faChevronDown"></fa-icon>
+  </a>
+</div>
