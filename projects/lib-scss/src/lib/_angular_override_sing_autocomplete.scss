@@ -1,0 +1,75 @@
+// # input ############
+//.sing.mat-form-field
+//  > .mat-form-field-wrapper
+//    > .mat-form-field-flex
+//      > .mat-form-field-infix
+//      > .mat-form-field-prefix
+//      > .mat-form-field-suffix
+//    > . mat-form-field-underline
+
+.sing.mat-form-field {
+  @apply h-9 flex items-center;
+  @apply border border-solid border-gray-300 rounded-md;
+  @apply text-xs text-neutral-600;
+  @apply hover:border-blue-400/50;
+}
+
+.sing.mat-form-field .mat-form-field-wrapper {
+  @apply pb-0;
+}
+
+.sing.mat-form-field .mat-form-field-flex {
+  @apply p-0 bg-white flex items-center;
+}
+
+.sing.mat-form-field .mat-form-field-infix {
+  @apply p-0 border-t-0 w-auto;
+}
+
+.sing.mat-form-field .mat-form-field-prefix {
+  @apply w-7 h-7 flex justify-center items-center;
+}
+
+.sing.mat-form-field .mat-form-field-suffix {
+  @apply flex justify-center items-center mx-1;
+}
+
+.sing.mat-form-field .mat-form-field-underline {
+  @apply hidden;
+}
+
+// # autocomplete-panel ############
+//.sing.mat-autocomplete-panel
+//  > .mat-option
+//    > .mat-option-text
+//      > .option-check
+//        > .check
+
+.sing.mat-autocomplete-panel {
+  @apply p-1.5 rounded bg-neutral-100;
+}
+
+.sing.mat-autocomplete-panel > .mat-option {
+  @apply p-0 h-8 text-sm font-normal;
+}
+
+.sing.mat-autocomplete-panel .mat-option-text {
+  @apply h-full flex items-center;
+}
+
+.sing.mat-autocomplete-panel > .mat-option .option-check {
+  @apply h-full w-full flex items-center my-1.5 pr-0.5 rounded bg-neutral-100;
+  @apply hover:bg-blue-400 hover:text-white;
+}
+
+.sing.mat-autocomplete-panel > .mat-option.mat-active .option-check {
+  @apply bg-blue-400 text-white;
+}
+
+.sing.mat-autocomplete-panel > .mat-option .mat-icon.check {
+  @apply ml-1 mr-1.5 invisible;
+}
+
+.sing.mat-autocomplete-panel > .mat-option.mat-selected .mat-icon.check {
+  @apply visible;
+}

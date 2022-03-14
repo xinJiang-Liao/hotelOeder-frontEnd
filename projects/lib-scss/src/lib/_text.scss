@@ -1,0 +1,17 @@
+.text-clip {
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.text-ellipsis {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.text-ellipsis-2lines {
+  -webkit-line-clamp: 2;
+}

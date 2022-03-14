@@ -1,0 +1,25 @@
+.screen {
+  display: flex;
+  height: 100%;
+
+  .board {
+    > .navbar {
+      height: 51px;
+    }
+
+    > .main {
+      //height: calc(100vh - 50px);
+      //padding: 40px;
+    }
+  }
+}
+
+//@media screen and (max-width: 480px) {
+//  .screen {
+//    > .board {
+//      > .main {
+//        padding: 1rem;
+//      }
+//    }
+//  }
+//}

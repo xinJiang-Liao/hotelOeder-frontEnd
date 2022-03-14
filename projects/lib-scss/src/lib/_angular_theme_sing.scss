@@ -1,0 +1,56 @@
+@import "angular_theming";
+//@import '@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$sing-app-primary: mat-palette($mat-grey);
+$sing-app-accent: mat-palette($mat-blue, 600, 200, 800);
+//$sing-app-accent: mat-palette($mat-grey, 700, 300, 800);
+//$sing-app-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$sing-app-warn: mat-palette($mat-deep-orange, 600, 200, 800);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as `color` or `typography`.
+$sing-app-theme: mat-light-theme(
+  (
+    color: (
+      primary: $sing-app-primary,
+      accent: $sing-app-accent,
+      warn: $sing-app-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+//@include angular-material-theme($sing-app-theme);
+
+// Include the theme styles for only specified components.
+@include mat-core-theme($sing-app-theme);
+@include mat-chips-theme($sing-app-theme);
+@include mat-form-field-theme($sing-app-theme);
+@include mat-button-theme($sing-app-theme);
+@include mat-slide-toggle-theme($sing-app-theme);
+@include mat-tabs-theme($sing-app-theme);
+@include mat-select-theme($sing-app-theme);
+@include mat-datepicker-theme($sing-app-theme);
+@include mat-expansion-panel-theme($sing-app-theme);
+@include mat-card-theme($sing-app-theme);
+@include mat-progress-bar-theme($sing-app-theme);
+@include mat-autocomplete-theme($sing-app-theme);
+@include mat-table-theme($sing-app-theme);
+@include mat-tooltip-theme($sing-app-theme);
+@include mat-radio-theme($sing-app-theme);
+//@include mat-tree-theme($sing-app-theme);
+//@include mat-icon-theme($sing-app-theme);
+//@include mat-checkbox-theme($sing-app-theme);

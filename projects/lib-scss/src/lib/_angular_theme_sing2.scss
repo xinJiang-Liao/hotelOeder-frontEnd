@@ -1,0 +1,46 @@
+@use "@angular/material" as mat;
+
+$my-typography: mat.define-typography-config(
+  $font-family: Montserrat,
+);
+@include mat.core($my-typography);
+
+$jinkeh-admin: (
+  50: #fafafa,
+  100: #f5f5f5,
+  200: #eeeeee,
+  300: #dee2e6,
+  400: #ced4da,
+  500: #adb5bd,
+  600: #868e96,
+  700: #555555,
+  800: #343434,
+  900: #242424,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+$admin2-primary: mat.define-palette($jinkeh-admin, 800, 700, 900);
+$admin2-accent: mat.define-palette($jinkeh-admin, 800, 700, 900);
+$admin2-warn: mat.define-palette(mat.$brown-palette, A200, A100, A400);
+$admin2-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $admin2-primary,
+      accent: $admin2-accent,
+      warn: $admin2-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($admin2-theme);

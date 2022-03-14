@@ -1,0 +1,11 @@
+<div class="coupon">
+  <div class="flex-row-reverse mb-rem-05">
+    <a class="btn-down flex-row-reverse flex-align" (click)="onclose($event)">
+      <fa-icon [icon]="faChevronDown"></fa-icon>
+    </a>
+  </div>
+  <lib-user-coupon2
+    [coupon]="data.coupon"
+    [imagesMap]="data.imagesMap"
+  ></lib-user-coupon2>
+</div>

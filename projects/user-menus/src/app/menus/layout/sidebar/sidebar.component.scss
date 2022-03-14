@@ -1,0 +1,182 @@
+$gray-900: #242424;
+$color-active: #f2be35;
+//$color-text: rgba(170, 170, 170, .7);
+$color-text: #aaa;
+$color-dark1: #111;
+$color-dark2: #313131;
+$color-dark3: #151515;
+
+//a {
+//  text-decoration: none;
+//  color: inherit;
+//}
+
+.text {
+  width: 0px;
+  margin-left: 0px;
+  opacity: 0;
+  transition: opacity 0.4s ease-in, margin-left 0.4s ease-in, width 0.4s ease;
+}
+
+.bar {
+  height: 100%;
+  width: 50px;
+  background-color: $gray-900;
+  color: $color-text;
+  transition: width 0.5s;
+
+  > .header {
+    text-align: center;
+    word-break: break-word;
+    height: 50px;
+  }
+
+  > .menus {
+    > .menu {
+      > a {
+        height: 45px;
+        padding-left: 11px;
+
+        > .icon {
+          flex-shrink: 0;
+          width: 28px;
+          height: 28px;
+          font-size: 16px;
+          border-radius: 50%;
+
+          > fa-icon {
+            margin-top: 3px;
+          }
+        }
+
+        > .icon.active {
+          background-color: $color-active;
+          color: $gray-900;
+        }
+
+        > .text {
+          flex-grow: 1;
+          color: $color-text;
+
+          > .arrow {
+            width: 20px;
+            height: 20px;
+            padding-right: 5px;
+
+            > fa-icon {
+              margin-top: 3px;
+              transform: rotate(0deg);
+              transition: transform 0.4s ease;
+            }
+
+            > fa-icon.expanded {
+              transform: rotate(-90deg);
+              //transition: transform .4s ease;
+            }
+          }
+        }
+
+        > .text.active {
+          color: $color-active;
+        }
+      }
+
+      > a:hover {
+        background-color: $color-dark1;
+      }
+
+      > .subs {
+        background-color: $color-dark2;
+        transition: height 0.3s ease;
+
+        > a {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          padding-left: 40px;
+          padding-right: 11px;
+          height: 29px;
+          font-size: 0.95rem;
+        }
+
+        > a:hover {
+          background-color: $color-dark3;
+        }
+
+        > a.active {
+          color: white;
+        }
+      }
+    }
+  }
+
+  > .labels {
+    padding: 0px 11px;
+
+    > .title {
+      opacity: 0;
+      transition: opacity 0.4s ease-in;
+    }
+
+    > .label {
+      font-size: 0.9rem;
+      color: rgb(170, 170, 170);
+
+      > .point {
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px $color-text;
+        background-color: $color-text;
+        height: 5px;
+        width: 5px;
+        transition: background-color 250ms;
+        //margin-left: 2px;
+        margin-left: 11px;
+        margin-right: 9px;
+      }
+
+      > .point.active {
+        box-shadow: 0 0 0 2px $color-active;
+        background-color: $color-active;
+      }
+    }
+
+    > .label:hover {
+      > .text {
+        color: #f5f5f5;
+      }
+    }
+  }
+}
+
+.bar:hover,
+.bar.static,
+.bar.expand {
+  width: 204px;
+
+  .text {
+    width: auto;
+    margin-left: 11px;
+    opacity: 1;
+    //transition: opacity .4s ease, margin-left .4s ease, width .4s ease;
+  }
+
+  .labels {
+    > .title {
+      opacity: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .bar,
+  .bar:hover {
+    width: 1px;
+    opacity: 0;
+    transition: opacity 0.4s ease, width 0.4s ease;
+  }
+
+  .bar.static {
+    width: 204px;
+    opacity: 1;
+  }
+}

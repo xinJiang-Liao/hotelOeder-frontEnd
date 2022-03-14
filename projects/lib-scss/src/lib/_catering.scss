@@ -1,0 +1,44 @@
+.bottom-1 {
+  height: 3.5rem;
+  width: 100%;
+  border: 0;
+
+  font-weight: 500;
+  font-size: 17.5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+
+  > span,
+  button {
+    margin-bottom: 0.25rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    border: 1px solid #bababa;
+    border-radius: 0.25rem;
+
+    font-size: 0.875rem;
+    font-weight: 300;
+  }
+
+  > button {
+    border-radius: 5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background-color: white;
+  }
+
+  .active {
+    color: #1976d2;
+  }
+
+  :not(:last-child) {
+    margin-right: 0.5rem;
+  }
+}

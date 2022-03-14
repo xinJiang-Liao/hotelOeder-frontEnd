@@ -1,0 +1,137 @@
+@import "./mixin";
+
+.ui-paginator {
+  margin: 7.7px 0 0 0;
+  text-align: left;
+  padding: 0.125rem;
+}
+
+.ui-paginator .ui-paginator-top {
+  border-bottom: 0 none;
+}
+
+.ui-paginator .ui-paginator-bottom {
+  border-top: 0 none;
+}
+
+.ui-paginator .ui-paginator-left-content {
+  float: left;
+}
+
+.ui-paginator .ui-paginator-right-content {
+  float: right;
+}
+
+.ui-paginator .ui-paginator-page,
+.ui-paginator .ui-paginator-pages,
+.ui-paginator .ui-paginator-next,
+.ui-paginator .ui-paginator-last,
+.ui-paginator .ui-paginator-first,
+.ui-paginator .ui-paginator-prev,
+.ui-paginator .ui-paginator-current {
+  display: inline-block;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  margin-left: 0.063rem;
+  margin-right: 0.063rem;
+  text-decoration: none;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+}
+
+.ui-paginator .ui-paginator-pages {
+  width: auto;
+  height: 2rem;
+  line-height: 1;
+}
+
+.ui-paginator .ui-paginator-icon {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.ui-paginator .ui-paginator-page,
+.ui-paginator .ui-paginator-next,
+.ui-paginator .ui-paginator-last,
+.ui-paginator .ui-paginator-first,
+.ui-paginator .ui-paginator-prev {
+  cursor: pointer;
+}
+
+.ui-paginator .ui-paginator-current,
+.ui-paginator .ui-paginator-rpp-options {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-image: none;
+}
+
+.ui-paginator .ui-state-active {
+  background-color: rgb(238, 238, 238);
+  border-radius: 3.5px;
+}
+
+.ui-paginator .ui-paginator-jtp-select option,
+.ui-paginator .ui-paginator-rpp-options option {
+  background-image: none;
+  border: 0 none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.ui-paginator a.ui-state-disabled {
+  outline: 0 none;
+}
+
+.ui-paginator .ui-dropdown {
+  min-width: 3rem;
+  margin-left: 0.375rem;
+}
+
+.ui-fluid .ui-paginator .ui-dropdown {
+  width: auto;
+}
+
+.ui-paginator-prev,
+.ui-paginator-next,
+.ui-paginator-first,
+.ui-paginator-last,
+.ui-paginator-pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ui-paginator-prev {
+  @include page_arrow(7, 0, 0.6);
+}
+
+.ui-paginator-next {
+  @include page_arrow(7, 180, 0.6);
+}
+
+.ui-paginator-first {
+  @include page_end(7, 0, 0.5);
+}
+
+.ui-paginator-last {
+  @include page_end(7, 180, 0.5);
+}
+
+.ui-paginator-element {
+  padding: 0.25rem;
+  outline: 0;
+}
+
+.ui-paginator-element:hover {
+  background-color: rgb(238, 238, 238);
+  border-radius: 3.5px;
+}

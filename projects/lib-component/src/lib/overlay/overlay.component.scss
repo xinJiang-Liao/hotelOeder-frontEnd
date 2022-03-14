@@ -1,0 +1,51 @@
+.overlay {
+  position: absolute;
+  //margin-top: 10px;
+}
+
+//.overlay-close {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  overflow: hidden;
+//  position: relative;
+//}
+
+.overlay:after,
+.overlay:before {
+  bottom: 100%;
+  left: 1.25rem;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.overlay:after {
+  border-width: 8px;
+  margin-left: -8px;
+}
+
+.overlay:before {
+  border-width: 10px;
+  margin-left: -10px;
+}
+
+//.overlay-flipped {
+//  margin-top: 0;
+//  margin-bottom: 10px;
+//}
+//
+//.overlay-flipped:after, .overlay-flipped:before {
+//  bottom: auto;
+//  top: 100%;
+//}
+//
+//.overlay.overlay-flipped:after {
+//  border-bottom-color: transparent;
+//}
+//
+//.overlay.overlay-flipped:before {
+//  border-bottom-color: transparent
+//}

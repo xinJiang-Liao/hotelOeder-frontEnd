@@ -1,0 +1,18 @@
+<div class="backdrop fullscreen"></div>
+
+<div class="container fullscreen">
+  <lib-swiper-hammer #swiper>
+    <div class="slider-panel flex-row-center" *ngFor="let i of images">
+      <img [src]="i.url || i.blob" />
+    </div>
+  </lib-swiper-hammer>
+
+  <div class="top-buttons">
+    <button (click)="onclose($event)">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </button>
+    <button (click)="onremove($event)">
+      <fa-icon [icon]="faTrashAlt"></fa-icon>
+    </button>
+  </div>
+</div>

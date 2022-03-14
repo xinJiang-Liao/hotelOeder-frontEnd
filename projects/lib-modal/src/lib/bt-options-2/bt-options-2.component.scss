@@ -1,0 +1,30 @@
+.section {
+  margin: 4rem 1.5rem 2rem 1.5rem;
+}
+
+.selects {
+  flex-wrap: wrap;
+
+  :not(:last-child) {
+    margin-right: 0.5rem;
+  }
+
+  > .btn-option {
+    border: 1px solid #dee2e6;
+    min-width: 4rem;
+  }
+
+  > .active {
+    //border: 1px solid #64bd63;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(black, 0.35);
+  }
+}
+
+.submit {
+  height: 3rem;
+  width: 100%;
+  border-radius: 10rem;
+  border: 0;
+  box-shadow: 0 4px 17px rgba(black, 0.35);
+}

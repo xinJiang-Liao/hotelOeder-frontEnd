@@ -1,0 +1,119 @@
+.nav {
+  height: 50px;
+  //padding: 0 1rem 0 2rem;
+  padding: 0 1rem;
+  color: #666;
+  box-shadow: 0 0 10px #e8e8e8;
+
+  a.user:focus,
+  a.menu:focus {
+    background-color: #eee;
+  }
+
+  a:hover {
+    color: #555;
+  }
+}
+
+.op-menu,
+.op-notice {
+  margin-top: -6px;
+  border: 1px #ced4da solid;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+  color: #555;
+}
+
+.op-menu {
+  margin-right: -29px;
+  padding: 5px 0;
+
+  > .item {
+    height: 2rem;
+    padding: 0 17.5px;
+    cursor: pointer;
+  }
+
+  > .item:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.op-notice {
+  margin-right: -14px;
+  width: 333px;
+  height: 397px;
+
+  > .header,
+  > .footer {
+    height: 46px;
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  > .content {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+    > :not(:first-child) {
+      border-top: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    > .notice {
+      height: 49px;
+
+      > .icon {
+        width: 34px;
+        height: 34px;
+      }
+
+      > .detail {
+        > span {
+          height: 18px;
+        }
+
+        > .time {
+          color: #868e96;
+        }
+      }
+    }
+
+    > .notice:hover {
+      background-color: #f5f5f5;
+
+      > .detail {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid; // IE8
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.badge {
+  min-width: 0.5rem;
+  height: 1rem;
+  padding: 0.25rem;
+  border-radius: 10rem;
+}
+
+@media screen and (max-width: 480px) {
+  .op-notice {
+    margin-right: 0;
+    width: 99vw;
+    left: 0;
+  }
+
+  .op-menu {
+    margin-right: -12px;
+  }
+}

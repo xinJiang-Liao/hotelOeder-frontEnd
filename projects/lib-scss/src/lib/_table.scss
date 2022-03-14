@@ -1,0 +1,111 @@
+.p-table .p-table-thead > tr > th {
+  font-weight: 600;
+}
+
+.p-table .p-table-thead > tr > th,
+.p-table .p-table-tbody > tr > td,
+.p-table .p-table-tfoot > tr > td {
+  //padding: .25rem .5rem;
+  padding: 0.55rem;
+  text-align: left;
+}
+
+.table-striped {
+  tr {
+    border-bottom: 1px solid #dee2e6;
+    //border-bottom-width: 1px;
+    //border-bottom-style: solid;
+    //border-bottom-color: rgb(222, 226, 230);
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.table-hover tbody > tr:hover {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+.table-bordered {
+  th,
+  td {
+    border: 1px solid #dee2e6;
+  }
+
+  thead {
+    > tr {
+      background-color: #eee;
+
+      > th {
+        border-bottom-width: 1.5px;
+      }
+    }
+  }
+}
+
+/* Responsive */
+//.table-responsive > tr > td .p-column-title {
+//  display: none;
+//}
+
+@media screen and (max-width: 40rem) {
+  //.table-responsive {
+  //  thead {
+  //    display: none;
+  //  }
+  //}
+
+  .table-responsive > thead > tr > th,
+  .table-responsive > tfoot > tr > td {
+    display: none !important;
+  }
+
+  .table-responsive > tbody > tr > td {
+    text-align: left;
+    display: block;
+    width: 100%;
+    float: left;
+    clear: left;
+    border: 0 none;
+  }
+
+  //.table-responsive > tr > td .p-column-title {
+  //  padding: .4rem;
+  //  min-width: 30%;
+  //  display: inline-block;
+  //  margin: -.4rem 1rem -.4rem -.4rem;
+  //  //font-weight: bold;
+  //  font-weight: 600;
+  //}
+}
+
+/* Responsive */
+//.p-datatable.p-datatable-responsive .p-datatable-tbody > tr > td .p-column-title {
+//  display: none;
+//}
+//
+//@media screen and (max-width: 40rem) {
+//  .p-datatable.p-datatable-responsive .p-datatable-thead > tr > th,
+//  .p-datatable.p-datatable-responsive .p-datatable-tfoot > tr > td {
+//    display: none !important;
+//  }
+//
+//  .p-datatable.p-datatable-responsive .p-datatable-tbody > tr > td {
+//    text-align: left;
+//    display: block;
+//    width: 100%;
+//    float: left;
+//    clear: left;
+//    border: 0 none;
+//  }
+//
+//  .p-datatable.p-datatable-responsive .p-datatable-tbody > tr > td .p-column-title {
+//    padding: .4rem;
+//    min-width: 30%;
+//    display: inline-block;
+//    margin: -.4rem 1rem -.4rem -.4rem;
+//    //font-weight: bold;
+//    font-weight: 600;
+//  }
+//}

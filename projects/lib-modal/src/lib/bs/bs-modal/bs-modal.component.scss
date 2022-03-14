@@ -1,0 +1,77 @@
+@import "../../../../../lib-scss/src/lib/_modal.scss";
+
+//.fullscreen {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  bottom: 0;
+//}
+
+.backdrop {
+  background: black;
+  //opacity: .5;
+  //transition: opacity .15s linear;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: auto;
+
+  //.size-xl {
+  //  width: 1140px;
+  //}
+  //
+  //.size-lg {
+  //  width: 800px;
+  //}
+  //
+  //.size-md {
+  //  width: 500px;
+  //}
+  //
+  //.size-sm {
+  //  width: 300px;
+  //}
+}
+
+.container > .bs-modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 0.25rem;
+  background-color: white;
+  height: auto;
+  //max-height: 80%;
+  margin: 1.75rem 0;
+
+  //opacity: 1;
+  //width: 498px;
+  //left: 50%;
+
+  fa-icon {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    opacity: 0.6;
+    cursor: pointer;
+    color: #868e96;
+    font-size: 12px;
+  }
+
+  fa-icon:hover {
+    color: #242424;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container > .bs-modal {
+    max-width: calc(100% - 1rem);
+    margin-top: 0.5rem;
+  }
+}
