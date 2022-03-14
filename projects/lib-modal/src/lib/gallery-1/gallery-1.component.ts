@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Gallery1Service } from '@modal/gallery-1/gallery-1.service';
-import { SwiperHammerComponent } from '@component/swiper-hammer/swiper-hammer.component';
+import { Gallery1Service } from './gallery-1.service';
+import { SwiperHammerComponent } from '../../../../lib-component/src/lib/swiper-hammer/swiper-hammer.component';
 import { faTimes, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

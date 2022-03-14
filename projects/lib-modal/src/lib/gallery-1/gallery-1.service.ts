@@ -7,8 +7,8 @@ import {
   Injector,
   TemplateRef,
 } from '@angular/core';
-import { Gallery1Component } from '@modal/gallery-1/gallery-1.component';
-import { BsModalComponent } from '@modal/bs/bs-modal/bs-modal.component';
+import { Gallery1Component } from '../gallery-1/gallery-1.component';
+import { BsModalComponent } from '../bs/bs-modal/bs-modal.component';
 
 @Injectable({
   providedIn: 'root',
