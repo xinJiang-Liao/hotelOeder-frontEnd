@@ -5,8 +5,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BsModalMsgModule } from '../../../../../lib-modal/src/lib/bs-msg/bs-modal-msg.module';
 import { OverlayModule } from 'projects/lib-component/src/lib/overlay/overlay.module';
+
 
 @NgModule({
   declarations: [SidebarComponent, LayoutComponent, NavbarComponent],
@@ -15,7 +15,7 @@ import { OverlayModule } from 'projects/lib-component/src/lib/overlay/overlay.mo
     LayoutRoutingModule,
     FontAwesomeModule,
     OverlayModule,
-    BsModalMsgModule,
   ],
+
 })
 export class LayoutModule {}

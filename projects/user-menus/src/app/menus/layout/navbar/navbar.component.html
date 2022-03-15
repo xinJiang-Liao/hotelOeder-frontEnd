@@ -6,67 +6,67 @@
   >
     <fa-icon class="fs-12" [icon]="faBars" size="lg"></fa-icon>
   </a>
-  <div class="flex-row height-100p">
-    <a
-      class="user flex-row height-100p mlr-rem-1"
-      (click)="opNotice.toggle($event)"
-    >
-      <img class="avatar round" [src]="user?.image" alt="" />
-      <span class="name fs-13 fw-700 ml-rem-05"
-        >{{ user?.name }}({{ user?.phone }})</span
-      >
-      <span
-        class="badge flex-row-center flex-shrink-0 fs-11 fw-700 bg-warning"
-        *ngIf="noticeCount > 0"
-      >
-        {{ noticeCount }}
-      </span>
-      <b class="caret" *ngIf="noticeCount > 0"></b>
-    </a>
-    <a
-      class="menu flex-row-center height-100p mlr-rem-1"
-      (click)="opMenu.toggle($event)"
-    >
-      <fa-icon class="fs-11" [icon]="faCog" size="lg"></fa-icon>
-    </a>
-  </div>
+<!--  <div class="flex-row height-100p">-->
+<!--    <a-->
+<!--      class="user flex-row height-100p mlr-rem-1"-->
+<!--      (click)="opNotice.toggle($event)"-->
+<!--    >-->
+<!--      <img class="avatar round" [src]="user?.image" alt="" />-->
+<!--      <span class="name fs-13 fw-700 ml-rem-05"-->
+<!--        >{{ user?.name }}({{ user?.phone }})</span-->
+<!--      >-->
+<!--      <span-->
+<!--        class="badge flex-row-center flex-shrink-0 fs-11 fw-700 bg-warning"-->
+<!--        *ngIf="noticeCount > 0"-->
+<!--      >-->
+<!--        {{ noticeCount }}-->
+<!--      </span>-->
+<!--      <b class="caret" *ngIf="noticeCount > 0"></b>-->
+<!--    </a>-->
+<!--    <a-->
+<!--      class="menu flex-row-center height-100p mlr-rem-1"-->
+<!--      (click)="opMenu.toggle($event)"-->
+<!--    >-->
+<!--      <fa-icon class="fs-11" [icon]="faCog" size="lg"></fa-icon>-->
+<!--    </a>-->
+<!--  </div>-->
 </div>
 
-<lib-overlay #opMenu appendTo="body">
-  <div class="op-menu bg-white">
-    <a
-      class="item flex-row fs-rem-09 fw-400"
-      *ngFor="let m of menuOp"
-      (click)="goto(m.link)"
-    >
-      <fa-icon class="fs-11 mr-rem-05" [icon]="m.icon" size="1x"></fa-icon>
-      {{ m.text }}
-    </a>
-  </div>
-</lib-overlay>
+<!--<lib-overlay #opMenu appendTo="body">-->
+<!--  <div class="op-menu bg-white">-->
+<!--    <a-->
+<!--      class="item flex-row fs-rem-09 fw-400"-->
+<!--      *ngFor="let m of menuOp"-->
+<!--      (click)="goto(m.link)"-->
+<!--    >-->
+<!--      <fa-icon class="fs-11 mr-rem-05" [icon]="m.icon" size="1x"></fa-icon>-->
+<!--      {{ m.text }}-->
+<!--    </a>-->
+<!--  </div>-->
+<!--</lib-overlay>-->
 
-<lib-overlay #opNotice>
-  <div class="op-notice flex-column bg-white fs-rem-09 fw-700">
-    <span class="header flex-row-center">{{ noticeCount }} 个通知</span>
-    <div class="content flex-grow-1 flex-column fw-500">
-      <a
-        class="notice flex-row plr-rem-125"
-        *ngFor="let notice of notices"
-        (click)="goto(notice.path)"
-      >
-        <span class="icon flex-row-center mr-rem-1"
-          ><fa-icon class="fs-11" [icon]="notice.icon"></fa-icon
-        ></span>
-        <div class="detail flex-column">
-          <span class="text">{{ notice.text }}</span>
-          <span class="time fs-12">{{
-            notice.time | date: "M月d日 HH:mm"
-          }}</span>
-        </div>
-      </a>
-    </div>
-    <span class="footer flex-row plr-rem-125 fw-500"
-      >上次检查时间 {{ noticeUpdatedAt | date: "MM月dd日 HH:mm" }}</span
-    >
-  </div>
-</lib-overlay>
+<!--<lib-overlay #opNotice>-->
+<!--  <div class="op-notice flex-column bg-white fs-rem-09 fw-700">-->
+<!--    <span class="header flex-row-center">{{ noticeCount }} 个通知</span>-->
+<!--    <div class="content flex-grow-1 flex-column fw-500">-->
+<!--      <a-->
+<!--        class="notice flex-row plr-rem-125"-->
+<!--        *ngFor="let notice of notices"-->
+<!--        (click)="goto(notice.path)"-->
+<!--      >-->
+<!--        <span class="icon flex-row-center mr-rem-1"-->
+<!--          ><fa-icon class="fs-11" [icon]="notice.icon"></fa-icon-->
+<!--        ></span>-->
+<!--        <div class="detail flex-column">-->
+<!--          <span class="text">{{ notice.text }}</span>-->
+<!--          <span class="time fs-12">{{-->
+<!--            notice.time | date: "M月d日 HH:mm"-->
+<!--          }}</span>-->
+<!--        </div>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--    <span class="footer flex-row plr-rem-125 fw-500"-->
+<!--      >上次检查时间 {{ noticeUpdatedAt | date: "MM月dd日 HH:mm" }}</span-->
+<!--    >-->
+<!--  </div>-->
+<!--</lib-overlay>-->

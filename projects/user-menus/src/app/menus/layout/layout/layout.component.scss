@@ -4,12 +4,13 @@
 
   .board {
     > .navbar {
-      height: 51px;
+      height: 3rem;
+      width: 100%;
     }
 
     > .main {
-      //height: calc(100vh - 50px);
-      //padding: 40px;
+      height: calc(100vh - 50px);
+      padding: 40px;
     }
   }
 }

@@ -6,8 +6,8 @@ import { fromEvent, merge } from 'rxjs';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { SIDEBAR_LABEL, SIDEBAR_MENU } from './sidebar.data';
 import { SidebarService } from './sidebar.service';
-import { goto, policy2scope2 } from '@service/_utils';
-import { ConfigService } from '@service/config.service';
+import { goto, policy2scope2 } from '../../../../../../lib-services/src/lib/_utils';
+import { ConfigService } from '../../../../../../lib-services/src/lib/config.service';
 
 @Component({
   selector: 'app-sidebar',

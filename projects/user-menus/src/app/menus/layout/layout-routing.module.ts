@@ -6,7 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    children: [],
+    children: [
+      { path: '', redirectTo: 'homePage', pathMatch: 'full' },
+      {
+        path: 'homePage',
+        loadChildren: () =>
+          import('../home-page/home-page.module').then((m) => m.HomePageModule),
+      },
+    ],
   },
 ];
 
