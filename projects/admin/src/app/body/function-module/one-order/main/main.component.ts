@@ -19,12 +19,16 @@ export interface DialogData {
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  public zhongcan:any =[];
+  public xican:any =[]
+  public xiaochi:any =[];
 
   public cd:any[]=[
     {id:'0001',name:'肉眼牛排',jg:'￥128',lx:'西餐'},
     {id:'0002',name:'肉眼牛排',jg:'￥128',lx:'西餐'},
     {id:'0003',name:'肉眼牛排',jg:'￥128',lx:'西餐'},
     {id:'0004',name:'肉眼牛排',jg:'￥128',lx:'西餐'},
+    {id:'0005',name:'肉眼牛排',jg:'￥128',lx:'西餐'},
     {id:'0005',name:'肉眼牛排',jg:'￥128',lx:'西餐'},
 
     {id:'0001',name:'小鸡炖蘑菇',jg:'￥128',lx:'中餐'},
@@ -65,17 +69,20 @@ export class MainComponent implements OnInit {
     {id:'0001',name:'小鸡炖蘑菇',jg:'￥128',lx:'中餐'},
     {id:'0001',name:'小鸡炖蘑菇',jg:'￥128',lx:'中餐'},
     {id:'0001',name:'小鸡炖蘑菇',jg:'￥128',lx:'中餐'},
-
-    {id:'0001',name:'小鸡炖蘑菇',jg:'￥128',lx:'中餐'},
-    {id:'0001',name:'小鸡炖蘑菇',jg:'￥128',lx:'中餐'},
-    {id:'0001',name:'小鸡炖蘑菇',jg:'￥128',lx:'中餐'},
-    {id:'0001',name:'小鸡炖蘑菇',jg:'￥128',lx:'中餐'},
-    {id:'0001',name:'小鸡炖蘑菇',jg:'￥128',lx:'中餐'},
-
   ]
 
 
   constructor(public dialog: MatDialog) {
+    this.zhongcan = this.cd.filter((x) =>{
+      return x.lx === '中餐'
+    })
+    this.xican = this.cd.filter((x) =>{
+      return x.lx === '西餐'
+    })
+    this.xiaochi = this.cd.filter((x) =>{
+      return x.lx === '小吃'
+    })
+    console.log(this.xiaochi);
   }
 
 

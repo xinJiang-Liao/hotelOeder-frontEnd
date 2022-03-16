@@ -16,19 +16,17 @@
     <mat-tab-group class="c1">
       <mat-tab label="西餐">
         <div class="main_nav">
-          <div *ngFor="let item of cd" style="overflow: hidden">
-            <app-dishes
-              [item]="item"
-              *ngIf="item.lx == '西餐'"
-              (click)="openDialog(item)"
-            ></app-dishes>
+          <div *ngFor="let item of xican" style="overflow: hidden">
+            <div *ngIf="item.lx !== '西餐'">
+              <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
+            </div>
           </div>
         </div>
       </mat-tab>
 
       <mat-tab label="中餐">
         <div class="main_nav">
-          <div *ngFor="let item of cd" style="overflow: hidden">
+          <div *ngFor="let item of zhongcan" style="overflow: hidden">
             <div *ngIf="item.lx == '中餐'">
               <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
             </div>
@@ -38,8 +36,10 @@
 
       <mat-tab label="小吃">
         <div class="main_nav">
-          <div *ngFor="let item of xc" style="overflow: hidden">
-            <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
+          <div *ngFor="let item of xiaochi" style="overflow: hidden">
+            <div *ngIf="item.lx !== '小吃'">
+              <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
+            </div>
           </div>
         </div>
       </mat-tab>
