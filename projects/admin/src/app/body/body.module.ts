@@ -32,7 +32,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ChipsComponent } from '../../../../lib-component/src/lib/chips-cart/chips.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -69,6 +73,10 @@ import {HttpClientModule} from "@angular/common/http";
     MatChipsModule,
     MatNativeDateModule,
     HttpClientModule,
-  ],
+    DragDropModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule
+  ]
 })
 export class BodyModule {}

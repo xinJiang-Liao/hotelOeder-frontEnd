@@ -6,9 +6,9 @@ import {
 } from '@angular/material/dialog';
 
 export interface DialogData {
-  id: string;
+  id: number;
   name: string;
-  jg: string;
+  jg: number;
   type: string;
 }
 
@@ -19,55 +19,62 @@ export interface DialogData {
 })
 export class MainComponent implements OnInit {
   public cd: any[] = [
-    { id: '0001', name: '肉眼牛排', jg: '￥128', type: '西餐' },
-    { id: '0002', name: '肉眼牛排', jg: '￥128', type: '西餐' },
-    { id: '0003', name: '肉眼牛排', jg: '￥128', type: '西餐' },
-    { id: '0004', name: '肉眼牛排', jg: '￥128', type: '西餐' },
-    { id: '0005', name: '肉眼牛排', jg: '￥128', type: '西餐' },
+    { id: 1, name: '肉眼牛排', jg: 128, type: '西餐' },
+    { id: 24, name: '肉眼牛排', jg: 128, type: '西餐' },
+    { id: 25, name: '肉眼牛排', jg: 128, type: '西餐' },
+    { id: 26, name: '肉眼牛排', jg: 128, type: '西餐' },
+    { id: 27, name: '肉眼牛排', jg: 128, type: '西餐' },
 
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
-    { id: '00011', name: '小鸡炖蘑菇', jg: '￥228', type: '中餐' },
-    { id: '00011', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥328', type: '中餐' },
-    { id: '00014', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
+    { id: 23, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
+    { id: 28, name: '小鸡炖蘑菇', jg: 228, type: '中餐' },
+    { id: 29, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
+    { id: 3, name: '小鸡炖蘑菇', jg: 328, type: '中餐' },
+    { id: 30, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
 
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
-    { id: '0001', name: '小鸡炖蘑菇', jg: '￥128', type: '中餐' },
+    { id: 4, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
+    { id: 5, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
+    { id: 6, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
+    { id: 7, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
+    { id: 8, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
+    { id: 1, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
+    { id: 0, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
+    { id: 11, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
 
-    { id: '0006', name: '红糖糍粑', jg: '￥38', type: '小吃' },
-    { id: '0002', name: '红糖糍粑', jg: '￥38', type: '小吃' },
-    { id: '0003', name: '红糖糍粑', jg: '￥38', type: '小吃' },
-    { id: '0004', name: '红糖糍粑', jg: '￥38', type: '小吃' },
-    { id: '0005', name: '红糖糍粑', jg: '￥38', type: '小吃' },
+    { id: 31, name: '红糖糍粑', jg: 38, type: '小吃' },
+    { id: 32, name: '红糖糍粑', jg: 42, type: '小吃' },
+    { id: 33, name: '红糖糍粑', jg: 13, type: '小吃' },
+    { id: 35, name: '红糖糍粑', jg: 53, type: '小吃' },
+    { id: 15, name: '红糖糍粑', jg: 53, type: '小吃' },
 
-    { id: '0004', name: '红糖糍粑', jg: '￥38', type: '小吃' },
-    { id: '0005', name: '红糖糍粑', jg: '￥38', type: '小吃' },
-    { id: '0006', name: '红糖糍粑', jg: '￥38', type: '小吃' },
-    { id: '0007', name: '红糖糍粑', jg: '￥38', type: '小吃' },
-    { id: '0008', name: '红糖糍粑', jg: '￥38', type: '小吃' },
+    { id: 37, name: '红糖糍粑', jg: 54, type: '小吃' },
+    { id: 38, name: '红糖糍粑', jg: 23, type: '小吃' },
+    { id: 39, name: '红糖糍粑', jg: 534, type: '小吃' },
+    { id: 40, name: '红糖糍粑', jg: 56, type: '小吃' },
+    { id: 41, name: '红糖糍粑', jg: 23, type: '小吃' },
 
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
-    { id: '0001', name: '满杯鲜橙', jg: '￥38', type: '饮品' },
+    { id: 12, name: '满杯鲜橙', jg: 45, type: '饮品' },
+    { id: 13, name: '满杯鲜橙', jg: 66, type: '饮品' },
+    { id: 14, name: '满杯鲜橙', jg: 23, type: '饮品' },
+    { id: 15, name: '满杯鲜橙', jg: 11, type: '饮品' },
+    { id: 16, name: '满杯鲜橙', jg: 23, type: '饮品' },
+    { id: 17, name: '满杯鲜橙', jg: 434, type: '饮品' },
+    { id: 18, name: '满杯鲜橙', jg: 61, type: '饮品' },
+    { id: 19, name: '满杯鲜橙', jg: 23, type: '饮品' },
+    { id: 20, name: '满杯鲜橙', jg: 212, type: '饮品' },
+    { id: 21, name: '满杯鲜橙', jg: 21, type: '饮品' },
+    { id: 22, name: '满杯鲜橙', jg: 61, type: '饮品' },
   ];
   public xiCan: any = [];
   public zhongCan: any = [];
   public xiaoChi: any = [];
   public yinPin: any = [];
+
+  public xC: any = [];
+  public zC: any = [];
+  public xiaoC: any = [];
+  public yP: any = [];
+
+  public value: any = '';
 
   constructor(public dialog: MatDialog) {}
 
@@ -121,6 +128,30 @@ export class MainComponent implements OnInit {
     this.yinPin = this.cd.filter((x: any) => {
       return x.type === '饮品';
     });
+    this.onChange();
+    console.log(this.xC);
+  }
+
+  onChange(event?: any) {
+    if (this.value == '') {
+      this.xC = this.xiCan;
+      this.zC = this.zhongCan;
+      this.xiaoC = this.xiaoChi;
+      this.yP = this.yinPin;
+    } else {
+      this.xC = this.xiCan.filter((x: any) => {
+        return x.id === Number(this.value);
+      });
+      this.zC = this.zhongCan.filter((x: any) => {
+        return x.id === Number(this.value);
+      });
+      this.xiaoC = this.xiaoChi.filter((x: any) => {
+        return x.id === Number(this.value);
+      });
+      this.yP = this.yinPin.filter((x: any) => {
+        return x.id === Number(this.value);
+      });
+    }
   }
 }
 
@@ -146,41 +177,6 @@ export class NoteComponent {
     console.log(this.date);
   }
 
-  tiles: Tile[] = [
-    { text: '7', cols: 1, rows: 1, color: '#faffff' },
-    { text: '8', cols: 1, rows: 1, color: '#faffff' },
-    { text: '9', cols: 1, rows: 1, color: '#faffff' },
-    { text: '重置', cols: 1, rows: 1, color: '#faffff' },
-
-    { text: '4', cols: 1, rows: 1, color: '#faffff' },
-    { text: '5', cols: 1, rows: 1, color: '#faffff' },
-    { text: '6', cols: 1, rows: 1, color: '#faffff' },
-    { text: '✓', cols: 1, rows: 3, color: '#faffff' },
-
-    { text: '1', cols: 1, rows: 1, color: '#faffff' },
-    { text: '2', cols: 1, rows: 1, color: '#faffff' },
-    { text: '3', cols: 1, rows: 1, color: '#faffff' },
-
-    { text: '0', cols: 3, rows: 1, color: '#faffff' },
-  ];
-
-  /*--------这里是键盘区域与数量显示的点击函数与方法-------*/
-  clickNumber(a: any = 0) {
-    // console.log('sum1='+ a)
-    /*Number()-----强制将非数字类型的数字转换成数字类型*/
-    if (a == '重置') {
-      this.counter = 0;
-    } else if (a == '✓') {
-      /*这里可以添加一个提交方法。点击'✓'就将信息完成提交*/
-    } else if (0 < this.counter && this.counter < 10) {
-      this.counter = 10 * this.counter + Number(a);
-    } else {
-      this.counter = Number(a);
-    }
-    // console.log('sum2='+ this.counter)
-    return this.counter;
-  }
-
   public counter: number = 0;
 
   onCounter1(): void {
@@ -196,7 +192,6 @@ export class NoteComponent {
     }
     // console.log(this.counter)
   }
-  /*如何*/
 
   /*------------------------------------------------------*/
   // 监听鼠标点击 close（关闭）窗口

@@ -6,6 +6,10 @@ module.exports = {
       colors: {
         'custom-1': '#495867',
       },
+      lineHeight: {
+        '16': '4rem',
+        '12': '3rem',
+      }
     },
   },
   plugins: [],

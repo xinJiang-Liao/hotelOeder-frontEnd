@@ -1,16 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dishes',
   templateUrl: './dishes.component.html',
-  styleUrls: ['./dishes.component.css']
+  styleUrls: ['./dishes.component.css'],
 })
-export class DishesComponent implements OnInit {
+export class DishesComponent /*implements OnInit */ {
   @Input() item: any;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  // ngOnInit(): void {}
 }

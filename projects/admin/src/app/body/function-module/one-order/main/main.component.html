@@ -16,7 +16,7 @@
     <mat-tab-group class="c1">
       <mat-tab label="西餐">
         <div class="main_nav">
-          <div *ngFor="let item of xiCan">
+          <div *ngFor="let item of xC">
             <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
           </div>
         </div>
@@ -24,7 +24,7 @@
 
       <mat-tab label="中餐">
         <div class="main_nav">
-          <div *ngFor="let item of zhongCan">
+          <div *ngFor="let item of zC">
             <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
           </div>
         </div>
@@ -32,7 +32,7 @@
 
       <mat-tab label="小吃">
         <div class="main_nav">
-          <div *ngFor="let item of xiaoChi">
+          <div *ngFor="let item of xiaoC">
             <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
           </div>
         </div>
@@ -40,7 +40,7 @@
 
       <mat-tab label="奶茶">
         <div class="main_nav">
-          <div *ngFor="let item of yinPin">
+          <div *ngFor="let item of yP">
             <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
           </div>
         </div>
@@ -48,7 +48,27 @@
     </mat-tab-group>
   </div>
 
-  <div class="main_footer">这里是搜索框</div>
+  <div class="main_footer">
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>请输入要查找菜品的菜品编号进行搜索</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="value"
+        (ngModelChange)="onChange($event)"
+      />
+      <!--下面是对value值的格式化-->
+      <button
+        *ngIf="value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="value = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
 </div>
 
 <!--<ol>-->

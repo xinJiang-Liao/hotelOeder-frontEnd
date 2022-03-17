@@ -2,7 +2,11 @@
   <ul>
     <li>
       <span>份量:</span><br />
-      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle-group
+        name="fontStyle"
+        aria-label="Font Style"
+        #group="matButtonToggleGroup"
+      >
         <mat-button-toggle value="bold"
           >小份{{ this.date.jg }}</mat-button-toggle
         >
@@ -42,4 +46,6 @@
       </mat-button-toggle-group>
     </li>
   </ul>
+
+  <button (click)="onclick(group.value)">获取</button>
 </div>
