@@ -4,33 +4,39 @@
       <img src="#" class="note-body-left-top_img" />
       <div class="note-body-left-top2">
         <!--        这里面获取到菜型、id、name-->
-        <span>{{ this.date.lx }}</span
+        <span>{{ this.date.type }}</span
         >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span>{{ this.date.id }}</span>
         <br />
         <span>{{ this.date.name }}</span>
       </div>
       <div class="note-body-left-top3">
-        <button style="border-radius: 20px" (click)="onCounter1()">+</button>
+        <button (click)="onCounter2()">-</button>
         <input style="width: 20px" [(ngModel)]="counter" />
-        <button style="border-radius: 20px" (click)="onCounter2()">-</button>
+        <button (click)="onCounter1()">+</button>
       </div>
     </div>
 
-    <div class="note-body-left-bottom">
+    <div class="note-body-left-bottom text-lg p-4">
+      <h3>菜品简介</h3>
+      <span
+        >&nbsp;&nbsp;&nbsp;&nbsp;奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj</span
+      >
+
       <!--      这里是键盘区域-->
-      <mat-grid-list cols="4" rowHeight="77px">
-        <mat-grid-tile
-          *ngFor="let tile of tiles"
-          [colspan]="tile.cols"
-          [rowspan]="tile.rows"
-          [style.background]="tile.color"
-          (click)="clickNumber(tile.text)"
-        >
-          {{ tile.text }}
-        </mat-grid-tile>
-      </mat-grid-list>
+      <!--      <mat-grid-list cols="4" rowHeight="77px">-->
+      <!--        <mat-grid-tile-->
+      <!--          *ngFor="let tile of tiles"-->
+      <!--          [colspan]="tile.cols"-->
+      <!--          [rowspan]="tile.rows"-->
+      <!--          [style.background]="tile.color"-->
+      <!--          (click)="clickNumber(tile.text)"-->
+      <!--        >-->
+      <!--          {{ tile.text }}-->
+      <!--        </mat-grid-tile>-->
+      <!--      </mat-grid-list>-->
     </div>
+    <span class="w-full h-16 bg-cyan-900">确认</span>
   </div>
 
   <div class="note-body-right">

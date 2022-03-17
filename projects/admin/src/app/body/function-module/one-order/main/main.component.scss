@@ -1,8 +1,9 @@
 .main_nav div {
-  height: 115px;
-  width: 170px;
-  margin-top: 5px;
-  margin-left: 5px;
+  height: 24%;
+  width: 19%;
+  min-width: 115px;
+  margin-top: 1%;
+  margin-left: 0.4rem;
   background-color: #e5e5f3;
   display: flex;
   align-items: center;
@@ -97,7 +98,6 @@ mat-tab-group.c1 {
   width: 100%;
   /*background-color: #E5E5F3;*/
   display: flex;
-  align-self: flex-start;
   flex-flow: row wrap;
   align-content: flex-start;
 }
@@ -145,8 +145,6 @@ mat-tab-group.c1 {
 }
 
 .note-body-left-top {
-  width: 415px;
-  height: 140px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -162,18 +160,28 @@ mat-tab-group.c1 {
 
 .note-body-left-top2 {
   height: 100%;
-  padding-top: 65px;
   width: 160px;
+  margin-top: 10%;
 }
 .note-body-left-top2 span:nth-last-child(1) {
   font-size: 24px;
 }
 
+.note-body-left-top3{
+  button{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #bdd5ea;
+    border-radius: 50%;
+    margin: 0.2rem;
+    font-size: 1rem;
+  }
+}
+
 /*-----------左侧键盘区域的布局及样式------------------------------------------------*/
 
 .note-body-left-bottom {
-  height: 315px;
-  color: red;
+  height: 60%;
   /*display: flex;*/
   /*flex-direction: column;*/
 }

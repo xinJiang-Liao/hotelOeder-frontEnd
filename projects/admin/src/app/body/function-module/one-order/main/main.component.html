@@ -16,36 +16,34 @@
     <mat-tab-group class="c1">
       <mat-tab label="西餐">
         <div class="main_nav">
-          <div *ngFor="let item of xican" style="overflow: hidden">
-            <div *ngIf="item.lx !== '西餐'">
-              <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
-            </div>
+          <div *ngFor="let item of xiCan">
+            <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
           </div>
         </div>
       </mat-tab>
 
       <mat-tab label="中餐">
         <div class="main_nav">
-          <div *ngFor="let item of zhongcan" style="overflow: hidden">
-            <div *ngIf="item.lx == '中餐'">
-              <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
-            </div>
+          <div *ngFor="let item of zhongCan">
+            <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
           </div>
         </div>
       </mat-tab>
 
       <mat-tab label="小吃">
         <div class="main_nav">
-          <div *ngFor="let item of xiaochi" style="overflow: hidden">
-            <div *ngIf="item.lx !== '小吃'">
-              <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
-            </div>
+          <div *ngFor="let item of xiaoChi">
+            <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
           </div>
         </div>
       </mat-tab>
 
       <mat-tab label="奶茶">
-        <div class="main_nav"></div>
+        <div class="main_nav">
+          <div *ngFor="let item of yinPin">
+            <app-dishes [item]="item" (click)="openDialog(item)"></app-dishes>
+          </div>
+        </div>
       </mat-tab>
     </mat-tab-group>
   </div>
