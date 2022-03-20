@@ -17,7 +17,13 @@
       "lib-services": [
         "dist/lib-services/lib-services",
         "dist/lib-services"
-      ]
+      ],
+      /*
+      *  此方法可以定义路由名，方便在多个module中调用
+      */
+      "@icons/icons-provider.module": ["projects/user-desk/src/app/icons-provider.module"],
+      "@login/LoginDistinguish.module": ["projects//lib-component/src/lib/login-distinguish/login-distinguish.module"],
+      "@login/login-distinguish.component": ["projects//lib-component/src/lib/login-distinguish/login-distinguish.component"]
     },
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,

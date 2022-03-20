@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NzMessageService } from 'ng-zorro-antd/message';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss'],
+  selector: 'lib-login-distinguish',
+  templateUrl: './login-distinguish.component.html',
+  styleUrls: ['./login-distinguish.component.css']
 })
-export class WelcomeComponent implements OnInit {
+export class LoginDistinguishComponent implements OnInit {
+
   public validateForm!: FormGroup;
   public passwordVisible: Boolean = false;
 
@@ -47,4 +47,5 @@ export class WelcomeComponent implements OnInit {
       remember: [true],
     });
   }
+
 }
