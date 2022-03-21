@@ -9,7 +9,10 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 
 @NgModule({
   declarations: [WelcomeComponent],
@@ -22,6 +25,9 @@ import {CommonModule} from '@angular/common';
     NzInputModule,
     NzCheckboxModule,
     CommonModule,
+    NzMenuModule,
+    NzLayoutModule,
+    NgZorroAntdMobileModule,
   ],
   providers: [{ provide: NzMessageService }],
   bootstrap: [WelcomeComponent],

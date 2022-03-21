@@ -14,16 +14,31 @@
         "dist/lib-component/lib-component",
         "dist/lib-component"
       ],
-      "lib-services": [
-        "dist/lib-services/lib-services",
-        "dist/lib-services"
-      ],
+      "lib-services": ["dist/lib-services/lib-services", "dist/lib-services"],
       /*
-      *  此方法可以定义路由名，方便在多个module中调用
-      */
-      "@icons/icons-provider.module": ["projects/user-desk/src/app/icons-provider.module"],
-      "@login/LoginDistinguish.module": ["projects//lib-component/src/lib/login-distinguish/login-distinguish.module"],
-      "@login/login-distinguish.component": ["projects//lib-component/src/lib/login-distinguish/login-distinguish.component"]
+       *  此方法可以定义路由名，方便在多个module中调用
+       */
+      "@icons/icons-provider.module": [
+        "projects/user-desk/src/app/icons-provider.module"
+      ],
+      "@login/LoginDistinguish.module": [
+        "projects//lib-component/src/lib/login-distinguish/login-distinguish.module"
+      ],
+      "@login/login-distinguish.component": [
+        "projects//lib-component/src/lib/login-distinguish/login-distinguish.component"
+      ],
+
+      /*金辰会COPE*/
+      "@component/*": ["projects/lib-component/src/lib/*"],
+      "@directive/*": ["projects/lib-directive/src/lib/*"],
+      "@service/*": ["projects/lib-services/src/lib/*"],
+      "@scss/*": ["projects/lib-scss/src/lib/*"],
+      "@pipe/*": ["projects/lib-pipe/src/lib/*"],
+      "@modal/*": ["projects/lib-modal/src/lib/*"],
+      "@prime/*": ["projects/lib-prime/src/lib/*"],
+      "@calendar/*": ["projects/lib-calendar/src/lib/*"],
+      "@model/*": ["projects/lib-model/src/lib/*"],
+      "lib-prime": ["dist/lib-prime/lib-prime", "dist/lib-prime"]
     },
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -34,10 +49,7 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -39,6 +39,7 @@
     "font-awesome": "^4.7.0",
     "moment": "^2.29.1",
     "ng-zorro-antd": "^13.1.1",
+    "ng-zorro-antd-mobile": "^6.0.0",
     "prettier": "^2.5.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

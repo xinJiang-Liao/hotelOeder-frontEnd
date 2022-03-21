@@ -1,18 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {NzMessageService} from 'ng-zorro-antd/message';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { ActivatedRoute, Router } from '@angular/router';
+// import { StorageService } from '@service/storage.service';
 
 @Component({
   selector: 'lib-login-distinguish',
   templateUrl: './login-distinguish.component.html',
-  styleUrls: ['./login-distinguish.component.css']
+  styleUrls: ['./login-distinguish.component.css'],
 })
 export class LoginDistinguishComponent implements OnInit {
-
   public validateForm!: FormGroup;
   public passwordVisible: Boolean = false;
 
-  constructor(public login: FormBuilder, private message: NzMessageService) {}
+  constructor(
+    public login: FormBuilder,
+    private message: NzMessageService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   // 提交表单
   onSubmit(): void {
@@ -33,6 +39,14 @@ export class LoginDistinguishComponent implements OnInit {
       let { username, password } = this.validateForm.value;
       if (username == 'admin' && password == '123456') {
         this.message.create('success', '登录成功');
+        sessionStorage.setItem('user', username + password);
+        this.router
+          .navigate(['/welcome'], {
+            relativeTo: this.activatedRoute,
+          })
+          .then((r) => {
+            console.log('跳轉了');
+          });
       } else {
         this.message.create('error', '用户名密码错误');
       }
@@ -47,5 +61,4 @@ export class LoginDistinguishComponent implements OnInit {
       remember: [true],
     });
   }
-
 }

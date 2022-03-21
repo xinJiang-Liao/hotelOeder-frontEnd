@@ -20,7 +20,7 @@ const icons = [
 
 @NgModule({
   imports: [NzIconModule],
-  exports: [NzIconModule,NzButtonModule],
+  exports: [NzIconModule, NzButtonModule],
   providers: [{ provide: NZ_ICONS, useValue: icons }],
 })
 export class IconsProviderModule {}

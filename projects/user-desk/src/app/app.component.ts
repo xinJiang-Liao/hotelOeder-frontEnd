@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isCollapsed = false;
+  // isCollapsed = false;
+  title = '后台';
 }

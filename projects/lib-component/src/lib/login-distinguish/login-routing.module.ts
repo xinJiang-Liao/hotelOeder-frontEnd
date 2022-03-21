@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { LoginDistinguishComponent } from '@login/login-distinguish.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: WelcomeComponent,
-    children: [{ path: '', redirectTo: 'shop', pathMatch: 'full' }],
+    component: LoginDistinguishComponent,
   },
 ];
 
@@ -14,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class WelcomeRoutingModule {}
+export class LoginRoutingModule {}
