@@ -1,5 +1,10 @@
 @import "../../../lib-scss/src/lib/_flex";
 
+.c {
+  .ant-layout-sider-children {
+    width: 100%;
+  }
+}
 /*
 @import "../../../lib-scss/src/lib/normalize";
 @import "../../../lib-scss/src/lib/font";

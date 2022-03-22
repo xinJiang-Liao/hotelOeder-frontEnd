@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
+import { GoodsListModule } from './goods-list/goods-list.module';
 
 @NgModule({
   declarations: [WelcomeComponent],
@@ -28,6 +29,7 @@ import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
     NzMenuModule,
     NzLayoutModule,
     NgZorroAntdMobileModule,
+    GoodsListModule,
   ],
   providers: [{ provide: NzMessageService }],
   bootstrap: [WelcomeComponent],
