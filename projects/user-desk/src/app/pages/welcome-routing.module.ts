@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { GoodsListComponent } from './goods-list/goods-list.component';
 import { GoodsAddComponent } from './goods-add/goods-add.component';
+import { AdminCommonComponent } from './admin-common/admin-common.component';
+import { AdminSuperComponent } from './admin-super/admin-super.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,22 @@ const routes: Routes = [
         component: GoodsAddComponent,
         loadChildren: () =>
           import('./goods-add/goods-add.module').then((m) => m.GoodsAddModule),
+      },
+      {
+        path: 'common',
+        component: AdminCommonComponent,
+        loadChildren: () =>
+          import('./admin-common/admin-common.module').then(
+            (m) => m.AdminCommonModule
+          ),
+      },
+      {
+        path: 'super',
+        component: AdminSuperComponent,
+        loadChildren: () =>
+          import('./admin-super/admin-super.module').then(
+            (m) => m.AdminSuperModule
+          ),
       },
     ],
   },

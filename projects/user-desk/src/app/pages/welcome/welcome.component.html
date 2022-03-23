@@ -35,10 +35,10 @@
       <li nz-submenu nzOpen nzTitle="管理员" nzIcon="form" class="">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>管理员账户管理</a>
+            <a routerLink="/common">管理员账户管理</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>超级管理员</a>
+            <a routerLink="/super">超级管理员</a>
           </li>
         </ul>
       </li>
@@ -58,7 +58,7 @@
       </div>
     </nz-header>
     <nz-content>
-      <div class="inner-content">
+      <div class="inner-content overflow-auto">
         <router-outlet></router-outlet>
       </div>
     </nz-content>

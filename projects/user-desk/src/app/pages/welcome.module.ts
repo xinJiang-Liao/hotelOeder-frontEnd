@@ -14,6 +14,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 import { GoodsListModule } from './goods-list/goods-list.module';
+import {AdminCommonModule} from './admin-common/admin-common.module';
+import {AdminSuperModule} from './admin-super/admin-super.module';
 
 @NgModule({
   declarations: [WelcomeComponent],
@@ -30,6 +32,8 @@ import { GoodsListModule } from './goods-list/goods-list.module';
     NzLayoutModule,
     NgZorroAntdMobileModule,
     GoodsListModule,
+    AdminCommonModule,
+    AdminSuperModule
   ],
   providers: [{ provide: NzMessageService }],
   bootstrap: [WelcomeComponent],

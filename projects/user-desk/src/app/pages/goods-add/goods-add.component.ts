@@ -1,5 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { mergeMap } from 'rxjs';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+
+interface ItemData {
+  id: string;
+  name: string;
+  age: string;
+  address: string;
+}
 
 @Component({
   selector: 'app-goods-add',
@@ -7,67 +23,114 @@ import { mergeMap } from 'rxjs';
   styleUrls: ['./goods-add.component.scss'],
 })
 export class GoodsAddComponent implements OnInit {
-  public goods: any = {};
-  constructor() {}
+  /*---------------------------------------------------图片上传方法------------------------------------------------------------*/
+  fileList: NzUploadFile[] = [
+    {
+      uid: '-1',
+      name: 'image.png',
+      status: 'done',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    },
+    {
+      uid: '-2',
+      name: 'image.png',
+      status: 'done',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    },
+    {
+      uid: '-xxx',
+      percent: 50,
+      name: 'image.png',
+      status: 'uploading',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    },
+    {
+      uid: '-5',
+      name: 'image.png',
+      status: 'error',
+    },
+  ];
+  previewImage: string | undefined = '';
+  previewVisible = false;
 
-  ngOnInit(): void {}
+  handlePreview = async (file: NzUploadFile): Promise<void> => {
+    if (!file.url && !file['preview']) {
+      file['preview'] = await getBase64(file.originFileObj!);
+    }
+    this.previewImage = file.url || file['preview'];
+    this.previewVisible = true;
+  };
+  /*-------------------------------------------------表单方法--------------------------------------------------------*/
 
-  public onsave(event: any): void {
-    this.saving.save = true;
-    this.saving.text = '上传主图';
-    this.uploadImages(this.mainWrap)
-      .pipe(
-        mergeMap((next) => {
-          this.saving.text = '上传详情图';
-          return this.uploadImages(this.detailWrap);
-        }),
-        mergeMap((next) => {
-          this.saving.text = '上传详情中的图片';
-          return this.uploadImages(this.detailEditor);
-        }),
-        mergeMap((next) => {
-          this.saving.text = '上传使用说明中的图片';
-          return this.uploadImages(this.usageEditor);
-        }),
-        mergeMap((next) => {
-          this.saving.text = '校验数据';
-          this.saving.progress = 5;
+  validateForm!: FormGroup;
 
-          const verify = this.verifyGoods();
-          if (verify) {
-            this.bsModalMsgService.show('商品数据验证提示', verify);
-            return of(null);
-          }
-
-          const update = this.getUpdate();
-          if (!update) {
-            this.bsModalMsgService.show('提示', '商品数据没有更新，无需保持');
-            return of(null);
-          }
-
-          this.saving.text = '上传数据';
-          this.saving.progress = 10;
-          return this.goodsService.save(update);
-        })
-      )
-      .subscribe(
-        (response) => {
-          if (response) {
-            if (!this.goods.id) this.goods.id = response.entity.id;
-            this.ssGoods = JSON.parse(JSON.stringify(this.goods));
-            this.bsModalMsgService.show('已保存', '商品数据已保存');
-          }
-
-          this.saving.save = false;
-          this.saving.text = '';
-          this.saving.progress = 0;
-        },
-        (error) => {
-          this.bsModalMsgService.show('错误', message3error(error));
-          this.saving.save = false;
-          this.saving.text = '';
-          this.saving.progress = 0;
+  submitForm(): void {
+    if (this.validateForm.valid) {
+      console.log('submit', this.validateForm.value);
+    } else {
+      Object.values(this.validateForm.controls).forEach((control) => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
         }
-      );
+      });
+    }
   }
+
+  requiredChange(required: boolean): void {
+    if (!required) {
+      this.validateForm.get('nickname')!.clearValidators();
+      this.validateForm.get('nickname')!.markAsPristine();
+    } else {
+      this.validateForm.get('nickname')!.setValidators(Validators.required);
+      this.validateForm.get('nickname')!.markAsDirty();
+    }
+    this.validateForm.get('nickname')!.updateValueAndValidity();
+  }
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    /*表单输入*/
+    this.validateForm = this.fb.group({
+      name: [null, [Validators.required]],
+      nickname: [null],
+      required: [false],
+    });
+
+    /*可编辑单元格*/
+    this.addRow();
+    this.addRow();
+  }
+  /*-------------------------------------------------可编辑单元格-------------------------------------------------------*/
+
+  i = 0;
+  editId: string | null = null;
+  listOfData: ItemData[] = [];
+
+  startEdit(id: string): void {
+    this.editId = id;
+  }
+
+  stopEdit(): void {
+    this.editId = null;
+  }
+
+  addRow(): void {
+    this.listOfData = [
+      ...this.listOfData,
+      {
+        id: `${this.i}`,
+        name: `Edward King ${this.i}`,
+        age: '32',
+        address: `London, Park Lane no. ${this.i}`
+      }
+    ];
+    this.i++;
+  }
+
+  deleteRow(id: string): void {
+    this.listOfData = this.listOfData.filter(d => d.id !== id);
+  }
+
 }

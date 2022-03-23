@@ -13,12 +13,12 @@ import {
   ShoppingCartComponent,
   YHComponent,
   YHQComponent,
-} from '../../../../lib-component/src/lib/shopping-cart/shopping-cart.component';
-import { TableComponent } from '../../../../lib-component/src/lib/shopping-cart/table/table.component';
+} from '@component/shopping-cart/shopping-cart.component';
+import { TableComponent } from '@component/shopping-cart/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { ButtonToggleComponent } from '../../../../lib-component/src/lib/button-toggle/button-toggle.component';
+import { ButtonToggleComponent } from '@component/button-toggle/button-toggle.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { TwoNotPayComponent } from './function-module/two-not-pay/two-not-pay.component';
@@ -29,7 +29,7 @@ import { TableWaterComponent } from './function-module/three-record/table-water/
 import { SelectionComponent } from './function-module/three-record/selection/selection.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ChipsComponent } from '../../../../lib-component/src/lib/chips-cart/chips.component';
+import { ChipsComponent } from '@component/chips-cart/chips.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
