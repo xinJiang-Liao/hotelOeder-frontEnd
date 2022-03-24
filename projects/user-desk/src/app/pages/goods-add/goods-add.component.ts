@@ -123,14 +123,13 @@ export class GoodsAddComponent implements OnInit {
         id: `${this.i}`,
         name: `Edward King ${this.i}`,
         age: '32',
-        address: `London, Park Lane no. ${this.i}`
-      }
+        address: `London, Park Lane no. ${this.i}`,
+      },
     ];
     this.i++;
   }
 
   deleteRow(id: string): void {
-    this.listOfData = this.listOfData.filter(d => d.id !== id);
+    this.listOfData = this.listOfData.filter((d) => d.id !== id);
   }
-
 }

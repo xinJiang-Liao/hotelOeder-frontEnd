@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login-distinguish.component.css'],
 })
 export class LoginDistinguishComponent implements OnInit {
+  @Input() public tag: any;
   public validateForm!: FormGroup;
   public passwordVisible: Boolean = false;
 
@@ -40,13 +41,23 @@ export class LoginDistinguishComponent implements OnInit {
       if (username == 'admin' && password == '123456') {
         this.message.create('success', '登录成功');
         sessionStorage.setItem('user', username + password);
-        this.router
-          .navigate(['/welcome'], {
-            relativeTo: this.activatedRoute,
-          })
-          .then((r) => {
-            console.log('跳轉了');
-          });
+        if (!this.tag) {
+          this.router
+            .navigate(['/welcome'], {
+              relativeTo: this.activatedRoute,
+            })
+            .then((r) => {
+              console.log('跳轉了');
+            });
+        } else if (this.tag === '管理') {
+          // this.router
+          //   .navigate(['/welcome'], {
+          //     relativeTo: this.activatedRoute,
+          //   })
+          //   .then((r) => {
+          //     console.log('跳轉了');
+          //   });
+        }
       } else {
         this.message.create('error', '用户名密码错误');
       }
