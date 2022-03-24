@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginDistinguishComponent implements OnInit {
   @Input() public tag: any;
+  public status: any = 1;
   public validateForm!: FormGroup;
   public passwordVisible: Boolean = false;
 
@@ -50,6 +51,8 @@ export class LoginDistinguishComponent implements OnInit {
               console.log('跳轉了');
             });
         } else if (this.tag === '管理') {
+          this.status = this.status + 1;
+          console.log(this.status);
           // this.router
           //   .navigate(['/welcome'], {
           //     relativeTo: this.activatedRoute,

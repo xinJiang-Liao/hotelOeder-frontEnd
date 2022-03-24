@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { timer } from 'rxjs';
+import { log } from 'ng-zorro-antd/core/logger';
 
 @Component({
   selector: 'app-admin-super',
@@ -7,7 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminSuperComponent /*implements OnInit*/ {
   public tag: string = '管理';
-  constructor() {}
+  @ViewChild('footer') public footer: any;
+  public status: any;
+  constructor() {
+    /*通过订阅喝取消来结束对status的赋值*/
+    const time: any = timer(1000, 2000);
+    time.subscribe((x: any) => {
+      if (this.footer?.status == 2) {
+        this.status = 2;
+      }
+    });
+    if (this.status === 2) {
+      time.unsubscribe();
+    }
+    /*----------------------------------*/
+  }
 
   // ngOnInit(): void {}
 

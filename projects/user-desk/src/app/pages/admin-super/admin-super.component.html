@@ -4,7 +4,9 @@
   <nz-step nzTitle="Waiting"></nz-step>
 </nz-steps>
 
-<div class="steps-content"><lib-login-distinguish [tag]="tag"></lib-login-distinguish></div>
+<div class="steps-content" *ngIf="this.status !== 2">
+  <lib-login-distinguish #footer [tag]="tag"></lib-login-distinguish>
+</div>
 <div class="steps-action">
   <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
     <span>Previous</span>
