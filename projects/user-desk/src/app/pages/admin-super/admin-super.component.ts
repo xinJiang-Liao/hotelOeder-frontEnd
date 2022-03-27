@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { timer } from 'rxjs';
-import { log } from 'ng-zorro-antd/core/logger';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-admin-super',
@@ -8,15 +8,17 @@ import { log } from 'ng-zorro-antd/core/logger';
   styleUrls: ['./admin-super.component.scss'],
 })
 export class AdminSuperComponent /*implements OnInit*/ {
-  public tag: string = '管理';
+  public tag: string = 'super';
   @ViewChild('footer') public footer: any;
   public status: any;
-  constructor() {
+  constructor(public message: NzMessageService) {
     /*通过订阅喝取消来结束对status的赋值*/
-    const time: any = timer(1000, 2000);
+    const time: any = timer(1000, 1000);
     time.subscribe((x: any) => {
       if (this.footer?.status == 2) {
         this.status = 2;
+        this.current += 1;
+        this.changeContent();
       }
     });
     if (this.status === 2) {
@@ -31,14 +33,21 @@ export class AdminSuperComponent /*implements OnInit*/ {
 
   index = 'First-content';
 
-  pre(): void {
+  // 返回上一页
+  pre(event?: any): void {
     this.current -= 1;
+    this.status -= 1;
+    this.footer.status -= 1;
     this.changeContent();
   }
 
   next(): void {
-    this.current += 1;
-    this.changeContent();
+    if (this.status == 2) {
+      this.current += 1;
+      this.changeContent();
+    } else {
+      this.message.create('warning', '您还未登录!');
+    }
   }
 
   done(): void {

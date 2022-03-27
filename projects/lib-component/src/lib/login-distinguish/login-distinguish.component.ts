@@ -50,7 +50,7 @@ export class LoginDistinguishComponent implements OnInit {
             .then((r) => {
               console.log('跳轉了');
             });
-        } else if (this.tag === '管理') {
+        } else if (this.tag === 'super') {
           this.status = this.status + 1;
           console.log(this.status);
           // this.router

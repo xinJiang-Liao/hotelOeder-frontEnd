@@ -1,0 +1,19 @@
+.span {
+  align-items: start;
+  justify-content: center;
+  > span {
+    margin: 0.5rem;
+  }
+}
+
+.c {
+  @apply leading-8;
+  > span {
+    @apply font-medium;
+    font-size: 1.1rem;
+    > span {
+      @apply font-thin;
+      font-size: 1rem;
+    }
+  }
+}

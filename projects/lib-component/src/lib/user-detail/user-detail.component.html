@@ -1,0 +1,123 @@
+<div class="w-full h-full p-8 rounded-2xl flex-column shadow-md">
+  <div class="flex pb-4">
+    <nz-avatar [nzSize]="100" nzIcon="user" ></nz-avatar>
+    <div class="flex-column span">
+      <span>姓名： 廖江鑫</span>
+      <span>电话： 18290323396</span>
+    </div>
+  </div>
+
+  <div class="flex c">
+    <span>职位： <span>餐厅经理</span></span>
+  </div>
+  <div class="flex c">
+    <span>权限等级： <span>超级管理员</span></span>
+  </div>
+  <div class="flex c">
+    <span
+      >个人简介： <span>{{ abstract }}</span></span
+    >
+  </div>
+
+  <div class="w-full flex-row-space px-4 pt-4">
+    <!--下面这个span相当于占位符，让‘修改信息按钮保持靠右’-->
+    <span *ngIf="tag !== 'super'"></span>
+    <button nz-button nzType="default" *ngIf="tag === 'super'" (click)="exid()">
+      <span>退出登录</span>
+    </button>
+    <button nz-button nzType="primary" (click)="open()">
+      <span>修改信息</span>
+    </button>
+  </div>
+</div>
+
+<!--------------------------------信息修改抽屉弹窗--------------------------------------->
+<nz-drawer
+  [nzBodyStyle]="{ overflow: 'auto' }"
+  [nzMaskClosable]="false"
+  [nzWidth]="720"
+  [nzVisible]="visible"
+  nzTitle="Create"
+  [nzFooter]="footerTpl"
+  (nzOnClose)="close()"
+>
+  <form nz-form *nzDrawerContent>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>姓名</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="请输入姓名" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>电话</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="请输入电话号码" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>用户名</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="请输入用户名" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>密码</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="请输入密码" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>权限等级</nz-form-label>
+          <nz-form-control>
+            <nz-select nzPlaceHolder="选择权限等级"></nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>职位</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="请输入职称" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label>个人简介</nz-form-label>
+          <nz-form-control>
+            <textarea
+              nz-input
+              placeholder="please enter url description"
+              [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+            ></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+
+  <ng-template #footerTpl>
+    <div style="float: right">
+      <button nz-button style="margin-right: 8px" (click)="close()">
+        取消
+      </button>
+      <button nz-button nzType="primary" (click)="close()">提交修改</button>
+    </div>
+  </ng-template>
+</nz-drawer>
