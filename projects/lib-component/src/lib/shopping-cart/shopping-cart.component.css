@@ -19,7 +19,8 @@
   border-radius: 15px 15px 0px 0px;
 }
 
-.head span:nth-child(1) {
+.head span:nth-child(1),
+i {
   font-size: 36px;
   font-weight: bold;
 }

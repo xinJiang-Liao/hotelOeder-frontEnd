@@ -11,6 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginDistinguishComponent implements OnInit {
   @Input() public tag: any;
+
+  public type: any;
   public status: any = 1;
   public validateForm!: FormGroup;
   public passwordVisible: Boolean = false;
@@ -20,7 +22,11 @@ export class LoginDistinguishComponent implements OnInit {
     private message: NzMessageService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.type = params['type'];
+    });
+  }
 
   // 提交表单
   onSubmit(): void {
@@ -42,7 +48,17 @@ export class LoginDistinguishComponent implements OnInit {
       if (username == 'admin' && password == '123456') {
         this.message.create('success', '登录成功');
         sessionStorage.setItem('user', username + password);
-        if (!this.tag) {
+
+        if (this.type === 'common') {
+          console.log(this.type);
+          this.router
+            .navigate(['./shipping'], {
+              relativeTo: this.activatedRoute,
+            })
+            .then((r) => {
+              console.log('跳轉了');
+            });
+        } else if (!this.tag) {
           this.router
             .navigate(['/welcome'], {
               relativeTo: this.activatedRoute,

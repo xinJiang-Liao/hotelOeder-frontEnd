@@ -37,6 +37,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from "@angular/material/button";
+import { BodyComponent } from './body.component';
+import {IconsProviderModule} from '@icons/icons-provider.module';
+import {NzAvatarModule} from 'ng-zorro-antd/avatar';
+import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
+import {NzTableModule} from 'ng-zorro-antd/table';
+import {NzDatePickerModule} from 'ng-zorro-antd/date-picker';
 
 @NgModule({
   declarations: [
@@ -56,6 +62,7 @@ import { MatButtonModule } from "@angular/material/button";
     TableWaterComponent,
     SelectionComponent,
     ChipsComponent,
+    BodyComponent,
   ],
   exports: [NavComponent],
   imports: [
@@ -76,7 +83,12 @@ import { MatButtonModule } from "@angular/material/button";
     DragDropModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    IconsProviderModule,
+    NzAvatarModule,
+    NzDropDownModule,
+    NzTableModule,
+    NzDatePickerModule
   ]
 })
 export class BodyModule {}

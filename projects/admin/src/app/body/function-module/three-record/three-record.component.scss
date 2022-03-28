@@ -1,6 +1,7 @@
 .floor04-form {
-  width: calc(100% - 160px);
+  //width: calc(100% - 160px);
   /*min-width: calc(100% - 250px);*/
+  width: 100%;
   max-width: 1540px;
   height: 880px;
   padding: 0 80px;
@@ -31,13 +32,34 @@
 }
 
 .floor04-center {
-  max-height: 680px;
+  height: 680px;
   overflow: auto;
   width: 100%;
-  box-shadow: 0px 0px 1px 0px #ececec, 0px 1px 0px 1px #ececec,
-    0px 0px 0px 2px #ececec;
+  //box-shadow: 0px 0px 1px 0px #ececec, 0px 1px 0px 1px #ececec,
+  //  0px 0px 0px 2px #ececec;
 }
 
 /*.mat-elevation-z8 {*/
 /*  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);*/
 /*}*/
+nz-range-picker {
+  margin: 0 8px 12px 0;
+}
+
+.search-box {
+  padding: 8px;
+}
+
+.search-box input {
+  width: 188px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.search-box button {
+  width: 90px;
+}
+
+.search-button {
+  margin-right: 8px;
+}

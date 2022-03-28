@@ -1,69 +1,12 @@
-@import 'tailwindcss/base.css';
-@import 'tailwindcss/components.css';
-@import 'tailwindcss/utilities.css';
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
 
-html, body, div, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, ul, li, fieldset, form, label, input, legend, table, caption, tbody, tfoot, thead, tr, th, td, textarea, article, aside, audio, canvas, figure, footer, header, mark, menu, nav, section, time, video {
-  margin: 0;
-  padding: 0;
-}
+@import "~ng-zorro-antd/style/index.min.css"; /* 引入基本样式 */
+@import "~ng-zorro-antd/button/style/index.min.css"; /* 引入组件样式 */
+@import "~ng-zorro-antd/ng-zorro-antd.min.css"; /*预构建样式*/
 
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: 100%;
-  font-weight: normal
-}
-
-article, aside, dialog, figure, footer, header, hgroup, nav, section, blockquote {
-  display: block;
-}
-
-ul, ol {
-  list-style: none;
-}
-
-img {
-  border: 0 none;
-  vertical-align: top;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-strong, em, i {
-  font-style: normal;
-  font-weight: normal;
-}
-
-ins {
-  text-decoration: underline;
-}
-
-del {
-  text-decoration: line-through;
-}
-
-mark {
-  background: none;
-}
-
-input::-ms-clear {
-  display: none !important;
-}
-
-body {
-  font: 12px/1.5 \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", "Droid Sans Fallback", SimSun, sans-serif;
-  background: #fff;
-}
+@import "./scss/application";
 
 a {
   text-decoration: none;
@@ -83,7 +26,8 @@ a:hover {
   background: #495867;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -95,26 +39,28 @@ body {
 /* 这里是定义滚动条上的滑块 */
 div::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
-  background-color: #F5F5F5;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
 }
 
 /* 这里是定义整个滚动条 */
 div::-webkit-scrollbar {
   width: 5px;
-  background-color: #F5F5F5;
-
+  background-color: #f5f5f5;
 }
 
 table::-webkit-scrollbar-track {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
-  background-color: #F5F5F5;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
 }
 
 //html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-html{
+html {
   font-size: 16px;
 }

@@ -46,13 +46,13 @@
 }
 
 .nav-one {
-  height: 130px;
+  height: 180px;
   width: 210px;
   /*background-color: #A1C4D8;*/
 }
 
 .nav-two {
-  height: 110px;
+  height: 60px;
   width: 210px;
   /*background-color: #A1C4D8;*/
 }
@@ -76,4 +76,8 @@
   height: 150px;
   width: 210px;
   /*background-color: #A1C4D8;*/
+}
+
+nz-avatar {
+  font-size: 2rem;
 }

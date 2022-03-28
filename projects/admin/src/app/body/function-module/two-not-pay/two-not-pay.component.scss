@@ -51,9 +51,6 @@
   /*-moz-box-shadow: 2px 2px 10px #909090;*/
   /*-webkit-box-shadow: 2px 2px 10px #909090;*/
   /*box-shadow:2px 2px 10px #909090;*/
-
-  box-shadow: 0px 0px 1px 0px #ececec, 0px 1px 0px 1px #ececec,
-    0px 0px 0px 2px #ececec;
 }
 
 .floor03-foot {
@@ -61,4 +58,22 @@
   height: 100px;
   display: flex;
   flex-direction: row-reverse;
+}
+
+.search-box {
+  padding: 8px;
+}
+
+.search-box input {
+  width: 188px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.search-box button {
+  width: 90px;
+}
+
+.search-button {
+  margin-right: 8px;
 }
