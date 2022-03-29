@@ -10,6 +10,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { LoginDistinguishComponent } from './login-distinguish.component';
 import { IconsProviderModule } from '@icons/icons-provider.module';
 import { LoginRoutingModule } from './login-routing.module';
+import { NgParticlesModule } from 'ng-particles';
 
 @NgModule({
   declarations: [LoginDistinguishComponent],
@@ -23,6 +24,7 @@ import { LoginRoutingModule } from './login-routing.module';
     NzCheckboxModule,
     NzMenuModule,
     LoginRoutingModule,
+    NgParticlesModule,
   ],
   providers: [{ provide: NzMessageService }],
   bootstrap: [LoginDistinguishComponent],

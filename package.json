@@ -38,11 +38,14 @@
     "eslint-plugin-prettier": "^4.0.0",
     "font-awesome": "^4.7.0",
     "moment": "^2.29.1",
+    "ng-particles": "^2.42.4",
     "ng-zorro-antd": "^13.1.1",
     "ng-zorro-antd-mobile": "^6.0.0",
     "prettier": "^2.5.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "tsparticles": "^1.42.4",
+    "tsparticles-engine": "^2.0.0-beta.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
