@@ -52,7 +52,7 @@ export class LoginDistinguishComponent implements OnInit {
         if (this.type === 'common') {
           console.log(this.type);
           this.router
-            .navigate(['./shipping'], {
+            .navigate(['/user'], {
               relativeTo: this.activatedRoute,
             })
             .then((r) => {
