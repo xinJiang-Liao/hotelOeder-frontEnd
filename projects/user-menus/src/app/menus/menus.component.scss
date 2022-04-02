@@ -1,0 +1,18 @@
+nz-radio-group {
+  margin-bottom: 8px;
+}
+
+[nz-carousel-content] {
+  text-align: center;
+  height: calc(100vh - 3rem);
+  line-height: calc(100vh - 3rem);
+  //background: #364d79;
+  //color: #fff;
+  overflow: hidden;
+}
+
+h3 {
+  color: #fff;
+  margin-bottom: 0;
+  user-select: none;
+}

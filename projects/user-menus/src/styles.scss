@@ -2,4 +2,40 @@
 @import "tailwindcss/components.css";
 @import "tailwindcss/utilities.css";
 
-@import './scss/application';
+@import "./scss/application";
+
+html {
+  color: white;
+  body {
+    color: white;
+  }
+  .ant-layout-header,
+  .ant-alert {
+    color: white;
+  }
+}
+
+.header {
+  /*layout导航栏的高度*/
+  .ant-layout-header {
+    height: 3rem;
+    line-height: 3rem;
+    background-color: #1b1b1b;
+  }
+}
+
+.layout-class {
+  /*侧边栏背景色*/
+  .ant-layout-sider-children {
+    background-color: #1a1b1c;
+    /*侧边栏标签背景色*/
+    ul,
+    li {
+      background-color: #1a1b1c;
+      div,
+      ul {
+        background-color: #1a1b1c;
+      }
+    }
+  }
+}

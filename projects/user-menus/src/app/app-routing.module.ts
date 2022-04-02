@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./menus/layout/layout.module').then((m) => m.LayoutModule),
+    path: 'menus',
+    loadChildren: () =>
+      import('./menus/menus.module').then((m) => m.MenusModule),
     canActivate: [],
   },
 ];
