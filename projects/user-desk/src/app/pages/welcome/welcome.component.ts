@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import {goto} from '@service/_utils';
 
 @Component({
   selector: 'app-welcome',
@@ -27,5 +28,11 @@ export class WelcomeComponent /*implements OnInit*/ {
           this.message.create('error', '还未登录，请先登录！');
         });
     }
+  }
+
+  exit() {
+    sessionStorage.removeItem('user');
+    const link = '/login';
+    goto(`${window.location.origin}${link}`);
   }
 }

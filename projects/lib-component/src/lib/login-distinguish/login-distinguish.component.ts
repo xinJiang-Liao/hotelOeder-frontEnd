@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 // import { StorageService } from '@service/storage.service';
 
 import { Container, Main, ISourceOptions } from 'tsparticles';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'lib-login-distinguish',
@@ -159,7 +160,7 @@ export class LoginDistinguishComponent implements OnInit {
       number: {
         density: {
           enable: true,
-          area: 800,
+          area: 1600,
         },
         value: 80,
       },
@@ -180,7 +181,7 @@ export class LoginDistinguishComponent implements OnInit {
     console.log(container);
   }
 
-  particlesInit(main: Main): any {
+  async particlesInit(main: Main): Promise<any> {
     console.log(main);
 
     // Starting from 1.19.0 you can add custom presets or shape here, using the current tsParticles instance (main)
