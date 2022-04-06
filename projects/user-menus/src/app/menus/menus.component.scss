@@ -3,11 +3,8 @@ nz-radio-group {
 }
 
 [nz-carousel-content] {
-  text-align: center;
   height: calc(100vh - 3rem);
-  line-height: calc(100vh - 3rem);
-  //background: #364d79;
-  //color: #fff;
+  color: #fff;
   overflow: hidden;
 }
 

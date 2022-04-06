@@ -1,1 +1,11 @@
-<p>home-page works!</p>
+<div class="format h-[calc(100vh-3rem)]">
+  <nz-carousel [nzAutoPlay]="true" [nzDotPosition]="'bottom'" [nzAutoPlaySpeed]="4000">
+    <div nz-carousel-content *ngFor="let item of DATA">
+      <div class="w-full h-full flex-center flex-col">
+        <span class="floor-1 text-[1.6rem] xl:text-[4rem]">{{ item.title }}</span>
+        <span class="floor-2 text-[0.8rem] xl:text-[1rem]" >{{ item.body }}</span>
+      </div>
+      <span class="absolute top-[90%] left-[calc(50%-1.5rem)]">向下翻</span>
+    </div>
+  </nz-carousel>
+</div>

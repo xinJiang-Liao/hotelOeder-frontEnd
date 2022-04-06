@@ -1,5 +1,5 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { APP_BASE_HREF } from '@angular/common';
@@ -28,6 +28,7 @@ import { MenusModule } from './menus/menus.module';
     BrowserAnimationsModule,
     HttpClientModule,
     MenusModule,
+    HammerModule,
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/user/menus/' },

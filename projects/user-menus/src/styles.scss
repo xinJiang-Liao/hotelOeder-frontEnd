@@ -15,6 +15,18 @@ html {
   }
 }
 
+/*对轮播内容的排列进行格式化，以此才能正确编写页面内容*/
+.format{
+  //h-[calc(100vh-3rem)] w-full flex-row flex-align-start;
+  //padding: 4rem;
+  //height:calc(100vh - 3rem);
+  display: flex !important;
+  align-items: start !important;
+  flex-wrap: wrap !important;
+  align-content: flex-start !important;
+}
+
+
 .header {
   /*layout导航栏的高度*/
   .ant-layout-header {

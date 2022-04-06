@@ -1,17 +1,20 @@
-<nz-carousel
-  [nzDotPosition]="'right'"
-  [nzEnableSwipe]="true"
-  [nzAutoPlay]="false"
-  [nzEffect]="'fade'"
-  class="w-full h-full"
->
-  <div nz-carousel-content>
-    <app-home-page></app-home-page>
-  </div>
-  <div nz-carousel-content>
-    <span>2</span>
-  </div>
-  <div nz-carousel-content>
-    <span>3</span>
-  </div>
-</nz-carousel>
+<div class="w-full h-full">
+  <nz-carousel
+    #Carousel
+    [nzDotPosition]="'right'"
+    [nzEnableSwipe]="true"
+    [nzAutoPlay]="false"
+    (wheel)="wheel($event)"
+    (pan)="onpan($event)"
+  >
+    <div nz-carousel-content>
+      <app-home-page></app-home-page>
+    </div>
+    <div nz-carousel-content>
+      <app-foods-list></app-foods-list>
+    </div>
+    <div nz-carousel-content>
+      <span>3</span>
+    </div>
+  </nz-carousel>
+</div>

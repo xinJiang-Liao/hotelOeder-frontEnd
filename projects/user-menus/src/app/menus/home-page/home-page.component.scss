@@ -1,0 +1,26 @@
+[nz-carousel-content] {
+  text-align: center;
+  height: calc(100vh - 3rem);
+  color: #fff;
+  overflow: hidden;
+}
+
+h3 {
+  color: #fff;
+  margin-bottom: 0;
+  user-select: none;
+}
+
+.floor {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-1 {
+    font-family: "Times New Roman", "微软雅黑", Times, serif;
+    opacity: 1;
+  }
+  &-2 {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
