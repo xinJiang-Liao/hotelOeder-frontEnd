@@ -34,6 +34,7 @@
     "@ngx-loading-bar/http-client": "^6.0.2",
     "@ngx-loading-bar/router": "^6.0.2",
     "angularx-qrcode": "^13.0.3",
+    "animate.css": "^4.1.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "font-awesome": "^4.7.0",

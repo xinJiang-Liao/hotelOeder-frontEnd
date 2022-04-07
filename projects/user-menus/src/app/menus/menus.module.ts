@@ -10,9 +10,24 @@ import { FormsModule } from '@angular/forms';
 import { FoodsListComponent } from './foods-list/foods-list.component';
 import { SwiperHammerService } from './swiper-hammer.service';
 import { HAMMER_GESTURE_CONFIG, HammerModule } from '@angular/platform-browser';
+import { ChefsBannerComponent } from './chefs-banner/chefs-banner.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { FoodChoicesComponent } from './lib-component/food-choices/food-choices.component';
+import { ChefProfileComponent } from './lib-component/chef-profile/chef-profile.component';
+import { AboutDetailsComponent } from './lib-component/about-details/about-details.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
-  declarations: [MenusComponent, HomePageComponent, FoodsListComponent],
+  declarations: [
+    MenusComponent,
+    HomePageComponent,
+    FoodsListComponent,
+    ChefsBannerComponent,
+    AboutUsComponent,
+    FoodChoicesComponent,
+    ChefProfileComponent,
+    AboutDetailsComponent,
+  ],
   imports: [
     CommonModule,
     MenusRoutingModule,
@@ -20,6 +35,7 @@ import { HAMMER_GESTURE_CONFIG, HammerModule } from '@angular/platform-browser';
     NzRadioModule,
     FormsModule,
     HammerModule,
+    MatTabsModule,
   ],
   providers: [
     {

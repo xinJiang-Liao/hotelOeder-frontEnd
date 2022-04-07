@@ -2,11 +2,19 @@
 @import "tailwindcss/components.css";
 @import "tailwindcss/utilities.css";
 
+@import "animate.css";
+
 @import "./scss/application";
 
 html {
   color: white;
-  body {
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: white;
   }
   .ant-layout-header,
@@ -15,8 +23,18 @@ html {
   }
 }
 
+@media (max-width: 321px) {
+  html {
+    font-size: 12px;
+  }
+  .media .px-8 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 /*对轮播内容的排列进行格式化，以此才能正确编写页面内容*/
-.format{
+.format {
   //h-[calc(100vh-3rem)] w-full flex-row flex-align-start;
   //padding: 4rem;
   //height:calc(100vh - 3rem);
@@ -25,7 +43,6 @@ html {
   flex-wrap: wrap !important;
   align-content: flex-start !important;
 }
-
 
 .header {
   /*layout导航栏的高度*/
