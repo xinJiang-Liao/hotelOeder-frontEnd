@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./foods-list.component.scss'],
 })
 export class FoodsListComponent implements OnInit {
-  public screen: boolean = false;
+  public screen: boolean = true;
 
   constructor() {
     if (window.screen.width > 1024) {

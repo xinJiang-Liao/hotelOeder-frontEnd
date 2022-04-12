@@ -1,144 +1,235 @@
-<div class="h-[calc(100vh-3rem)]">
-  <mat-tab-group mat-align-tabs="end">
-    <mat-tab label="First"
-      >11
-      <!--    ><div-->
-      <!--      class="flex w-full justify-center py-4 xl:py-16 xl:mx-20 xl:justify-start"-->
-      <!--    >-->
-      <!--      <div class="flex flex-col items-center xl:items-start">-->
-      <!--        <span class="xl:text-[1.6rem] animate__rollIn hover:animate__pulse"-->
-      <!--          >菜品</span-->
-      <!--        >-->
-      <!--        <span class="text-xs xl:text-[1rem] text-[#656565]">PRODUCTS</span>-->
-      <!--      </div>-->
-      <!--    </div>-->
+<div class="h-[calc(100vh-3rem)] relative overflow-y-auto">
+  <div
+    class="flex w-full justify-center py-4 2xl:py-8 xl:py-16 xl:px-20 xl:justify-between"
+  >
+    <div class="flex flex-col items-center xl:items-start" *ngIf="screen">
+      <span class="xl:text-[1.6rem] animate__rollIn hover:animate__pulse"
+        >菜品</span
+      >
+      <span class="text-xs xl:text-[1rem] text-[#656565]">PRODUCTS</span>
+    </div>
 
-      <!--    <div class="w-full h-full flex flex-wrap content-start justify-center">-->
-      <!--      &lt;!&ndash;一个菜品&ndash;&gt;-->
-      <!--      <div-->
-      <!--        class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4 transform xl:motion-safe:hover:scale-110"-->
-      <!--      >-->
-      <!--        <a class="block relative h-35 rounded overflow-hidden">-->
-      <!--          <img-->
-      <!--            alt="ecommerce"-->
-      <!--            class="object-cover object-center w-full h-full block"-->
-      <!--            src="https://dummyimage.com/420x260"-->
-      <!--          />-->
-      <!--        </a>-->
-      <!--        <div class="mt-1">-->
-      <!--          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">-->
-      <!--            类别-->
-      <!--          </h3>-->
-      <!--          <div class="flex justify-between">-->
-      <!--            <span class="text-lg font-medium"> 菜名 </span>-->
-      <!--            <p class="lg:mt-1">$16.00</p>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
-      <!--      &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-      <!--      <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">-->
-      <!--        <a class="block relative h-35 rounded overflow-hidden">-->
-      <!--          <img-->
-      <!--            alt="ecommerce"-->
-      <!--            class="object-cover object-center w-full h-full block"-->
-      <!--            src="https://dummyimage.com/420x260"-->
-      <!--          />-->
-      <!--        </a>-->
-      <!--        <div class="mt-1">-->
-      <!--          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">-->
-      <!--            类别-->
-      <!--          </h3>-->
-      <!--          <div class="flex justify-between">-->
-      <!--            <span class="text-lg font-medium"> 菜名 </span>-->
-      <!--            <p class="lg:mt-1">$16.00</p>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
+    <div class="w-full" *ngIf="!screen">
+      <button nz-button nz-dropdown [nzDropdownMenu]="menu4" class="w-full">
+        {{screen?screen:'全部'}}
+        <i nz-icon nzType="down"></i>
+      </button>
+      <nz-dropdown-menu #menu4="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>menu4 1st menu item</li>
+          <li nz-menu-item>menu4 2nd menu item</li>
+          <li nz-menu-item>menu4 3rd menu item</li>
+        </ul>
+      </nz-dropdown-menu>
+    </div>
 
-      <!--      <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">-->
-      <!--        <a class="block relative h-35 rounded overflow-hidden">-->
-      <!--          <img-->
-      <!--            alt="ecommerce"-->
-      <!--            class="object-cover object-center w-full h-full block"-->
-      <!--            src="https://dummyimage.com/420x260"-->
-      <!--          />-->
-      <!--        </a>-->
-      <!--        <div class="mt-1">-->
-      <!--          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">-->
-      <!--            类别-->
-      <!--          </h3>-->
-      <!--          <div class="flex justify-between">-->
-      <!--            <span class="text-lg font-medium"> 菜名 </span>-->
-      <!--            <p class="lg:mt-1">$16.00</p>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
+    <nz-breadcrumb *ngIf="screen" class="text-center">
+      <nz-breadcrumb-item>
+        <a>中餐</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a>西餐</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a>小吃</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a>奶茶</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item> </nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
 
-      <!--      <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">-->
-      <!--        <a class="block relative h-35 rounded overflow-hidden">-->
-      <!--          <img-->
-      <!--            alt="ecommerce"-->
-      <!--            class="object-cover object-center w-full h-full block"-->
-      <!--            src="https://dummyimage.com/420x260"-->
-      <!--          />-->
-      <!--        </a>-->
-      <!--        <div class="mt-1">-->
-      <!--          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">-->
-      <!--            类别-->
-      <!--          </h3>-->
-      <!--          <div class="flex justify-between">-->
-      <!--            <span class="text-lg font-medium"> 菜名 </span>-->
-      <!--            <p class="lg:mt-1">$16.00</p>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
+  <div class="w-full flex flex-wrap justify-between xl:px-[12%] xl:h-[40rem] overflow-y-auto">
+    <!--一个菜品-->
+    <div
+      class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4 transform xl:motion-safe:hover:scale-110"
+    >
+      <a class="block relative h-35 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://dummyimage.com/420x260"
+        />
+      </a>
+      <div class="mt-1">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+          类别
+        </h3>
+        <div class="flex justify-between">
+          <span class="text-lg font-medium"> 菜名 </span>
+          <p class="lg:mt-1">$16.00</p>
+        </div>
+      </div>
+    </div>
+    <!------------------------------------>
+    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
+      <a class="block relative h-35 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://dummyimage.com/420x260"
+        />
+      </a>
+      <div class="mt-1">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+          类别
+        </h3>
+        <div class="flex justify-between">
+          <span class="text-lg font-medium"> 菜名 </span>
+          <p class="lg:mt-1">$16.00</p>
+        </div>
+      </div>
+    </div>
 
-      <!--      <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">-->
-      <!--        <a class="block relative h-35 rounded overflow-hidden">-->
-      <!--          <img-->
-      <!--            alt="ecommerce"-->
-      <!--            class="object-cover object-center w-full h-full block"-->
-      <!--            src="https://dummyimage.com/420x260"-->
-      <!--          />-->
-      <!--        </a>-->
-      <!--        <div class="mt-1">-->
-      <!--          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">-->
-      <!--            类别-->
-      <!--          </h3>-->
-      <!--          <div class="flex justify-between">-->
-      <!--            <span class="text-lg font-medium"> 菜名 </span>-->
-      <!--            <p class="lg:mt-1">$16.00</p>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
+    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
+      <a class="block relative h-35 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://dummyimage.com/420x260"
+        />
+      </a>
+      <div class="mt-1">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+          类别
+        </h3>
+        <div class="flex justify-between">
+          <span class="text-lg font-medium"> 菜名 </span>
+          <p class="lg:mt-1">$16.00</p>
+        </div>
+      </div>
+    </div>
 
-      <!--      <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">-->
-      <!--        <a class="block relative h-35 rounded overflow-hidden">-->
-      <!--          <img-->
-      <!--            alt="ecommerce"-->
-      <!--            class="object-cover object-center w-full h-full block"-->
-      <!--            src="https://dummyimage.com/420x260"-->
-      <!--          />-->
-      <!--        </a>-->
-      <!--        <div class="mt-1">-->
-      <!--          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">-->
-      <!--            类别-->
-      <!--          </h3>-->
-      <!--          <div class="flex justify-between">-->
-      <!--            <span class="text-lg font-medium"> 菜名 </span>-->
-      <!--            <p class="lg:mt-1">$16.00</p>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
-      <!--    </div>-->
+    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
+      <a class="block relative h-35 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://dummyimage.com/420x260"
+        />
+      </a>
+      <div class="mt-1">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+          类别
+        </h3>
+        <div class="flex justify-between">
+          <span class="text-lg font-medium"> 菜名 </span>
+          <p class="lg:mt-1">$16.00</p>
+        </div>
+      </div>
+    </div>
 
-      <!--    <span-->
-      <!--      class="absolute bottom-0 w-full h-12 text-center leading-[3rem] text-[#C5C5C5] bg-[#262626]"-->
-      <!--      routerLink="/foods"-->
-      <!--      >MORE</span-->
-      <!--    >-->
-    </mat-tab>
-    <mat-tab label="Second">Content 2</mat-tab>
-    <mat-tab label="Third">Content 3</mat-tab>
-  </mat-tab-group>
+    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
+      <a class="block relative h-35 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://dummyimage.com/420x260"
+        />
+      </a>
+      <div class="mt-1">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+          类别
+        </h3>
+        <div class="flex justify-between">
+          <span class="text-lg font-medium"> 菜名 </span>
+          <p class="lg:mt-1">$16.00</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
+      <a class="block relative h-35 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://dummyimage.com/420x260"
+        />
+      </a>
+      <div class="mt-1">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+          类别
+        </h3>
+        <div class="flex justify-between">
+          <span class="text-lg font-medium"> 菜名 </span>
+          <p class="lg:mt-1">$16.00</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
+      <a class="block relative h-35 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://dummyimage.com/420x260"
+        />
+      </a>
+      <div class="mt-1">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+          类别
+        </h3>
+        <div class="flex justify-between">
+          <span class="text-lg font-medium"> 菜名 </span>
+          <p class="lg:mt-1">$16.00</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
+      <a class="block relative h-35 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://dummyimage.com/420x260"
+        />
+      </a>
+      <div class="mt-1">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+          类别
+        </h3>
+        <div class="flex justify-between">
+          <span class="text-lg font-medium"> 菜名 </span>
+          <p class="lg:mt-1">$16.00</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4 transform xl:motion-safe:hover:scale-110"
+    >
+      <a class="block relative h-35 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://dummyimage.com/420x260"
+        />
+      </a>
+      <div class="mt-1">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+          类别
+        </h3>
+        <div class="flex justify-between">
+          <span class="text-lg font-medium"> 菜名 </span>
+          <p class="lg:mt-1">$16.00</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class=" absolute top-[50%] w-full px-12 flex justify-between" *ngIf="screen">
+    <a class="a-class flex-center">
+      <i nz-icon nzType="left" nzTheme="outline" class="text-[2rem]"></i>
+    </a>
+
+    <a class="a-class flex-center left-[100vw-60px]">
+      <i nz-icon nzType="right" nzTheme="outline" class="text-[2rem]" ></i>
+    </a>
+  </div>
+
 </div>
+
+

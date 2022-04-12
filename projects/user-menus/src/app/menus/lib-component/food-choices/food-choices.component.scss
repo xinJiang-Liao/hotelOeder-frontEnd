@@ -1,0 +1,20 @@
+.a-class {
+  margin-top: -30px;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 60px;
+  //position: absolute;
+  //top: 50%;
+  outline: 0;
+  z-index: 2;
+}
+
+.a-class:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  transition: all ease-out 0.3s;
+  i{
+    color: white;
+  }
+}

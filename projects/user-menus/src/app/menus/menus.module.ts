@@ -16,6 +16,9 @@ import { FoodChoicesComponent } from './lib-component/food-choices/food-choices.
 import { ChefProfileComponent } from './lib-component/chef-profile/chef-profile.component';
 import { AboutDetailsComponent } from './lib-component/about-details/about-details.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { IconsProviderModule } from '@icons/icons-provider.module';
+import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
 
 @NgModule({
   declarations: [
@@ -28,15 +31,18 @@ import { MatTabsModule } from '@angular/material/tabs';
     ChefProfileComponent,
     AboutDetailsComponent,
   ],
-  imports: [
-    CommonModule,
-    MenusRoutingModule,
-    NzCarouselModule,
-    NzRadioModule,
-    FormsModule,
-    HammerModule,
-    MatTabsModule,
-  ],
+    imports: [
+        CommonModule,
+        MenusRoutingModule,
+        NzCarouselModule,
+        NzRadioModule,
+        FormsModule,
+        HammerModule,
+        MatTabsModule,
+        NzBreadCrumbModule,
+        IconsProviderModule,
+        NzDropDownModule,
+    ],
   providers: [
     {
       provide: HAMMER_GESTURE_CONFIG,

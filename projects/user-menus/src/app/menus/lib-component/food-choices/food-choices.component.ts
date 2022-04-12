@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./food-choices.component.scss']
 })
 export class FoodChoicesComponent implements OnInit {
+  public screen: boolean = false;
 
-  constructor() { }
+  constructor() {
+    if (window.screen.width > 1024) {
+      this.screen = !this.screen;
+    }
+  }
 
   ngOnInit(): void {
   }
