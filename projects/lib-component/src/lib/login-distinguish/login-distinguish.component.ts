@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Container, Main, ISourceOptions } from 'tsparticles';
 import { Observable } from 'rxjs';
+import { AdminService } from '@service/admin.service';
 
 @Component({
   selector: 'lib-login-distinguish',
@@ -25,7 +26,8 @@ export class LoginDistinguishComponent implements OnInit {
     public login: FormBuilder,
     private message: NzMessageService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private adminService: AdminService
   ) {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.type = params['type'];
@@ -40,50 +42,54 @@ export class LoginDistinguishComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
 
-    // 如果验证未通过
+    // 如果输入验证未通过
     if (this.validateForm.status == 'INVALID') {
       this.message.create('warning', '请填写用户名和密码');
       return;
     }
 
-    // 如果验证通过
+    // 如果输入验证通过
     if (this.validateForm.status == 'VALID') {
       let { username, password } = this.validateForm.value;
-      if (username == 'admin' && password == '123456') {
-        this.message.create('success', '登录成功');
-        sessionStorage.setItem('user', username + password);
+      this.adminService.login(username, password).subscribe((response: any) => {
+        if (response.status === true) {
+          sessionStorage.setItem('user', username + password);
 
-        if (this.type === 'common') {
-          console.log(this.type);
-          this.router
-            .navigate(['/user'], {
-              relativeTo: this.activatedRoute,
-            })
-            .then((r) => {
-              console.log('跳轉了');
-            });
-        } else if (!this.tag) {
-          this.router
-            .navigate(['/welcome'], {
-              relativeTo: this.activatedRoute,
-            })
-            .then((r) => {
-              console.log('跳轉了');
-            });
-        } else if (this.tag === 'super') {
-          this.status = this.status + 1;
-          console.log(this.status);
-          // this.router
-          //   .navigate(['/welcome'], {
-          //     relativeTo: this.activatedRoute,
-          //   })
-          //   .then((r) => {
-          //     console.log('跳轉了');
-          //   });
+          if (this.type === 'common') {
+            this.message.create('success', '登录成功');
+            console.log(this.type);
+            this.router
+              .navigate(['/user'], {
+                relativeTo: this.activatedRoute,
+              })
+              .then((r) => {
+                console.log('跳轉了');
+              });
+          } else if (!this.tag && response.code === 1) {
+            this.message.create('success', '登录成功');
+            this.router
+              .navigate(['/welcome'], {
+                relativeTo: this.activatedRoute,
+              })
+              .then((r) => {
+                console.log('跳轉了');
+              });
+          } else if (this.tag === 'super'&& response.code === 1) {
+            this.message.create('success', '登录成功');
+            this.status = this.status + 1;
+            console.log(this.status);
+            // this.router
+            //   .navigate(['/welcome'], {
+            //     relativeTo: this.activatedRoute,
+            //   })
+            //   .then((r) => {
+            //     console.log('跳轉了');
+            //   });
+          }else {this.message.create('error', '权限不足，无法登录');}
+        } else {
+          this.message.create('error', '用户名密码错误');
         }
-      } else {
-        this.message.create('error', '用户名密码错误');
-      }
+      });
     }
   }
 
@@ -178,11 +184,11 @@ export class LoginDistinguishComponent implements OnInit {
   };
 
   particlesLoaded(container: Container): void {
-    console.log(container);
+    // console.log(container);
   }
 
   async particlesInit(main: Main): Promise<any> {
-    console.log(main);
+    // console.log(main);
 
     // Starting from 1.19.0 you can add custom presets or shape here, using the current tsParticles instance (main)
   }

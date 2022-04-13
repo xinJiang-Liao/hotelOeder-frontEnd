@@ -1,21 +1,28 @@
-<div class="w-full h-full p-8 rounded-2xl flex-column shadow-md">
+<div
+  class="w-full h-full p-8 rounded-2xl flex-column shadow-md"
+  *ngIf="datasource"
+>
   <div class="flex pb-4">
-    <nz-avatar [nzSize]="100" nzIcon="user" ></nz-avatar>
+    <nz-avatar [nzSize]="100" nzIcon="user"></nz-avatar>
     <div class="flex-column span">
-      <span>姓名： 廖江鑫</span>
-      <span>电话： 18290323396</span>
+      <span>姓名： {{ datasource.name }}</span>
+      <span>电话： {{ datasource.phone }}</span>
     </div>
   </div>
 
   <div class="flex c">
-    <span>职位： <span>餐厅经理</span></span>
-  </div>
-  <div class="flex c">
-    <span>权限等级： <span>超级管理员</span></span>
+    <span
+      >职位： <span>{{ datasource.post }}</span></span
+    >
   </div>
   <div class="flex c">
     <span
-      >个人简介： <span>{{ abstract }}</span></span
+      >权限等级： <span>{{ datasource.level }}</span></span
+    >
+  </div>
+  <div class="flex c">
+    <span
+      >个人简介： <span>{{ datasource.resume }}</span></span
     >
   </div>
 
@@ -37,17 +44,18 @@
   [nzMaskClosable]="false"
   [nzWidth]="720"
   [nzVisible]="visible"
-  nzTitle="Create"
+  nzTitle="信息修改"
   [nzFooter]="footerTpl"
   (nzOnClose)="close()"
+  *ngIf="datasource"
 >
-  <form nz-form *nzDrawerContent>
+  <form nz-form [formGroup]="formData" *nzDrawerContent>
     <div nz-row [nzGutter]="8">
       <div nz-col nzSpan="12">
         <nz-form-item>
           <nz-form-label>姓名</nz-form-label>
           <nz-form-control>
-            <input nz-input placeholder="请输入姓名" />
+            <input nz-input placeholder="请输入姓名" formControlName="name" />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -55,7 +63,11 @@
         <nz-form-item>
           <nz-form-label>电话</nz-form-label>
           <nz-form-control>
-            <input nz-input placeholder="请输入电话号码" />
+            <input
+              nz-input
+              placeholder="请输入电话号码"
+              formControlName="phone"
+            />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -65,7 +77,11 @@
         <nz-form-item>
           <nz-form-label>用户名</nz-form-label>
           <nz-form-control>
-            <input nz-input placeholder="请输入用户名" />
+            <input
+              nz-input
+              placeholder="请输入用户名"
+              formControlName="username"
+            />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -73,7 +89,11 @@
         <nz-form-item>
           <nz-form-label>密码</nz-form-label>
           <nz-form-control>
-            <input nz-input placeholder="请输入密码" />
+            <input
+              nz-input
+              placeholder="请输入密码"
+              formControlName="password"
+            />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -83,7 +103,10 @@
         <nz-form-item>
           <nz-form-label>权限等级</nz-form-label>
           <nz-form-control>
-            <nz-select nzPlaceHolder="选择权限等级"></nz-select>
+            <nz-select nzPlaceHolder="选择权限等级" formControlName="level">
+              <nz-option nzValue="普通管理员" nzLabel="普通管理员"></nz-option>
+              <nz-option nzValue="高级管理员" nzLabel="高级管理员"></nz-option>
+            </nz-select>
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -91,7 +114,7 @@
         <nz-form-item>
           <nz-form-label>职位</nz-form-label>
           <nz-form-control>
-            <input nz-input placeholder="请输入职称" />
+            <input nz-input placeholder="请输入职称" formControlName="post" />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -105,6 +128,7 @@
               nz-input
               placeholder="please enter url description"
               [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+              formControlName="resume"
             ></textarea>
           </nz-form-control>
         </nz-form-item>

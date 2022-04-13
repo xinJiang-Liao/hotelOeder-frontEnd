@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'lib-user-detail',
@@ -8,13 +9,25 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class UserDetailComponent implements OnInit {
   @Output() pre = new EventEmitter<string>();
   @Input() tag: any;
+  @Input() datasource!: any;
 
-  public abstract: string =
-    '这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介这里是个人简介';
+  public formData!: FormGroup;
+  constructor(private fb: FormBuilder) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.datasource) {
+      console.log('datasource:', this.datasource);
+      this.formData = this.fb.group({
+        username: [this.datasource.username, [Validators.required]],
+        password: [this.datasource.password, [Validators.required]],
+        name: [this.datasource.name, [Validators.required]],
+        phone: [this.datasource.phone, [Validators.required]],
+        post: [this.datasource.post, [Validators.required]],
+        resume: [this.datasource.resume, [Validators.required]],
+        level: [this.datasource.level, [Validators.required]],
+      });
+    }
+  }
 
   /*output广播触发父级的pre方法，含义：返回登录界面*/
   exid() {
@@ -29,6 +42,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   close(): void {
+    console.log(this.formData.value)
     this.visible = false;
   }
 }

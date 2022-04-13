@@ -9,6 +9,7 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzDatePickerModule} from 'ng-zorro-antd/date-picker';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -25,7 +26,9 @@ import {NzDatePickerModule} from 'ng-zorro-antd/date-picker';
     NzFormModule,
     NzSelectModule,
     NzInputModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[UserDetailComponent]
 })

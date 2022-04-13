@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '@service/admin.service';
 
 interface ItemData {
   gender: string;
@@ -18,7 +19,15 @@ interface Name {
   styleUrls: ['./admin-common.component.scss'],
 })
 export class AdminCommonComponent implements OnInit {
-  constructor() {}
+  public datasource?: any;
+  constructor(private adminService: AdminService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.adminService
+      .getCommon(1)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.datasource = response;
+      });
+  }
 }

@@ -23,7 +23,7 @@ export class ManuService {
   // }
 
   public menu(): Observable<any> {
-    const url = `${this.apiHost}/event`;
+    const url = `${this.apiHost}/`;
     return this.http.get(url);
   }
 }

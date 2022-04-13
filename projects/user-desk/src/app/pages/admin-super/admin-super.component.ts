@@ -1,17 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { timer } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { AdminService } from '@service/admin.service';
 
 @Component({
   selector: 'app-admin-super',
   templateUrl: './admin-super.component.html',
   styleUrls: ['./admin-super.component.scss'],
 })
-export class AdminSuperComponent /*implements OnInit*/ {
+export class AdminSuperComponent implements OnInit {
   public tag: string = 'super';
+  public datasource?: any;
   @ViewChild('footer') public footer: any;
-  public status: any;
-  constructor(public message: NzMessageService) {
+  public status!: any;
+  constructor(
+    public message: NzMessageService,
+    private adminService: AdminService
+  ) {
     /*通过订阅喝取消来结束对status的赋值*/
     const time: any = timer(1000, 1000);
     time.subscribe((x: any) => {
@@ -27,7 +32,7 @@ export class AdminSuperComponent /*implements OnInit*/ {
     /*----------------------------------*/
   }
 
-  // ngOnInit(): void {}
+  ngOnInit(): void {}
 
   current = 0;
 
@@ -37,18 +42,18 @@ export class AdminSuperComponent /*implements OnInit*/ {
   pre(event?: any): void {
     this.current -= 1;
     this.status -= 1;
-    this.footer.status -= 1;
+    this.footer!.status -= 1;
     this.changeContent();
   }
 
-  next(): void {
-    if (this.status == 2) {
-      this.current += 1;
-      this.changeContent();
-    } else {
-      this.message.create('warning', '您还未登录!');
-    }
-  }
+  // next(): void {
+  //   if (this.status == 2) {
+  //     this.current += 1;
+  //     this.changeContent();
+  //   } else {
+  //     this.message.create('warning', '您还未登录!');
+  //   }
+  // }
 
   done(): void {
     console.log('done');
@@ -62,12 +67,17 @@ export class AdminSuperComponent /*implements OnInit*/ {
       }
       case 1: {
         this.index = 'Second-content';
+        /*通过确认登录来进行信息获取*/
+        this.adminService.getSuper().subscribe((response: any) => {
+          console.log(response);
+          this.datasource = response;
+        });
         break;
       }
-      case 2: {
-        this.index = 'third-content';
-        break;
-      }
+      // case 2: {
+      //   this.index = 'third-content';
+      //   break;
+      // }
       default: {
         this.index = 'error';
       }

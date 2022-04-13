@@ -15,7 +15,7 @@ export class OneOrderComponent implements OnInit {
   ) {
     let a = sessionStorage.getItem('user');
 
-    if (a !== 'admin123456') {
+    if (!a) {
       this.router
         .navigate(['/login'], {
           relativeTo: this.activatedRoute,

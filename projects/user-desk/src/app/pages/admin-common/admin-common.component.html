@@ -1,12 +1,3 @@
-<div class="p-4">
-  <lib-user-detail></lib-user-detail>
-</div>
-<div class="p-4">
-  <lib-user-detail></lib-user-detail>
-</div>
-<div class="p-4">
-  <lib-user-detail></lib-user-detail>
-</div>
-<div class="p-4">
-  <lib-user-detail></lib-user-detail>
+<div class="p-4" *ngFor="let item of datasource">
+  <lib-user-detail [datasource]="item"></lib-user-detail>
 </div>
