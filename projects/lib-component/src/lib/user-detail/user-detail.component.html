@@ -17,7 +17,10 @@
   </div>
   <div class="flex c">
     <span
-      >权限等级： <span>{{ datasource.level }}</span></span
+      >权限等级：
+      <span>{{
+        datasource.code === 1 ? "超级管理员" : "普通管理员"
+      }}</span></span
     >
   </div>
   <div class="flex c">
@@ -32,9 +35,21 @@
     <button nz-button nzType="default" *ngIf="tag === 'super'" (click)="exid()">
       <span>退出登录</span>
     </button>
-    <button nz-button nzType="primary" (click)="open()">
-      <span>修改信息</span>
-    </button>
+
+    <div>
+      <button
+        nz-button
+        nzType="default"
+        *ngIf="tag !== 'super'"
+        class="mr-2"
+        (click)="delete()"
+      >
+        <span>删除账户</span>
+      </button>
+      <button nz-button nzType="primary" (click)="open()">
+        <span>修改信息</span>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -103,9 +118,14 @@
         <nz-form-item>
           <nz-form-label>权限等级</nz-form-label>
           <nz-form-control>
-            <nz-select nzPlaceHolder="选择权限等级" formControlName="level">
-              <nz-option nzValue="普通管理员" nzLabel="普通管理员"></nz-option>
-              <nz-option nzValue="高级管理员" nzLabel="高级管理员"></nz-option>
+            <nz-select nzPlaceHolder="选择权限等级" formControlName="code">
+              <nz-option
+                [nzValue]="datasource.code"
+                [nzLabel]="datasource.code === 1 ? '超级管理员' : '普通管理员'"
+                nzHide
+              ></nz-option>
+              <nz-option [nzValue]="0" [nzLabel]="'普通管理员'"></nz-option>
+              <nz-option [nzValue]="1" [nzLabel]="'超级管理员'"></nz-option>
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -141,7 +161,7 @@
       <button nz-button style="margin-right: 8px" (click)="close()">
         取消
       </button>
-      <button nz-button nzType="primary" (click)="close()">提交修改</button>
+      <button nz-button nzType="primary" (click)="submit()">提交修改</button>
     </div>
   </ng-template>
 </nz-drawer>

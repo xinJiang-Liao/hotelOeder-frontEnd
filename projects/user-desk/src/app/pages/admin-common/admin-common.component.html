@@ -1,3 +1,112 @@
+<button nz-button nzType="primary" (click)="open()">新增管理员</button>
+
 <div class="p-4" *ngFor="let item of datasource">
-  <lib-user-detail [datasource]="item"></lib-user-detail>
+  <lib-user-detail [datasource]="item" (status)="data()"></lib-user-detail>
 </div>
+
+<nz-drawer
+  [nzBodyStyle]="{ overflow: 'auto' }"
+  [nzMaskClosable]="false"
+  [nzWidth]="720"
+  [nzVisible]="visible"
+  nzTitle="信息修改"
+  [nzFooter]="footerTpl"
+  (nzOnClose)="close()"
+  *ngIf="datasource"
+>
+  <form nz-form [formGroup]="formData" *nzDrawerContent>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>姓名</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="请输入姓名" formControlName="name" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>电话</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              placeholder="请输入电话号码"
+              formControlName="phone"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>用户名</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              placeholder="请输入用户名"
+              formControlName="username"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>密码</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              placeholder="请输入密码"
+              formControlName="password"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>权限等级</nz-form-label>
+          <nz-form-control>
+            <nz-select nzPlaceHolder="选择权限等级" formControlName="code">
+              <nz-option [nzValue]="0" [nzLabel]="'普通管理员'"></nz-option>
+              <!--<nz-option [nzValue]="1" [nzLabel]="'超级管理员'"></nz-option>-->
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>职位</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="请输入职称" formControlName="post" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label>个人简介</nz-form-label>
+          <nz-form-control>
+            <textarea
+              nz-input
+              placeholder="please enter url description"
+              [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+              formControlName="resume"
+            ></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+
+  <ng-template #footerTpl>
+    <div style="float: right">
+      <button nz-button style="margin-right: 8px" (click)="close()">
+        取消
+      </button>
+      <button nz-button nzType="primary" (click)="pushAdmin()">确认添加</button>
+    </div>
+  </ng-template>
+</nz-drawer>

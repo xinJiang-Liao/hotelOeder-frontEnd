@@ -50,4 +50,25 @@ export class AdminService {
     const url = `${this.apiHost}/admin/super`;
     return this.http.get(url);
   }
+
+  /*修改 管理员信息*/
+  public upDate(id: number, isSuper: number, data: any): Observable<any> {
+    const url = `${this.apiHost}/admin/upDate`;
+    const body: any = { id: id, isSuper: isSuper, data: data };
+    return this.http.post(url, body);
+  }
+
+  /*删除 指定username的管理员*/
+  public deleteAdmin(data: any): Observable<any> {
+    const url = `${this.apiHost}/admin/DelAdmin`;
+    const body: any = data;
+    return this.http.post(url, body);
+  }
+
+  /*添加 普通管理员*/
+  public pushAdmin(data: any): Observable<any> {
+    const url = `${this.apiHost}/admin/pushAdmin`;
+    const body: any = data;
+    return this.http.post(url, body);
+  }
 }

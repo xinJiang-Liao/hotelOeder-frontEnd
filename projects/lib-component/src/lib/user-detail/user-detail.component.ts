@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AdminService } from '@service/admin.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'lib-user-detail',
@@ -11,8 +13,14 @@ export class UserDetailComponent implements OnInit {
   @Input() tag: any;
   @Input() datasource!: any;
 
+  @Output() status = new EventEmitter<any>();
+
   public formData!: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private adminService: AdminService,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit(): void {
     if (this.datasource) {
@@ -24,7 +32,7 @@ export class UserDetailComponent implements OnInit {
         phone: [this.datasource.phone, [Validators.required]],
         post: [this.datasource.post, [Validators.required]],
         resume: [this.datasource.resume, [Validators.required]],
-        level: [this.datasource.level, [Validators.required]],
+        code: [this.datasource.code, [Validators.required]],
       });
     }
   }
@@ -32,6 +40,18 @@ export class UserDetailComponent implements OnInit {
   /*output广播触发父级的pre方法，含义：返回登录界面*/
   exid() {
     this.pre.emit();
+  }
+
+  delete() {
+    this.adminService
+      .deleteAdmin(this.datasource)
+      .subscribe((response: any) => {
+        this.status.emit();
+        this.message.create(
+          'success',
+          '已删除用户名为:' + this.datasource.username + '的管理员信息'
+        );
+      });
   }
 
   /**------------------------------------------信息修改抽屉弹窗--------------------------------------------------*/
@@ -42,7 +62,21 @@ export class UserDetailComponent implements OnInit {
   }
 
   close(): void {
-    console.log(this.formData.value)
     this.visible = false;
+  }
+
+  submit(): void {
+    this.adminService
+      .upDate(this.datasource.id, this.datasource.code, this.formData.value)
+      .subscribe(
+        (response: any) => {
+          this.message.create('success', '信息修改成功');
+          this.visible = false;
+          this.status.emit(null);
+        },
+        (error) => {
+          this.message.create('warning', '修改失败');
+        }
+      );
   }
 }

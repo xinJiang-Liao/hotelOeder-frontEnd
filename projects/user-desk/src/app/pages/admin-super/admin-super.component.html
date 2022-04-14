@@ -10,6 +10,7 @@
   <lib-user-detail
     (pre)="pre($event)"
     [tag]="tag"
+    (status)="changeContent()"
     *ngIf="datasource"
     [datasource]="datasource"
     class="max-w-sm"
