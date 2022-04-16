@@ -15,6 +15,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import {NzSelectModule} from 'ng-zorro-antd/select';
 
 @NgModule({
   declarations: [GoodsAddComponent],
@@ -33,6 +34,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     FormsModule,
     NzTableModule,
     NzPopconfirmModule,
+    NzSelectModule,
   ],
   bootstrap: [GoodsAddComponent],
 })

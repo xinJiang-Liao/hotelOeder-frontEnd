@@ -1,5 +1,15 @@
-<div class="flex-col">
+<div class="flex-col" xmlns="http://www.w3.org/1999/html">
   <nz-space nzDirection="vertical" class="w-full">
+    <div class="flex flex-row-reverse">
+      <button
+        nz-button
+        (click)="onSubmit()"
+        nzType="primary"
+        class="mx-4 mb-4 px-2"
+      >
+        新建全部菜品
+      </button>
+    </div>
     <!--上传菜品图片的组件-->
     <nz-card *nzSpaceItem nzTitle="图片" class="w-full rounded-2xl">
       <div class="clearfix">
@@ -7,7 +17,7 @@
           nzAction="https://wx.shiwow.top/api/upload.php"
           nzListType="picture-card"
           [(nzFileList)]="fileList"
-          [nzShowButton]="fileList.length < 8"
+          [nzShowButton]="fileList.length < 2"
           [nzPreview]="handlePreview"
         >
           <div>
@@ -29,53 +39,57 @@
     </nz-card>
 
     <nz-card *nzSpaceItem nzTitle="基础信息" class="w-full rounded-2xl">
-      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <form nz-form [formGroup]="validateForm">
         <nz-form-item>
           <nz-form-label [nzSpan]="4" nzRequired nzFor="name"
-            >Name</nz-form-label
+            >类型</nz-form-label
           >
-          <nz-form-control [nzSpan]="8" nzErrorTip="Please input your name">
+          <nz-form-control [nzSpan]="8">
+            <nz-select nzPlaceHolder="选择菜品类型" formControlName="type">
+              <!--<nz-option
+                [nzValue]="datasource.code"
+                [nzLabel]="datasource.code === 1 ? '超级管理员' : '普通管理员'"
+                nzHide //这个参数设置默认显示的值
+              ></nz-option>-->
+              <nz-option [nzValue]="'中餐'" [nzLabel]="'中餐'"></nz-option>
+              <nz-option [nzValue]="'西餐'" [nzLabel]="'西餐'"></nz-option>
+              <nz-option [nzValue]="'小吃'" [nzLabel]="'小吃'"></nz-option>
+              <nz-option [nzValue]="'饮品'" [nzLabel]="'饮品'"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4" nzRequired nzFor="name"
+            >菜名</nz-form-label
+          >
+          <nz-form-control [nzSpan]="8" nzErrorTip="请输入菜名">
             <input
               type="text"
               nz-input
-              formControlName="name"
-              placeholder="Please input your name"
+              formControlName="foodName"
+              placeholder="Please input foodName"
             />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-label
-            [nzSpan]="4"
-            nzFor="nickname"
-            [nzRequired]="validateForm.get('required')?.value"
+          <nz-form-label [nzSpan]="4" nzRequired nzFor="name"
+            >菜品介绍</nz-form-label
           >
-            Nickname
-          </nz-form-label>
-          <nz-form-control [nzSpan]="8" nzErrorTip="Please input your nickname">
-            <input
-              type="text"
+          <nz-form-control [nzSpan]="8" nzErrorTip="请填写菜品介绍">
+            <textarea
               nz-input
-              formControlName="nickname"
-              placeholder="Please input your nickname"
-            />
+              placeholder="Please input introduce"
+              [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+              formControlName="introduce"
+            ></textarea>
           </nz-form-control>
         </nz-form-item>
-        <nz-form-item>
-          <nz-form-control [nzSpan]="8" [nzOffset]="4">
-            <label
-              nz-checkbox
-              formControlName="required"
-              (ngModelChange)="requiredChange($event)"
-            >
-              Nickname is required
-            </label>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-control [nzSpan]="8" [nzOffset]="4">
-            <button nz-button nzType="primary">Check</button>
-          </nz-form-control>
-        </nz-form-item>
+
+        <!--        <nz-form-item>-->
+        <!--          <nz-form-control [nzSpan]="8" [nzOffset]="4">-->
+        <!--            <button nz-button nzType="primary">确认信息</button>-->
+        <!--          </nz-form-control>-->
+        <!--        </nz-form-item>-->
       </form>
     </nz-card>
 
@@ -83,12 +97,12 @@
       <button nz-button (click)="addRow()" nzType="primary">Add</button>
       <br />
       <br />
-      <nz-table #editRowTable nzBordered [nzData]="listOfData">
+      <nz-table #editRowTable nzBordered [nzData]="datasource">
         <thead>
           <tr>
-            <th nzWidth="30%">Name</th>
-            <th>Age</th>
-            <th>Address</th>
+            <th nzWidth="30%">价格（￥）</th>
+            <th>数量（份）</th>
+            <th>规格（大小）</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -97,27 +111,58 @@
             <td>
               <div
                 class="editable-cell"
-                [hidden]="editId === data.id"
+                [hidden]="editID === data.id"
                 (click)="startEdit(data.id)"
               >
-                {{ data.name }}
+                {{ data.price }}
               </div>
               <input
-                [hidden]="editId !== data.id"
+                [hidden]="editID !== data.id"
                 type="text"
                 nz-input
-                [(ngModel)]="data.name"
+                [(ngModel)]="data.price"
                 (blur)="stopEdit()"
               />
             </td>
-            <td>{{ data.age }}</td>
-            <td>{{ data.address }}</td>
+            <td>
+              <div
+                class="editable-cell"
+                [hidden]="editID === data.id"
+                (click)="startEdit(data.id)"
+              >
+                {{ data.number }}
+              </div>
+              <input
+                [hidden]="editID !== data.id"
+                type="text"
+                nz-input
+                [(ngModel)]="data.number"
+                (blur)="stopEdit()"
+              />
+            </td>
+            <td>
+              <div
+                class="editable-cell"
+                [hidden]="editID === data.id"
+                (click)="startEdit(data.id)"
+              >
+                {{ data.volume }}
+              </div>
+              <input
+                [hidden]="editID !== data.id"
+                type="text"
+                nz-input
+                [(ngModel)]="data.volume"
+                (blur)="stopEdit()"
+              />
+            </td>
+            <!--            <td>{{ data.address }}</td>-->
             <td>
               <a
                 nz-popconfirm
                 nzPopconfirmTitle="Sure to delete?"
                 (nzOnConfirm)="deleteRow(data.id)"
-                >Delete</a
+                >删除（Delete）</a
               >
             </td>
           </tr>
