@@ -4,12 +4,18 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { ManuService } from '@service/manu.service';
+import { OrderCartService } from '@service/order-cart.service';
 
 export interface DialogData {
   id: number;
-  name: string;
-  jg: number;
+  introduce: string;
+  foodName: string;
+  price: number;
+  number: number;
+  food_Image: string;
   type: string;
+  volume: string;
 }
 
 @Component({
@@ -18,118 +24,46 @@ export interface DialogData {
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  public cd: any[] = [
-    { id: 1, name: '肉眼牛排', jg: 128, type: '西餐' },
-    { id: 24, name: '肉眼牛排', jg: 128, type: '西餐' },
-    { id: 25, name: '肉眼牛排', jg: 128, type: '西餐' },
-    { id: 26, name: '肉眼牛排', jg: 128, type: '西餐' },
-    { id: 27, name: '肉眼牛排', jg: 128, type: '西餐' },
+  public datasroce: any[] = [];
 
-    { id: 23, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-    { id: 28, name: '小鸡炖蘑菇', jg: 228, type: '中餐' },
-    { id: 29, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-    { id: 3, name: '小鸡炖蘑菇', jg: 328, type: '中餐' },
-    { id: 30, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-
-    { id: 4, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-    { id: 5, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-    { id: 6, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-    { id: 7, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-    { id: 8, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-    { id: 1, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-    { id: 0, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-    { id: 11, name: '小鸡炖蘑菇', jg: 128, type: '中餐' },
-
-    { id: 31, name: '红糖糍粑', jg: 38, type: '小吃' },
-    { id: 32, name: '红糖糍粑', jg: 42, type: '小吃' },
-    { id: 33, name: '红糖糍粑', jg: 13, type: '小吃' },
-    { id: 35, name: '红糖糍粑', jg: 53, type: '小吃' },
-    { id: 15, name: '红糖糍粑', jg: 53, type: '小吃' },
-
-    { id: 37, name: '红糖糍粑', jg: 54, type: '小吃' },
-    { id: 38, name: '红糖糍粑', jg: 23, type: '小吃' },
-    { id: 39, name: '红糖糍粑', jg: 534, type: '小吃' },
-    { id: 40, name: '红糖糍粑', jg: 56, type: '小吃' },
-    { id: 41, name: '红糖糍粑', jg: 23, type: '小吃' },
-
-    { id: 12, name: '满杯鲜橙', jg: 45, type: '饮品' },
-    { id: 13, name: '满杯鲜橙', jg: 66, type: '饮品' },
-    { id: 14, name: '满杯鲜橙', jg: 23, type: '饮品' },
-    { id: 15, name: '满杯鲜橙', jg: 11, type: '饮品' },
-    { id: 16, name: '满杯鲜橙', jg: 23, type: '饮品' },
-    { id: 17, name: '满杯鲜橙', jg: 434, type: '饮品' },
-    { id: 18, name: '满杯鲜橙', jg: 61, type: '饮品' },
-    { id: 19, name: '满杯鲜橙', jg: 23, type: '饮品' },
-    { id: 20, name: '满杯鲜橙', jg: 212, type: '饮品' },
-    { id: 21, name: '满杯鲜橙', jg: 21, type: '饮品' },
-    { id: 22, name: '满杯鲜橙', jg: 61, type: '饮品' },
-  ];
   public xiCan: any = [];
   public zhongCan: any = [];
   public xiaoChi: any = [];
   public yinPin: any = [];
+
+  public value: any = '';
 
   public xC: any = [];
   public zC: any = [];
   public xiaoC: any = [];
   public yP: any = [];
 
-  public value: any = '';
-
-  constructor(public dialog: MatDialog) {}
-
-  // public xc: any = this.deleteItem('西餐', '小吃');
-  // /*根据输入的参数，删除响应的内容*/
-  // deleteItem(LX: any, LX2: any) {
-  //   // let a:any = this.cd.length
-  //   for (let i = 0; i < 10; i++) {
-  //     if (
-  //       this.cd.findIndex((item) => item.lx == LX) == -1 &&
-  //       this.cd.findIndex((item) => item.lx == LX2) == -1
-  //     ) {
-  //       break;
-  //     } else {
-  //       this.cd.splice(
-  //         this.cd.findIndex((item) => item.lx == LX),
-  //         1
-  //       );
-  //       this.cd.splice(
-  //         this.cd.findIndex((item) => item.lx == LX2),
-  //         1
-  //       );
-  //     }
-  //   }
-  //   // return this.cd
-  // }
-
-  openDialog(item: any): void {
-    const dialogRef = this.dialog.open(NoteComponent, {
-      width: '870px',
-      height: '455px',
-      data: item,
-    });
-    // 这里是输出animal到对应html的i标签中
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
-  }
+  constructor(
+    public dialog: MatDialog,
+    private manuService: ManuService,
+    public orderCartService: OrderCartService
+  ) {}
 
   ngOnInit(): void {
-    this.xiCan = this.cd.filter((x: any) => {
-      return x.type === '西餐';
+    this.manuService.getFoods().subscribe((response: any) => {
+      this.datasroce = response;
+      console.log(this.datasroce);
+      if (this.datasroce) {
+        this.xiCan = this.datasroce.filter((x: any) => {
+          return x.type === '西餐';
+        });
+        this.zhongCan = this.datasroce.filter((x: any) => {
+          return x.type === '中餐';
+        });
+        this.xiaoChi = this.datasroce.filter((x: any) => {
+          return x.type === '小吃';
+        });
+        this.yinPin = this.datasroce.filter((x: any) => {
+          return x.type === '饮品';
+        });
+      }
+      this.onChange();
     });
-    this.zhongCan = this.cd.filter((x: any) => {
-      return x.type === '中餐';
-    });
-    this.xiaoChi = this.cd.filter((x: any) => {
-      return x.type === '小吃';
-    });
-    this.yinPin = this.cd.filter((x: any) => {
-      return x.type === '饮品';
-    });
-    this.onChange();
-    console.log(this.xC);
   }
 
   onChange(event?: any) {
@@ -153,6 +87,24 @@ export class MainComponent implements OnInit {
       });
     }
   }
+
+  public foodsItem: any = [];
+
+  openDialog(item: any): void {
+    const dialogRef = this.dialog.open(NoteComponent, {
+      width: '870px',
+      height: '455px',
+      data: item,
+    });
+    // t弹窗关闭后返回弹窗中的data到父级中，通过订阅获取
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        this.foodsItem = this.foodsItem.concat([result]);
+      }
+      this.orderCartService.FoodsEventer.emit(this.foodsItem);
+      console.log(this.foodsItem);
+    });
+  }
 }
 
 /*-----这里是弹窗的ts----------------------------------------------------------*/
@@ -172,12 +124,12 @@ export interface Tile {
 export class NoteComponent {
   constructor(
     public dialogRef: MatDialogRef<NoteComponent>,
-    @Inject(MAT_DIALOG_DATA) public date: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
-    console.log(this.date);
+    console.log(this.data);
   }
 
-  public counter: number = 0;
+  public counter: number = 1;
 
   onCounter1(): void {
     this.counter = this.counter + 1;
@@ -191,6 +143,17 @@ export class NoteComponent {
       this.counter = this.counter;
     }
     // console.log(this.counter)
+  }
+
+  onClick() {
+    // let foodData = { ...this.data };
+    return {
+      type: this.data.type,
+      foodName: this.data.foodName,
+      volume: this.data.volume,
+      number: this.counter,
+      price: this.data.price,
+    };
   }
 
   /*------------------------------------------------------*/

@@ -9,13 +9,13 @@
       <a (click)="openDialog2()">扫描优惠券</a>
     </div>
     <div class="section">
-      <app-table></app-table>
+      <app-table (newItemEvent)="getsum($event)" (newItemEvent2)="getData($event)"></app-table>
     </div>
     <div class="footer">
       <div class="footer01">
         <div class="flex-center flex-col">
           <span>结算信息</span>
-          <div>总价： ￥328</div>
+          <div>总价： ￥{{ sumdata }}</div>
         </div>
       </div>
 

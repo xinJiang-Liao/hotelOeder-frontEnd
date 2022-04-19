@@ -1,12 +1,12 @@
-<div class="floor02-nav">
+<div class="floor02-nav" *ngIf="user">
   <div class="nav-one">
     <nz-avatar
       style="background-color: #87d068"
       nzText="LJX"
       [nzSize]="100"
     ></nz-avatar>
-    <span class="my-2">廖江鑫</span>
-    <span>18580423383</span>
+    <span class="my-2">{{user.name}}</span>
+    <span>{{user.phone}}</span>
   </div>
   <div class="nav-two">
     <!--    <span>{{today|date:'yyyy-MM-dd HH:mm:ss'}}</span>-->

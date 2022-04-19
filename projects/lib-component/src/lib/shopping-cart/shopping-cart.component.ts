@@ -1,67 +1,75 @@
-import { Component, OnInit ,Inject} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {
+  Component,
+  OnInit,
+  Inject,
+  ViewChild,
+  DoCheck,
+  ElementRef,
+} from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { OrderService } from '@service/order.service';
 
+export interface DialogData {}
 
-export interface DialogData {
-
-}
-
-export interface DialogData2 {
-
-}
+export interface DialogData2 {}
 
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.css']
+  styleUrls: ['./shopping-cart.component.css'],
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit /*, DoCheck*/ {
+  public sumdata: number = 0;
+  public datasource: any;
+  constructor(public dialog: MatDialog, private orderService: OrderService) {}
 
-  constructor(public dialog: MatDialog) {}
+  onSubmit() {
+  }
+
+  /*获取所点菜品的总价*/
+  getsum(value: any) {
+    this.sumdata = value;
+  }
+
+  /*获取菜品信息*/
+  getData(value: any) {
+    this.datasource = value;
+    console.log(this.datasource);
+  }
+
   openDialog() {
     this.dialog.open(YHComponent, {
       /*date可以写在这里*/
-      width:'600px',
-      height:'200px',
-      data:'扫描会员码进行登陆',
+      width: '600px',
+      height: '200px',
+      data: '扫描会员码进行登陆',
     });
   }
 
   openDialog2() {
     this.dialog.open(YHQComponent, {
       /*date可以写在这里*/
-      width:'600px',
-      height:'200px',
-      data:'扫描优惠券进行抵扣优惠',
+      width: '600px',
+      height: '200px',
+      data: '扫描优惠券进行抵扣优惠',
     });
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
-
-
-
-
-
 
 @Component({
   selector: 'YH.component',
   templateUrl: './YH.component.html',
 })
-export class YHComponent{
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
-
-  }
+export class YHComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 }
 
 @Component({
   selector: 'YHQ',
   templateUrl: './YHQ.html',
 })
-export class YHQComponent{
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData2) {
-
-  }
+export class YHQComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData2) {}
 }

@@ -52,8 +52,10 @@ export class LoginDistinguishComponent implements OnInit {
     if (this.validateForm.status == 'VALID') {
       let { username, password } = this.validateForm.value;
       this.adminService.login(username, password).subscribe((response: any) => {
+        console.log('response', response);
         if (response.status === true) {
           sessionStorage.setItem('user', username + password);
+          sessionStorage.setItem('adminID', response.coupons.username);
 
           if (this.type === 'common') {
             this.message.create('success', '登录成功');
@@ -74,7 +76,7 @@ export class LoginDistinguishComponent implements OnInit {
               .then((r) => {
                 console.log('跳轉了');
               });
-          } else if (this.tag === 'super'&& response.code === 1) {
+          } else if (this.tag === 'super' && response.code === 1) {
             this.message.create('success', '登录成功');
             this.status = this.status + 1;
             console.log(this.status);
@@ -85,7 +87,9 @@ export class LoginDistinguishComponent implements OnInit {
             //   .then((r) => {
             //     console.log('跳轉了');
             //   });
-          }else {this.message.create('error', '权限不足，无法登录');}
+          } else {
+            this.message.create('error', '权限不足，无法登录');
+          }
         } else {
           this.message.create('error', '用户名密码错误');
         }
@@ -189,7 +193,6 @@ export class LoginDistinguishComponent implements OnInit {
 
   async particlesInit(main: Main): Promise<any> {
     // console.log(main);
-
     // Starting from 1.19.0 you can add custom presets or shape here, using the current tsParticles instance (main)
   }
 }

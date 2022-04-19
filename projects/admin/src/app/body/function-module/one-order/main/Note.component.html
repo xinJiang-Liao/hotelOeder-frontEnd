@@ -1,14 +1,14 @@
 <div class="note-body">
   <div class="note-body-left">
     <div class="note-body-left-top">
-      <img src="#" class="note-body-left-top_img" />
+      <img src="#" class="note-body-left-top_img my-[5px]" />
       <div class="note-body-left-top2">
         <!--        这里面获取到菜型、id、name-->
-        <span>{{ this.date.type }}</span
+        <span>{{ this.data.type }}</span
         >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ this.date.id }}</span>
+        <span>￥{{ this.data.price }}</span>
         <br />
-        <span>{{ this.date.name }}</span>
+        <span>{{ this.data.foodName }}({{this.data.volume}})</span>
       </div>
       <div class="note-body-left-top3">
         <button (click)="onCounter2()">-</button>
@@ -19,31 +19,22 @@
 
     <div class="note-body-left-bottom text-lg p-4">
       <h3>菜品简介</h3>
-      <span
-        >&nbsp;&nbsp;&nbsp;&nbsp;奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj奥迪骄傲i大祭司哦啊多久哦四阿娇滴哦接到上级的欧吉安iojdioaj哦i十九点ioj</span
-      >
-
-      <!--      这里是键盘区域-->
-      <!--      <mat-grid-list cols="4" rowHeight="77px">-->
-      <!--        <mat-grid-tile-->
-      <!--          *ngFor="let tile of tiles"-->
-      <!--          [colspan]="tile.cols"-->
-      <!--          [rowspan]="tile.rows"-->
-      <!--          [style.background]="tile.color"-->
-      <!--          (click)="clickNumber(tile.text)"-->
-      <!--        >-->
-      <!--          {{ tile.text }}-->
-      <!--        </mat-grid-tile>-->
-      <!--      </mat-grid-list>-->
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;{{ this.data.introduce }}</span>
     </div>
-    <span
-      class="w-full h-16 bg-[#fe5f55] text-[#f0f8ff] text-2xl text-center leading-16"
-      (click)="onNoClick()"
-      >确认</span
-    >
+
+<!--    <div mat-dialog-actions>-->
+      <button
+        class="w-full h-16 bg-[#fe5f55] text-[#f0f8ff] text-2xl text-center leading-16"
+        mat-button
+        [mat-dialog-close]="onClick()"
+        cdkFocusInitial
+      >
+        确认
+      </button>
+<!--    </div>-->
   </div>
 
   <div class="note-body-right">
-    <app-button-toggle [date]="this.date"></app-button-toggle>
+    <app-button-toggle [date]="this.data"></app-button-toggle>
   </div>
 </div>

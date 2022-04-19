@@ -1,41 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatTableDataSource } from '@angular/material/table';
+import { OrderCartService } from '@service/order-cart.service';
 
-export interface PeriodicElement {
-  // name: string;
-  // position: number;
-  // weight: number;
-  // symbol: string;
-  name: string;
+export interface foods {
+  type: string;
+  foodName: string;
+  volume: string;
   number: number;
   price: number;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: '西冷牛排', number: 1, price: 128 },
-  { name: '北京烤鸭', number: 1, price: 68 },
-  { name: '蒸鹿茸', number: 1, price: 228 },
-  { name: '蒸白糕', number: 2, price: 26 },
-  { name: '意大利面', number: 1, price: 36 },
-  { name: '西瓜汁', number: 2, price: 40 },
-  { name: '惠灵顿牛排', number: 1, price: 88 },
-];
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['select','name', 'number', 'price'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+export class TableComponent implements OnInit, DoCheck {
+  @Output() newItemEvent = new EventEmitter<any>();
+  @Output() newItemEvent2 = new EventEmitter<any>();
+  displayedColumns: string[] = ['select', 'name', 'number', 'price'];
+  public dataSource: any;
 
-  constructor() {}
-
+  constructor(public orderCartService: OrderCartService) {}
   ngOnInit(): void {}
+  ngDoCheck(): void {
+    this.orderCartService.FoodsEventer.subscribe((book) => {
+      this.orderCartService.defaultFoods = book;
+    });
+    this.dataSource = this.orderCartService.defaultFoods;
+  }
 
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  selection = new SelectionModel<foods>(true, []);
 
+  summation() {
+    let summation: number = 0;
+
+    this.selection.selected.forEach((x) => {
+      summation += +x.number * x.price;
+      console.log(summation);
+      return summation;
+    });
+    this.newItemEvent.emit(summation);
+    this.newItemEvent2.emit(this.selection.selected);
+  }
   /**
    * Whether the number of selected elements matches the total number of rows.
    *
@@ -59,8 +72,8 @@ export class TableComponent implements OnInit {
       this.selection.clear();
       return;
     }
-
     this.selection.select(...this.dataSource.data);
+    console.log(this.selection);
   }
 
   /**
@@ -69,7 +82,7 @@ export class TableComponent implements OnInit {
    * 传递行上复选框的标签
    *
    */
-  checkboxLabel(row?: PeriodicElement): any {
+  checkboxLabel(row?: foods): any {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }

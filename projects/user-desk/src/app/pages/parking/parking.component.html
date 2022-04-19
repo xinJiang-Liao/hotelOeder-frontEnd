@@ -1,0 +1,120 @@
+<div
+  class="w-[100vw] lg:w-full lg:h-full lg:p-20 p-4 flex-column lg:justify-center"
+>
+  <span class="lg:text-4xl lg:mb-4 text-2xl mb-2">二维码管理</span>
+  <div
+    class="bg-amber-200 w-full h-full lg:h-[calc(100%-4rem)] mb-4 lg:mb-12 bg-[#fffffe] rounded-3xl flex-column flex-align-center overflow-auto"
+  >
+    <!------------------------------------------停车缴费-------------------------------------------------->
+    <div
+      class="w-[96%] lg:h-[30%] my-4 rounded-2xl lg:my-8 focus:bg-[#eff0f3] flex flex-column lg:flex-row items-center lg:justify-between shadow"
+      tabindex="0"
+    >
+      <div class="flex flex-column lg:flex-row items-center">
+        <div
+          class="w-28 h-28 my-4 lg:my-0 lg:ml-8 rounded-2xl"
+          *ngIf="parkingLink"
+        >
+          <!--这里是二维码图-->
+          <qrcode
+            id="pay"
+            [elementType]="'img'"
+            [qrdata]="parkingLink"
+            [width]="width"
+            [margin]="1"
+            [errorCorrectionLevel]="'H'"
+          ></qrcode>
+        </div>
+
+        <div class="lg:h-full flex-column justify-center lg:ml-6 lg:w-44">
+          <span class="text-xl font-medium">停车缴费</span>
+        </div>
+
+        <div
+          class="h-full lg:text-xl text-[0.8rem] m-2 flex-column lg:flex-row justify-center lg:ml-2"
+        >
+          <span>路由地址： </span>
+          <span class="text-[0.6rem]">{{ parkingLink }}</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-around w-[20%] lg:justify-end">
+        <div
+          class="flex-column justify-center items-center lg:mr-8 cursor-pointer"
+          (click)="downloadQrcodes('#pay')"
+        >
+          <fa-icon
+            [icon]="faArrowAltCircleDown"
+            class="lg:text-[3rem] text-2xl text-[#5D8FC2FF]"
+          ></fa-icon>
+          <span class="">下载</span>
+        </div>
+<!--        <div class="flex-column justify-center items-center lg:mr-8">-->
+<!--          <fa-icon-->
+<!--            [icon]="faSyncAlt"-->
+<!--            class="lg:text-[3rem] text-2xl text-[#dd5826]"-->
+<!--          ></fa-icon>-->
+<!--          <span>刷新</span>-->
+<!--        </div>-->
+      </div>
+    </div>
+    <!----------------------------------------------------------------------------------------------->
+
+    <div
+      class="w-[96%] lg:h-[30%] my-4 rounded-2xl lg:my-8 focus:bg-[#eff0f3] flex flex-column lg:flex-row items-center lg:justify-between shadow"
+      tabindex="0"
+    >
+      <div class="flex flex-column lg:flex-row items-center">
+        <div
+          class="w-28 h-28 my-4 lg:my-0 lg:ml-8 rounded-2xl"
+          *ngIf="parkingCouponLink"
+        >
+          <!--这里是二维码图-->
+          <qrcode
+            id="draw"
+            [elementType]="'img'"
+            [qrdata]="parkingCouponLink"
+            [width]="width"
+            [margin]="1"
+            [errorCorrectionLevel]="'H'"
+          ></qrcode>
+        </div>
+
+        <div class="lg:h-full flex-column justify-center lg:ml-6 lg:w-44">
+          <span class="text-xl font-medium">停车优惠券领取</span>
+        </div>
+
+        <div
+          class="h-full lg:text-xl text-[0.8rem] m-2 flex-column lg:flex-row justify-center lg:ml-2"
+        >
+          <span
+            >路由地址：<span class="text-[0.6rem]">{{ parkingCouponLink }}</span></span
+          >
+        </div>
+      </div>
+
+      <div class="flex items-center justify-around w-[20%] lg:justify-end">
+        <div
+          class="flex-column justify-center items-center lg:mr-8 cursor-pointer"
+          (click)="downloadQrcodes('#draw')"
+        >
+          <fa-icon
+            [icon]="faArrowAltCircleDown"
+            class="lg:text-[3rem] text-2xl text-[#5D8FC2FF]"
+          ></fa-icon>
+          <span class="">下载</span>
+        </div>
+<!--        <div-->
+<!--          class="flex-column justify-center items-center lg:mr-8 cursor-pointer"-->
+<!--          (click)="update()"-->
+<!--        >-->
+<!--          <fa-icon-->
+<!--            [icon]="faSyncAlt"-->
+<!--            class="lg:text-[3rem] text-2xl text-[#dd5826]"-->
+<!--          ></fa-icon>-->
+<!--          <span>刷新</span>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

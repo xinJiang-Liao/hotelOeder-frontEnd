@@ -1,16 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
 import {
   NzTableFilterFn,
   NzTableFilterList,
   NzTableSortFn,
   NzTableSortOrder,
 } from 'ng-zorro-antd/table';
+import { ManuService } from '@service/manu.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd/message';
+
+// interface DataItem {
+//   name: string;
+//   age: number;
+//   address: string;
+// }
 
 interface DataItem {
-  name: string;
-  age: number;
-  address: string;
+  id: number;
+  introduce: string;
+  foodName: string;
+  price: number;
+  number: number;
+  food_Image: string;
+  type: string;
+  volume: string;
 }
 
 interface ColumnItem {
@@ -27,60 +40,86 @@ interface ColumnItem {
   styleUrls: ['./goods-list.component.scss'],
 })
 export class GoodsListComponent implements OnInit {
-  constructor() {}
+  visible = false;
+  public formData!: FormGroup;
+  foodsList: any[] = [];
 
-  ngOnInit(): void {}
-  listOfColumns: ColumnItem[] = [
-    {
-      name: 'Name',
-      sortOrder: null,
-      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),
-      listOfFilter: [
-        { text: 'Joe', value: 'Joe' },
-        { text: 'Jim', value: 'Jim' },
-      ],
-      filterFn: (list: string[], item: DataItem) =>
-        list.some((name) => item.name.indexOf(name) !== -1),
-    },
-    {
-      name: 'Age',
-      sortOrder: null,
-      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,
-      listOfFilter: [],
-      filterFn: null,
-    },
-    {
-      name: 'Address',
-      sortFn: null,
-      sortOrder: null,
-      listOfFilter: [
-        { text: 'London', value: 'London' },
-        { text: 'Sidney', value: 'Sidney' },
-      ],
-      filterFn: (address: string, item: DataItem) =>
-        item.address.indexOf(address) !== -1,
-    },
-  ];
+  constructor(
+    private manuService: ManuService,
+    private message: NzMessageService,
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit(): void {
+    this.getFoods();
+  }
+
+  getFoods() {
+    this.manuService.getFoods().subscribe((response) => {
+      this.foodsList = response;
+    });
+  }
+
+  upDate(data: DataItem) {
+    this.visible = false;
+    this.manuService.upDate(data).subscribe((response) => {
+      this.getFoods();
+      this.message.create('success', '修改已提交');
+      console.log(response);
+    });
+  }
+  open(data: any): void {
+    this.visible = true;
+    if (data) {
+      console.log('data:', data);
+      this.formData = this.fb.group({
+        id: [data.id, [Validators.required]],
+        type: [data.type, [Validators.required]],
+        foodName: [data.foodName, [Validators.required]],
+        price: [data.price, [Validators.required]],
+        volume: [data.volume, [Validators.required]],
+        number: [data.number, [Validators.required]],
+        food_Image: [data.food_Image, [Validators.required]],
+        introduce: [data.introduce, [Validators.required]],
+      });
+    }
+  }
+
+  delete(id: number) {
+    this.manuService.deleteFoods(id).subscribe((response: any) => {
+      this.visible = false;
+      this.getFoods();
+      this.message.create('success', '菜品删除成功');
+      console.log(response);
+    });
+  }
+
+  close(): void {
+    this.visible = false;
+  }
+
+  /*模拟数据*/
   listOfData: DataItem[] = [
     {
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
+      id: 1,
+      introduce:
+        'John BrownJohn BrownJohn BrownJohn BrownJohn BrownJohn BrownJohn BrownJohn BrownJohn BrownJohn Brown',
+      foodName: 'John Brown',
+      price: 22,
+      number: 33,
+      food_Image: 'John Brown',
+      type: 'John Brown',
+      volume: 'John Brown',
     },
     {
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-    {
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
+      id: 2,
+      introduce: 'John Brown',
+      foodName: 'John Brown',
+      price: 44,
+      number: 55,
+      food_Image: 'John Brown',
+      type: 'John Brown',
+      volume: 'John Brown',
     },
   ];
 
@@ -88,36 +127,53 @@ export class GoodsListComponent implements OnInit {
     return item.name;
   }
 
-  sortByAge(): void {
-    this.listOfColumns.forEach((item) => {
-      if (item.name === 'Age') {
-        item.sortOrder = 'descend';
-      } else {
-        item.sortOrder = null;
-      }
-    });
-  }
+  /*根据这个对象来对表格每个列字段的功能和名字进行定义*/
+  listOfColumns: any /*ColumnItem*/ = [
+    // {
+    //   name: 'id',
+    //   sortOrder: null,
+    //   sortFn: (a: DataItem, b: DataItem) => a.id.localeCompare(b.id),
+    //   listOfFilter: [
+    //     { text: 'Joe', value: 'Joe' },
+    //     { text: 'Jim', value: 'Jim' },
+    //   ],
+    //   filterFn: (list: string[], item: DataItem) =>
+    //     list.some((id) => item.id.indexOf(id) !== -1),
+    // },
+    {
+      name: 'id',
+      sortOrder: null,
+      sortFn: (a: DataItem, b: DataItem) => a.id - b.id,
+      filterFn: null,
+    },
+    {
+      name: 'type',
+      listOfFilter: [
+        { text: '中餐', value: '中餐' },
+        { text: '西餐', value: '西餐' },
+        { text: '小吃', value: '小吃' },
+        { text: '饮品', value: '饮品' },
+      ],
+      filterFn: (type: string, item: DataItem) =>
+        item.type.indexOf(type) !== -1,
+    },
+    { name: 'foodName' },
+    {
+      name: 'price',
+      sortOrder: null,
+      sortFn: (a: DataItem, b: DataItem) => a.price - b.price,
+      filterFn: null,
+    },
+    { name: 'volume' },
+    {
+      name: 'number',
+      sortOrder: null,
+      sortFn: (a: DataItem, b: DataItem) => a.number - b.number,
+      filterFn: null,
+    },
 
-  resetFilters(): void {
-    this.listOfColumns.forEach((item) => {
-      if (item.name === 'Name') {
-        item.listOfFilter = [
-          { text: 'Joe', value: 'Joe' },
-          { text: 'Jim', value: 'Jim' },
-        ];
-      } else if (item.name === 'Address') {
-        item.listOfFilter = [
-          { text: 'London', value: 'London' },
-          { text: 'Sidney', value: 'Sidney' },
-        ];
-      }
-    });
-  }
-
-  resetSortAndFilters(): void {
-    this.listOfColumns.forEach((item) => {
-      item.sortOrder = null;
-    });
-    this.resetFilters();
-  }
+    { name: 'food_Image' },
+    { name: 'introduce' },
+    { name: '编辑' },
+  ];
 }

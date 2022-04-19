@@ -5,6 +5,7 @@ import { GoodsListComponent } from './goods-list/goods-list.component';
 import { GoodsAddComponent } from './goods-add/goods-add.component';
 import { AdminCommonComponent } from './admin-common/admin-common.component';
 import { AdminSuperComponent } from './admin-super/admin-super.component';
+import { ParkingComponent } from './parking/parking.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,12 @@ const routes: Routes = [
           import('./admin-super/admin-super.module').then(
             (m) => m.AdminSuperModule
           ),
+      },
+      {
+        path: 'parking',
+        component: ParkingComponent,
+        loadChildren: () =>
+          import('./parking/parking.module').then((m) => m.ParkingModule),
       },
     ],
   },
