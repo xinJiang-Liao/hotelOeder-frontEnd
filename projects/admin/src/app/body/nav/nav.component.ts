@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { goto } from '@service/_utils';
 import { AdminService } from '@service/admin.service';
+import { OrderService } from '@service/order.service';
+import * as moment from 'moment/moment';
 
 @Component({
   selector: 'app-nav',
@@ -13,8 +15,12 @@ export class NavComponent implements OnInit {
   DataTime = '';
   DataTime2 = '';
   public user: any;
+  public sum:number = 0;
 
-  constructor(public adminService: AdminService) {
+  constructor(
+    public adminService: AdminService,
+    public orderService: OrderService
+  ) {
     let username = sessionStorage.getItem('adminID');
     if (username) {
       this.adminService.getCommon(0, username).subscribe((response: any) => {
@@ -38,5 +44,17 @@ export class NavComponent implements OnInit {
     goto(`${window.location.origin}${link}`);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let a = moment().startOf('days').format('YYYY-MM-DD HH:mm:ss');
+    let b = moment().endOf('days').format('YYYY-MM-DD HH:mm:ss');
+    setTimeout(()=>{
+      this.orderService.getOrders('', a, b).subscribe((response: any) => {
+        this.sum = 0;
+        response.map((x: any) => {
+          this.sum = this.sum + x.payment_amount;
+        });
+      });
+    },60000)
+
+  }
 }

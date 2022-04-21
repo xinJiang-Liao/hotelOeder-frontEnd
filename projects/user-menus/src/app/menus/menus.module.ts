@@ -7,7 +7,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { FormsModule } from '@angular/forms';
-import { FoodsListComponent } from './foods-list/foods-list.component';
+import {
+  FoodDetailComponent,
+  FoodsListComponent,
+} from './foods-list/foods-list.component';
 import { SwiperHammerService } from './swiper-hammer.service';
 import { HAMMER_GESTURE_CONFIG, HammerModule } from '@angular/platform-browser';
 import { ChefsBannerComponent } from './chefs-banner/chefs-banner.component';
@@ -18,7 +21,8 @@ import { AboutDetailsComponent } from './lib-component/about-details/about-detai
 import { MatTabsModule } from '@angular/material/tabs';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { IconsProviderModule } from '@icons/icons-provider.module';
-import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -30,19 +34,21 @@ import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
     FoodChoicesComponent,
     ChefProfileComponent,
     AboutDetailsComponent,
+    FoodDetailComponent,
   ],
-    imports: [
-        CommonModule,
-        MenusRoutingModule,
-        NzCarouselModule,
-        NzRadioModule,
-        FormsModule,
-        HammerModule,
-        MatTabsModule,
-        NzBreadCrumbModule,
-        IconsProviderModule,
-        NzDropDownModule,
-    ],
+  imports: [
+    CommonModule,
+    MenusRoutingModule,
+    NzCarouselModule,
+    NzRadioModule,
+    FormsModule,
+    HammerModule,
+    MatTabsModule,
+    NzBreadCrumbModule,
+    IconsProviderModule,
+    NzDropDownModule,
+    MatDialogModule,
+  ],
   providers: [
     {
       provide: HAMMER_GESTURE_CONFIG,

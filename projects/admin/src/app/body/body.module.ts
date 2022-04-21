@@ -21,7 +21,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { ButtonToggleComponent } from '@component/button-toggle/button-toggle.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { TwoNotPayComponent } from './function-module/two-not-pay/two-not-pay.component';
+import {
+  FoodsComponent,
+  TwoNotPayComponent,
+} from './function-module/two-not-pay/two-not-pay.component';
 import { TableWaitingComponent } from './function-module/two-not-pay/table-waiting/table-waiting.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ThreeRecordComponent } from './function-module/three-record/three-record.component';
@@ -36,13 +39,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from "@angular/material/button";
+import { MatButtonModule } from '@angular/material/button';
 import { BodyComponent } from './body.component';
-import {IconsProviderModule} from '@icons/icons-provider.module';
-import {NzAvatarModule} from 'ng-zorro-antd/avatar';
-import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
-import {NzTableModule} from 'ng-zorro-antd/table';
-import {NzDatePickerModule} from 'ng-zorro-antd/date-picker';
+import { IconsProviderModule } from '@icons/icons-provider.module';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   declarations: [
@@ -63,6 +69,7 @@ import {NzDatePickerModule} from 'ng-zorro-antd/date-picker';
     SelectionComponent,
     ChipsComponent,
     BodyComponent,
+    FoodsComponent,
   ],
   exports: [NavComponent],
   imports: [
@@ -88,7 +95,10 @@ import {NzDatePickerModule} from 'ng-zorro-antd/date-picker';
     NzAvatarModule,
     NzDropDownModule,
     NzTableModule,
-    NzDatePickerModule
-  ]
+    NzDatePickerModule,
+    NzModalModule,
+    NzInputModule,
+    NzSelectModule,
+  ],
 })
 export class BodyModule {}

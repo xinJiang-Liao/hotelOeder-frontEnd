@@ -56,6 +56,7 @@ export class LoginDistinguishComponent implements OnInit {
         if (response.status === true) {
           sessionStorage.setItem('user', username + password);
           sessionStorage.setItem('adminID', response.coupons.username);
+          localStorage.setItem('admin', JSON.stringify(response.coupons));
 
           if (this.type === 'common') {
             this.message.create('success', '登录成功');

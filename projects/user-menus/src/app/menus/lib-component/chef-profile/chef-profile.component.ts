@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ChefsService} from '@service/chefs.service';
 
 @Component({
   selector: 'app-chef-profile',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chef-profile.component.scss']
 })
 export class ChefProfileComponent implements OnInit {
-
-  constructor() { }
+  public chefsData: any;
+  constructor(public chefsService: ChefsService) {}
 
   ngOnInit(): void {
+    this.chefsService.getChefs().subscribe((response: any) => {
+      this.chefsData = response;
+      console.log(this.chefsData);
+    });
   }
-
 }

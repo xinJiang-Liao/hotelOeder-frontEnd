@@ -14,6 +14,10 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MenusModule } from './menus/menus.module';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { FormsModule } from '@angular/forms';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +33,9 @@ import { MenusModule } from './menus/menus.module';
     HttpClientModule,
     MenusModule,
     HammerModule,
+    NzModalModule,
+    FormsModule,
+    NzInputModule,
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/user/menus/' },
@@ -38,6 +45,7 @@ import { MenusModule } from './menus/menus.module';
      * */
     { provide: MAT_DATE_LOCALE, useValue: 'zh-cn' },
     { provide: LOCALE_ID, useValue: 'zh-cn' },
+    { provide: NzMessageService },
   ],
   bootstrap: [AppComponent],
 })

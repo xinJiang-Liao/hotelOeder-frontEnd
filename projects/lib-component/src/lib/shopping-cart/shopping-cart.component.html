@@ -9,7 +9,10 @@
       <a (click)="openDialog2()">扫描优惠券</a>
     </div>
     <div class="section">
-      <app-table (newItemEvent)="getsum($event)" (newItemEvent2)="getData($event)"></app-table>
+      <app-table
+        (newItemEvent)="getsum($event)"
+        (newItemEvent2)="getData($event)"
+      ></app-table>
     </div>
     <div class="footer">
       <div class="footer01">
@@ -19,9 +22,49 @@
         </div>
       </div>
 
-      <div class="footer02">
+      <button class="footer02" (click)="onSubmit()">
         <span>确认下单</span>
-      </div>
+      </button>
     </div>
   </div>
 </div>
+
+<!--收银台手动键入点餐形式信息登记弹窗-->
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-template #modalTitle>登记订单信息</ng-template>
+
+  <ng-template #modalContent>
+    <div>
+      <span>用餐地点：</span>
+      <nz-select nzPlaceHolder="选择菜品类型" [(ngModel)]="position">
+        <nz-option [nzValue]="position" [nzLabel]="position" nzHide></nz-option>
+        <nz-option [nzValue]="'堂食'" [nzLabel]="'堂食'"></nz-option>
+        <nz-option [nzValue]="'客房'" [nzLabel]="'客房'"></nz-option>
+      </nz-select>
+    </div>
+    <div>
+      桌号/房间号：<input
+        nz-input
+        placeholder="请输入桌号(C)/房间号(A)"
+        [(ngModel)]="desk_code"
+      />
+    </div>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button
+      nz-button
+      nzType="primary"
+      (click)="handleOk()"
+      [nzLoading]="isOkLoading"
+    >
+      下单
+    </button>
+  </ng-template>
+</nz-modal>

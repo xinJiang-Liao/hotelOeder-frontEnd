@@ -1,4 +1,4 @@
-<div class="format h-[calc(100vh-3rem)]">
+<div class="format h-[calc(100vh-3rem)]" *ngIf="chefsData">
   <!-- This example requires Tailwind CSS v2.0+ -->
   <div class="relative bg-white overflow-hidden w-full h-full">
     <div class="lg:pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
@@ -32,7 +32,7 @@
                       class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100"
                     >
                       <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
+                        src="{{chefsData[0].chef_image}}"
                         alt=""
                         class="w-full h-full object-center object-cover"
                       />
@@ -41,38 +41,7 @@
                       class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden"
                     >
                       <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-                        alt=""
-                        class="w-full h-full object-center object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8"
-                  >
-                    <div
-                      class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden"
-                    >
-                      <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-                        alt=""
-                        class="w-full h-full object-center object-cover"
-                      />
-                    </div>
-                    <div
-                      class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden"
-                    >
-                      <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                        alt=""
-                        class="w-full h-full object-center object-cover"
-                      />
-                    </div>
-                    <div
-                      class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden"
-                    >
-                      <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
+                        src="{{chefsData[1].chef_image}}"
                         alt=""
                         class="w-full h-full object-center object-cover"
                       />
@@ -85,7 +54,7 @@
                       class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden"
                     >
                       <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
+                        src="{{chefsData[2].chef_image}}"
                         alt=""
                         class="w-full h-full object-center object-cover"
                       />
@@ -94,7 +63,38 @@
                       class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden"
                     >
                       <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
+                        src="{{chefsData[3].chef_image}}"
+                        alt=""
+                        class="w-full h-full object-center object-cover"
+                      />
+                    </div>
+                    <div
+                      class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden"
+                    >
+                      <img
+                        src="{{chefsData[4].chef_image}}"
+                        alt=""
+                        class="w-full h-full object-center object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8"
+                  >
+                    <div
+                      class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden"
+                    >
+                      <img
+                        src="{{chefsData[5].chef_image}}"
+                        alt=""
+                        class="w-full h-full object-center object-cover"
+                      />
+                    </div>
+                    <div
+                      class="w-24 h-28 xl:w-44 xl:h-64 rounded-lg overflow-hidden"
+                    >
+                      <img
+                        src="{{chefsData[6].chef_image}}"
                         alt=""
                         class="w-full h-full object-center object-cover"
                       />

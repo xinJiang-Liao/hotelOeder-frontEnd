@@ -32,7 +32,7 @@
 }
 
 .floor04-center {
-  height: 680px;
+  height: 800px;
   overflow: auto;
   width: 100%;
   //box-shadow: 0px 0px 1px 0px #ececec, 0px 1px 0px 1px #ececec,
@@ -62,4 +62,17 @@ nz-range-picker {
 
 .search-button {
   margin-right: 8px;
+}
+
+.border {
+  display: flex;
+  flex-direction: row;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  div{
+    width: 20%;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+  }
 }

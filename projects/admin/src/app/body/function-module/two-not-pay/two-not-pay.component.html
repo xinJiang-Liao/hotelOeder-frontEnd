@@ -1,4 +1,4 @@
-<div class="floor03-form">
+<div class="floor03-form relative">
   <!--  这里是挂单管理界面的代码-->
   <div class="floor03-form2">
     <div class="floor03-head">
@@ -11,13 +11,21 @@
           align-items: center;
         "
       >
-        <span>订单号:</span>
-        <input style="border-radius: 5px; border: 1px solid darkgray" />
-        <button style="font-size: 24px">查询</button>
+        <span>订单ID:</span>
+        <input
+          style="border-radius: 5px; border: 1px solid darkgray"
+          [(ngModel)]="searchID"
+        />
+        <button style="font-size: 24px" (click)="searchData(searchID)">
+          查询
+        </button>
+        <button style="font-size: 24px" (click)="reset()" class="mx-2">
+          重置
+        </button>
       </div>
     </div>
 
-    <div class="floor03-center">
+    <div class="floor03-center" *ngIf="listOfData">
       <!--    -------------这里是挂单详情的表格------------------------------------------------------>
       <nz-table
         #rowSelectionTable
@@ -27,26 +35,39 @@
       >
         <thead>
           <tr>
-            <th
-              [nzSelections]="listOfSelection"
-              [(nzChecked)]="checked"
-              [nzIndeterminate]="indeterminate"
-              (nzCheckedChange)="onAllChecked($event)"
-            ></th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Address</th>
+            <th><!--占位--></th>
+            <th>ID</th>
+            <th>客房/堂食</th>
+            <th>房间/桌号</th>
+            <th>手机号</th>
+            <th>下单时间</th>
+            <th>订单金额</th>
+            <th>查看菜品</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let data of rowSelectionTable.data">
             <td
               [nzChecked]="setOfCheckedId.has(data.id)"
-              (nzCheckedChange)="onItemChecked(data.id, $event)"
+              (nzCheckedChange)="
+                onItemChecked(data.id, $event, data.Charge_amount)
+              "
             ></td>
-            <td>{{ data.name }}</td>
-            <td>{{ data.age }}</td>
-            <td>{{ data.address }}</td>
+            <td>{{ data.id }}</td>
+            <td>{{ data.position }}</td>
+            <td>{{ data.desk_code }}</td>
+            <td>{{ data.phone }}</td>
+            <td>{{ data.createtime }}</td>
+            <td>{{ "￥" + data.Charge_amount }}</td>
+            <td>
+              <button
+                nz-button
+                nzType="primary"
+                (click)="showModal(data.foods)"
+              >
+                <span>查看详情</span>
+              </button>
+            </td>
           </tr>
         </tbody>
       </nz-table>
@@ -54,8 +75,51 @@
     </div>
   </div>
 
-  <div class="floor03-foot">
-    <button nz-button [nzSize]="size" nzType="primary">结账</button>
-    <button nz-button [nzSize]="size" nzType="dashed">消单</button>
+  <div class="absolute top-[93%] left-[8%]">
+    <button
+      nz-button
+      [nzSize]="size"
+      nzType="primary"
+      class="mr-4"
+      (click)="openDialog(0, true)"
+    >
+      结账
+    </button>
+    <button nz-button [nzSize]="size" nzType="dashed" (click)="deletItem(false,true)">消单</button>
   </div>
 </div>
+
+<!-------------------------------------------弹窗--------------------------------------------->
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-template #modalTitle>点单详情</ng-template>
+
+  <ng-template #modalContent>
+    <div *ngFor="let item of foodData" class="border">
+      <div>
+        <span>{{ item.type }}</span>
+      </div>
+      <div>
+        <span>{{ item.foodName }}</span>
+      </div>
+      <div>
+        <span>{{ "￥" + item.price }}</span>
+      </div>
+      <div>
+        <span>{{ item.number }}</span>
+      </div>
+      <div>
+        <span>{{ item.volume }}</span>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button nz-button nzType="primary" (click)="handleCancel()">ok</button>
+  </ng-template>
+</nz-modal>

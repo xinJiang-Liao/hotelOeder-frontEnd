@@ -18,29 +18,43 @@ export class OrderService {
   }
 
   /*获取 所有订单*/
-  public getFoods(type?: any): Observable<any> {
-    const url = `${this.apiHost}/goods/event`;
-    const params = type;
+  public getOrders(
+    state?: any,
+    startAt?: string,
+    endAt?: string
+  ): Observable<any> {
+    const url = `${this.apiHost}/orders/event`;
+    const params = { state: state, startAt: startAt, endAt: endAt };
     return this.http.get(url, httpOptions2(params));
   }
 
   /*修改 订单状态以及完成时间*/
   /*完成订单支付的操作*/
-  public upDate(id: number, state: string, endtime: string): Observable<any> {
-    const url = `${this.apiHost}/goods/upDate`;
-    const body: any = { id: id, state: state, endtime: endtime };
+  public upDate(
+    id: number,
+    state: string,
+    endtime: string,
+    payment_amount: string
+  ): Observable<any> {
+    const url = `${this.apiHost}/orders/upDate`;
+    const body: any = {
+      id: id,
+      state: state,
+      endtime: endtime,
+      payment_amount: payment_amount,
+    };
     return this.http.post(url, body);
   }
 
   /*删除 指定id的订单*/
-  public deleteFoods(id: number): Observable<any> {
-    const url = `${this.apiHost}/goods/DelFood`;
+  public deleteOrder(id: number): Observable<any> {
+    const url = `${this.apiHost}/orders/DelOrder`;
     const body: any = { id: id };
     return this.http.post(url, body);
   }
 
   /*创建 订单*/
-  public pushFoods(
+  public pushOrder(
     position: string,
     desk_code: string,
     phone: string,
@@ -49,7 +63,7 @@ export class OrderService {
     state: string,
     Charge_amount: number
   ): Observable<any> {
-    const url = `${this.apiHost}/goods/pushFood`;
+    const url = `${this.apiHost}/orders/pushOrder`;
     const body: any = {
       position: position,
       desk_code: desk_code,
