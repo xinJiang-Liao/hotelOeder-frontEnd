@@ -11,225 +11,135 @@
 
     <div class="w-full" *ngIf="!screen">
       <button nz-button nz-dropdown [nzDropdownMenu]="menu4" class="w-full">
-        {{screen?screen:'全部'}}
+        {{ DropdownMenu ? DropdownMenu : "全部" }}
         <i nz-icon nzType="down"></i>
       </button>
       <nz-dropdown-menu #menu4="nzDropdownMenu">
         <ul nz-menu>
-          <li nz-menu-item>menu4 1st menu item</li>
-          <li nz-menu-item>menu4 2nd menu item</li>
-          <li nz-menu-item>menu4 3rd menu item</li>
+          <li nz-menu-item (click)="getFoods('')">全部</li>
+          <li nz-menu-item (click)="getFoods('中餐')">中餐</li>
+          <li nz-menu-item (click)="getFoods('西餐')">西餐</li>
+          <li nz-menu-item (click)="getFoods('小吃')">小吃</li>
+          <li nz-menu-item (click)="getFoods('饮品')">饮品</li>
         </ul>
       </nz-dropdown-menu>
     </div>
 
     <nz-breadcrumb *ngIf="screen" class="text-center">
-      <nz-breadcrumb-item>
+      <nz-breadcrumb-item (click)="getFoods('中餐')">
         <a>中餐</a>
       </nz-breadcrumb-item>
-      <nz-breadcrumb-item>
+      <nz-breadcrumb-item (click)="getFoods('西餐')">
         <a>西餐</a>
       </nz-breadcrumb-item>
-      <nz-breadcrumb-item>
+      <nz-breadcrumb-item (click)="getFoods('小吃')">
         <a>小吃</a>
       </nz-breadcrumb-item>
-      <nz-breadcrumb-item>
-        <a>奶茶</a>
+      <nz-breadcrumb-item (click)="getFoods('饮品')">
+        <a>饮品</a>
       </nz-breadcrumb-item>
       <nz-breadcrumb-item> </nz-breadcrumb-item>
     </nz-breadcrumb>
   </div>
 
-  <div class="w-full flex flex-wrap justify-between xl:px-[12%] xl:h-[40rem] overflow-y-auto">
+  <div
+    class="w-full flex flex-wrap justify-between xl:px-[12%] xl:h-[40rem] overflow-y-auto"
+    *ngIf="foodData"
+  >
     <!--一个菜品-->
     <div
       class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4 transform xl:motion-safe:hover:scale-110"
+      *ngFor="let row of foodData"
+      (click)="showModal(row)"
     >
-      <a class="block relative h-35 rounded overflow-hidden">
+      <a class="block relative h-32 md:h-44 lg:h-64 rounded overflow-hidden">
         <img
           alt="ecommerce"
           class="object-cover object-center w-full h-full block"
-          src="https://dummyimage.com/420x260"
+          src="{{ row.food_Image }}"
         />
       </a>
       <div class="mt-1">
         <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-          类别
+          {{ row.type }}
         </h3>
         <div class="flex justify-between">
-          <span class="text-lg font-medium"> 菜名 </span>
-          <p class="lg:mt-1">$16.00</p>
+          <span class="text-lg font-medium">
+            {{ row.foodName }}({{ row.volume }})
+          </span>
+          <p class="lg:mt-1">￥{{ row.price }}.00</p>
         </div>
       </div>
     </div>
     <!------------------------------------>
-    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
-      <a class="block relative h-35 rounded overflow-hidden">
-        <img
-          alt="ecommerce"
-          class="object-cover object-center w-full h-full block"
-          src="https://dummyimage.com/420x260"
-        />
-      </a>
-      <div class="mt-1">
-        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-          类别
-        </h3>
-        <div class="flex justify-between">
-          <span class="text-lg font-medium"> 菜名 </span>
-          <p class="lg:mt-1">$16.00</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
-      <a class="block relative h-35 rounded overflow-hidden">
-        <img
-          alt="ecommerce"
-          class="object-cover object-center w-full h-full block"
-          src="https://dummyimage.com/420x260"
-        />
-      </a>
-      <div class="mt-1">
-        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-          类别
-        </h3>
-        <div class="flex justify-between">
-          <span class="text-lg font-medium"> 菜名 </span>
-          <p class="lg:mt-1">$16.00</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
-      <a class="block relative h-35 rounded overflow-hidden">
-        <img
-          alt="ecommerce"
-          class="object-cover object-center w-full h-full block"
-          src="https://dummyimage.com/420x260"
-        />
-      </a>
-      <div class="mt-1">
-        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-          类别
-        </h3>
-        <div class="flex justify-between">
-          <span class="text-lg font-medium"> 菜名 </span>
-          <p class="lg:mt-1">$16.00</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
-      <a class="block relative h-35 rounded overflow-hidden">
-        <img
-          alt="ecommerce"
-          class="object-cover object-center w-full h-full block"
-          src="https://dummyimage.com/420x260"
-        />
-      </a>
-      <div class="mt-1">
-        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-          类别
-        </h3>
-        <div class="flex justify-between">
-          <span class="text-lg font-medium"> 菜名 </span>
-          <p class="lg:mt-1">$16.00</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
-      <a class="block relative h-35 rounded overflow-hidden">
-        <img
-          alt="ecommerce"
-          class="object-cover object-center w-full h-full block"
-          src="https://dummyimage.com/420x260"
-        />
-      </a>
-      <div class="mt-1">
-        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-          类别
-        </h3>
-        <div class="flex justify-between">
-          <span class="text-lg font-medium"> 菜名 </span>
-          <p class="lg:mt-1">$16.00</p>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
-      <a class="block relative h-35 rounded overflow-hidden">
-        <img
-          alt="ecommerce"
-          class="object-cover object-center w-full h-full block"
-          src="https://dummyimage.com/420x260"
-        />
-      </a>
-      <div class="mt-1">
-        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-          类别
-        </h3>
-        <div class="flex justify-between">
-          <span class="text-lg font-medium"> 菜名 </span>
-          <p class="lg:mt-1">$16.00</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4">
-      <a class="block relative h-35 rounded overflow-hidden">
-        <img
-          alt="ecommerce"
-          class="object-cover object-center w-full h-full block"
-          src="https://dummyimage.com/420x260"
-        />
-      </a>
-      <div class="mt-1">
-        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-          类别
-        </h3>
-        <div class="flex justify-between">
-          <span class="text-lg font-medium"> 菜名 </span>
-          <p class="lg:mt-1">$16.00</p>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="w-[48%] mx-[1%] lg:w-1/4 md:w-1/2 xl:m-4 transform xl:motion-safe:hover:scale-110"
-    >
-      <a class="block relative h-35 rounded overflow-hidden">
-        <img
-          alt="ecommerce"
-          class="object-cover object-center w-full h-full block"
-          src="https://dummyimage.com/420x260"
-        />
-      </a>
-      <div class="mt-1">
-        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-          类别
-        </h3>
-        <div class="flex justify-between">
-          <span class="text-lg font-medium"> 菜名 </span>
-          <p class="lg:mt-1">$16.00</p>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <div class=" absolute top-[50%] w-full px-12 flex justify-between" *ngIf="screen">
-    <a class="a-class flex-center">
+  <div
+    class="absolute top-[50%] w-full px-12 flex justify-between"
+    *ngIf="screen"
+  >
+    <a class="a-class flex-center" (click)="switch(1)">
       <i nz-icon nzType="left" nzTheme="outline" class="text-[2rem]"></i>
     </a>
 
-    <a class="a-class flex-center left-[100vw-60px]">
-      <i nz-icon nzType="right" nzTheme="outline" class="text-[2rem]" ></i>
+    <a class="a-class flex-center left-[100vw-60px]" (click)="switch()">
+      <i nz-icon nzType="right" nzTheme="outline" class="text-[2rem]"></i>
     </a>
   </div>
-
 </div>
 
+<nz-modal
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading"
+>
+  <div *nzModalContent>
+    <div class="flex flex-wrap -m-4">
+      <div class="p-4">
+        <div
+          class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden"
+        >
+          <img
+            class="lg:h-48 md:h-36 w-full object-cover object-center"
+            src="{{ food.food_Image }}"
+            alt="blog"
+          />
+          <div class="p-6">
+            <h2
+              class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
+            >
+              {{ food.type }}
+            </h2>
+            <h2
+              class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
+            >
+              规格：{{ food.volume }}&nbsp;&nbsp;&nbsp;&nbsp;售价：￥{{
+                food.price
+              }}
+            </h2>
+            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+              {{ food.foodName }}
+            </h1>
 
+            <p class="leading-relaxed mb-3">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
+                food.introduce
+              }}
+            </p>
+            <div class="flex items-center flex-wrap">
+              <!--              <button-->
+              <!--                class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"-->
+              <!--              >-->
+              <!--                Learn More-->
+              <!--              </button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-modal>
+
+<!--购物车的可拖动图标-->
+<app-drag id="drag" routerLink="/shoppingCart" (click)="setData()"></app-drag>

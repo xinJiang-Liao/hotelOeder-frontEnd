@@ -1,15 +1,16 @@
 .floor02-right {
-  height: 880px;
-  width: 440px;
-  min-width: 440px;
-  background-color: aqua;
+  @apply w-[calc(100%-2rem)] mx-4 lg:w-[440px] lg:min-w-[440px] lg:ml-[30px] lg:mr-0;
+  /*height: 880px;*/
+  /*width: 440px;*/
+  /*min-width: 440px;*/
   border-radius: 15px;
-  margin-left: 30px;
+  /*margin-left: 30px;*/
   box-shadow: 0px 0px 1px 0px #577399, 0px 1px 0px 1px #577399,
     0px 0px 0px 2px #577399;
 }
 
 .head {
+  @apply min-w-[320px];
   height: 130px;
   display: flex;
   justify-content: space-between;
@@ -31,7 +32,7 @@ i {
 }
 
 .body {
-  height: 750px;
+  @apply lg:h-[750px] min-w-[320px] max-h-[28.75rem];
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -55,8 +56,9 @@ i {
 }
 
 .section {
+  @apply lg:h-[530px];
   background-color: #e5e5f3;
-  height: 530px;
+  /*height: 530px;*/
   width: 100%;
   max-height: 530px;
   overflow: auto;

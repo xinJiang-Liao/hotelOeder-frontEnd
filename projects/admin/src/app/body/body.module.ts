@@ -9,12 +9,12 @@ import {
 } from './function-module/one-order/main/main.component';
 import { DishesComponent } from './function-module/one-order/main/dishes/dishes.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import {
-  ShoppingCartComponent,
-  YHComponent,
-  YHQComponent,
-} from '@component/shopping-cart/shopping-cart.component';
-import { TableComponent } from '@component/shopping-cart/table/table.component';
+// import {
+//   ShoppingCartComponent,
+//   YHComponent,
+//   YHQComponent,
+// } from '@component/shopping-cart/shopping-cart.component';
+// import { TableComponent } from '@component/shopping-cart/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -49,6 +49,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { ShoppingCartModule } from '@component/shopping-cart/shopping-cart.module';
 
 @NgModule({
   declarations: [
@@ -57,10 +58,10 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     MainComponent,
     DishesComponent,
     NoteComponent,
-    ShoppingCartComponent,
-    YHComponent,
-    YHQComponent,
-    TableComponent,
+    // ShoppingCartComponent,
+    // YHComponent,
+    // YHQComponent,
+    // TableComponent,
     ButtonToggleComponent,
     TwoNotPayComponent,
     TableWaitingComponent,
@@ -99,6 +100,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzModalModule,
     NzInputModule,
     NzSelectModule,
+    ShoppingCartModule,
   ],
 })
 export class BodyModule {}

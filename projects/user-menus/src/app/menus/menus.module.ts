@@ -24,6 +24,15 @@ import { IconsProviderModule } from '@icons/icons-provider.module';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
+import zh from '@angular/common/locales/zh';
+import { registerLocaleData } from '@angular/common';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { DragComponent } from '@component/drag/drag.component';
+import {ShoppingCartModule} from '@component/shopping-cart/shopping-cart.module';
+
+registerLocaleData(zh);
+
 @NgModule({
   declarations: [
     MenusComponent,
@@ -35,6 +44,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ChefProfileComponent,
     AboutDetailsComponent,
     FoodDetailComponent,
+    DragComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +58,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     IconsProviderModule,
     NzDropDownModule,
     MatDialogModule,
+    NzModalModule,
+    ShoppingCartModule
   ],
   providers: [
     {
